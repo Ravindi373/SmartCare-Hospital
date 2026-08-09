@@ -1,0 +1,34 @@
+Column,Description
+record_id,Unique row identifier
+patient_id,Synthetic patient identifier
+age,Patient age in years
+gender,Patient gender
+blood_group,Patient blood group
+department,Hospital department
+diagnosis,Primary diagnosis category
+appointment_date,Appointment date
+waiting_days,Number of days between booking and appointment
+previous_appointments,Number of previous appointments
+missed_previous_appointments,Number of previously missed appointments
+appointment_status,"Completed, Cancelled, No-Show, or Scheduled"
+admitted,"Whether patient was admitted: 1=Yes, 0=No"
+room_type,"None, General Ward, Private Room, or ICU"
+length_of_stay_days,Hospital stay duration in days
+previous_admissions,Number of previous admissions
+systolic_bp,Synthetic systolic blood pressure
+diastolic_bp,Synthetic diastolic blood pressure
+blood_sugar_mg_dl,Synthetic blood sugar measurement
+cholesterol_mg_dl,Synthetic cholesterol measurement
+bmi,Synthetic body mass index
+lab_tests_count,Number of lab tests
+treatments_count,Number of treatments
+consultation_fee_lkr,Consultation fee in LKR
+room_charge_lkr,Room charges in LKR
+lab_charge_lkr,Lab charges in LKR
+medicine_charge_lkr,Medicine charges in LKR
+total_bill_lkr,Total bill in LKR
+payment_status,"Paid, Unpaid, or Partially Paid"
+payment_method,"Cash, Card, Online, or Insurance"
+no_show,"AI target for appointment no-show prediction: 1=No-show, 0=Attended/Other"
+readmitted_30_days,"AI target for readmission prediction: 1=Readmitted, 0=Not readmitted"
+disease_risk_level,"AI target for disease risk prediction: Low, Medium, High"

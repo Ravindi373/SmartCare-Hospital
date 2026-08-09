@@ -1,0 +1,1001 @@
+record_id,patient_id,age,gender,blood_group,department,diagnosis,appointment_date,waiting_days,previous_appointments,missed_previous_appointments,appointment_status,admitted,room_type,length_of_stay_days,previous_admissions,systolic_bp,diastolic_bp,blood_sugar_mg_dl,cholesterol_mg_dl,bmi,lab_tests_count,treatments_count,consultation_fee_lkr,room_charge_lkr,lab_charge_lkr,medicine_charge_lkr,total_bill_lkr,payment_status,payment_method,no_show,readmitted_30_days,disease_risk_level
+1,P10001,53,Male,A-,General Medicine,Migraine,2025-04-10,10,1,0,Completed,0,None,0,1,127,75,117,211,26.1,0,3,2000,0,0,11596,13596,Paid,Insurance,0,0,High
+2,P10002,26,Male,B-,General Medicine,Diabetes,2025-05-15,2,3,1,Completed,0,None,0,0,130,73,136,173,32.8,0,1,2000,0,0,3652,5652,Paid,Insurance,0,0,Medium
+3,P10003,22,Male,B+,Orthopedics,Back Pain,2025-07-09,22,7,1,No-Show,0,None,0,1,141,64,90,176,29.4,1,0,2500,0,1200,2562,6262,Unpaid,Insurance,1,0,Medium
+4,P10004,44,Female,AB-,Cardiology,Asthma,2025-10-16,16,1,0,Completed,0,None,0,0,124,82,126,189,24.9,2,1,2000,0,5000,10262,17262,Paid,Online,0,0,Medium
+5,P10005,51,Female,O+,Neurology,Hypertension,2025-12-18,12,4,0,Scheduled,0,None,0,1,119,81,65,195,27.0,2,0,4000,0,6000,10414,20414,Paid,Cash,0,0,Medium
+6,P10006,50,Female,A+,Neurology,Back Pain,2025-10-13,43,1,0,No-Show,1,Private Room,5,0,117,76,130,193,29.1,0,2,2500,45000,0,10251,57751,Unpaid,Card,1,1,Medium
+7,P10007,21,Female,AB-,General Medicine,Fracture,2025-04-23,11,4,0,Completed,0,None,0,0,124,82,106,183,30.9,2,1,1500,0,6000,11947,19447,Paid,Card,0,0,Medium
+8,P10008,64,Female,A-,Cardiology,Fracture,2025-07-06,32,3,0,Completed,0,None,0,1,133,76,75,229,21.3,3,1,4000,0,7500,6034,17534,Unpaid,Card,0,0,Medium
+9,P10009,53,Male,B-,Pediatrics,Kidney Infection,2025-06-09,11,4,1,No-Show,0,None,0,0,111,67,125,213,26.6,1,0,3000,0,2500,10137,15637,Partially Paid,Online,1,0,Medium
+10,P10010,51,Male,AB-,Pediatrics,Hypertension,2025-06-18,34,4,1,Completed,0,None,0,1,129,76,101,163,29.2,2,1,2500,0,6000,2193,10693,Paid,Card,0,0,Medium
+11,P10011,62,Female,AB+,Orthopedics,Kidney Infection,2025-07-11,18,6,1,Completed,0,None,0,0,129,88,102,233,30.1,1,3,2000,0,2500,4363,8863,Paid,Insurance,0,0,High
+12,P10012,38,Female,A-,Cardiology,Fracture,2025-10-26,39,2,1,Completed,1,ICU,1,1,134,64,97,192,26.1,0,2,2000,25000,0,14744,41744,Paid,Card,0,0,Medium
+13,P10013,24,Male,O-,Neurology,Fever,2025-07-09,24,1,0,No-Show,0,None,0,0,103,75,110,162,23.6,2,1,3500,0,2400,1376,7276,Paid,Online,1,0,Low
+14,P10014,74,Male,AB+,Laboratory Services,Diabetes,2025-12-12,18,3,0,Completed,0,None,0,0,122,73,192,199,24.6,1,2,4000,0,2500,3843,10343,Unpaid,Insurance,0,0,High
+15,P10015,30,Male,A-,Orthopedics,Hypertension,2025-03-10,28,2,0,Cancelled,0,None,0,1,155,86,124,178,16.3,1,2,4000,0,2500,7405,13905,Partially Paid,Online,0,0,Medium
+16,P10016,90,Male,O-,Pediatrics,Chest Pain,2025-11-19,42,7,3,No-Show,1,General Ward,3,1,118,88,96,192,24.5,4,2,3500,10500,4800,2252,21052,Paid,Cash,1,1,High
+17,P10017,42,Male,A-,Cardiology,Migraine,2025-04-06,17,4,0,No-Show,0,None,0,3,151,75,101,228,25.4,3,0,2000,0,3600,7900,13500,Paid,Cash,1,0,High
+18,P10018,61,Female,B+,Neurology,Diabetes,2025-01-25,4,4,0,Completed,0,None,0,0,126,83,157,264,29.5,3,2,3500,0,5400,6672,15572,Paid,Online,0,0,High
+19,P10019,53,Female,AB-,Pediatrics,Pneumonia,2025-04-01,43,6,1,Completed,0,None,0,1,119,61,98,151,32.2,4,1,4000,0,7200,8076,19276,Unpaid,Insurance,0,0,Medium
+20,P10020,53,Female,B-,General Medicine,Fracture,2025-10-30,31,1,0,No-Show,1,None,3,0,130,81,93,204,27.7,6,5,2500,0,7200,12442,22142,Paid,Card,1,1,Medium
+21,P10021,31,Male,A-,General Medicine,Hypertension,2025-03-23,34,3,1,Scheduled,0,None,0,3,128,87,113,152,25.9,2,2,2000,0,2400,4425,8825,Partially Paid,Card,0,0,Medium
+22,P10022,32,Female,O-,Laboratory Services,Kidney Infection,2025-07-16,5,1,0,No-Show,1,None,3,0,126,80,98,217,20.7,5,2,2000,0,15000,18456,35456,Paid,Insurance,1,1,Low
+23,P10023,42,Male,O+,General Medicine,Diabetes,2025-07-11,10,5,0,No-Show,0,None,0,2,144,62,116,128,24.2,2,3,4000,0,6000,6827,16827,Paid,Insurance,1,0,Medium
+24,P10024,57,Male,A-,Laboratory Services,Diabetes,2025-07-24,5,0,0,Cancelled,0,None,0,1,103,89,94,276,18.2,1,1,1500,0,3000,2387,6887,Unpaid,Card,0,0,Medium
+25,P10025,71,Male,AB+,Pediatrics,Pneumonia,2025-06-19,4,1,0,No-Show,0,None,0,1,111,79,117,129,25.5,2,2,3000,0,3600,10747,17347,Paid,Insurance,1,0,Medium
+26,P10026,45,Male,A+,Neurology,Diabetes,2025-03-19,25,2,1,No-Show,0,None,0,0,141,70,147,234,21.3,2,0,3000,0,2400,10767,16167,Paid,Cash,1,0,High
+27,P10027,46,Male,O+,Pediatrics,Fever,2025-01-25,16,2,0,No-Show,0,None,0,0,128,95,113,170,31.8,1,0,3000,0,3000,3239,9239,Paid,Cash,1,0,Medium
+28,P10028,54,Male,AB+,Orthopedics,Hypertension,2025-04-22,5,3,0,Cancelled,0,None,0,1,121,72,114,174,26.7,0,3,3000,0,0,11620,14620,Partially Paid,Insurance,0,0,Medium
+29,P10029,44,Female,A+,Pediatrics,Fracture,2025-10-02,25,3,0,Completed,0,None,0,2,131,97,136,227,25.4,3,1,2500,0,5400,10365,18265,Partially Paid,Online,0,0,High
+30,P10030,29,Male,A-,General Medicine,Back Pain,2025-11-01,34,5,0,No-Show,1,None,2,0,148,74,78,201,26.6,2,4,3500,0,3600,980,8080,Paid,Card,1,0,Medium
+31,P10031,40,Male,B-,Radiology,Diabetes,2025-05-25,14,3,1,Scheduled,1,None,5,1,140,57,151,225,19.1,3,3,2000,0,9000,2465,13465,Paid,Cash,0,1,High
+32,P10032,65,Male,B-,Orthopedics,Back Pain,2025-07-03,35,2,0,No-Show,0,None,0,1,116,111,150,191,25.9,5,0,3500,0,12500,6666,22666,Partially Paid,Online,1,0,High
+33,P10033,42,Male,A-,Cardiology,Fever,2025-12-22,42,3,2,No-Show,1,None,6,1,138,73,106,208,23.4,1,3,4000,0,2500,5453,11953,Paid,Cash,1,1,Medium
+34,P10034,56,Female,AB+,Radiology,Back Pain,2025-07-01,43,6,2,No-Show,0,None,0,1,120,53,112,196,28.5,2,1,1500,0,2400,3932,7832,Paid,Card,1,0,High
+35,P10035,30,Female,AB+,General Medicine,Fracture,2025-06-07,18,2,0,Cancelled,0,None,0,2,124,79,95,170,25.5,3,1,2500,0,7500,5426,15426,Paid,Cash,0,0,Medium
+36,P10036,34,Female,B+,Laboratory Services,Diabetes,2025-11-24,22,8,2,Completed,0,None,0,1,123,74,157,154,28.2,0,0,2000,0,0,10003,12003,Paid,Online,0,0,Medium
+37,P10037,38,Female,AB+,Radiology,Fracture,2025-03-26,6,2,1,No-Show,0,None,0,1,145,83,79,230,24.5,2,1,4000,0,5000,4991,13991,Paid,Insurance,1,0,Medium
+38,P10038,66,Female,AB-,Neurology,Hypertension,2025-08-03,29,4,1,No-Show,1,None,2,0,126,80,122,148,20.2,4,1,3000,0,10000,18473,31473,Paid,Card,1,1,Medium
+39,P10039,58,Female,B+,Pediatrics,Kidney Infection,2025-10-14,20,4,0,Scheduled,1,None,7,0,154,70,126,199,29.0,2,2,3000,0,2400,10183,15583,Paid,Cash,0,1,High
+40,P10040,28,Female,A+,Radiology,Pneumonia,2025-08-15,35,5,1,No-Show,1,None,1,1,131,68,65,182,20.7,3,1,2000,0,3600,17255,22855,Paid,Online,1,0,Low
+41,P10041,12,Male,O+,Laboratory Services,Fracture,2025-10-30,9,2,1,No-Show,0,None,0,0,143,85,127,237,30.4,0,1,4000,0,0,5306,9306,Paid,Card,1,0,High
+42,P10042,63,Male,AB-,Neurology,Asthma,2025-06-25,6,1,0,Completed,0,None,0,1,151,77,148,112,31.4,2,2,2000,0,6000,7626,15626,Paid,Insurance,0,0,High
+43,P10043,68,Male,B-,Cardiology,Asthma,2025-06-19,1,5,0,Scheduled,1,General Ward,4,0,129,81,101,172,28.2,1,3,1500,14000,3000,2830,21330,Unpaid,Card,0,0,Medium
+44,P10044,57,Female,AB-,Cardiology,Migraine,2025-12-10,14,1,0,Completed,0,None,0,0,154,86,75,254,26.5,2,2,2000,0,3600,4064,9664,Paid,Online,0,0,High
+45,P10045,42,Male,AB-,Neurology,Migraine,2025-03-02,19,5,3,No-Show,0,None,0,0,120,61,190,277,22.5,1,3,2500,0,3000,11374,16874,Paid,Cash,1,0,High
+46,P10046,50,Male,O+,Cardiology,Asthma,2025-09-08,14,1,0,No-Show,1,None,4,1,116,80,129,185,14.0,5,10,2500,0,6000,11305,19805,Paid,Online,1,0,Medium
+47,P10047,29,Female,A+,Orthopedics,Back Pain,2025-06-07,31,0,0,Completed,1,ICU,1,1,139,85,65,185,21.4,0,2,1500,25000,0,9948,36448,Unpaid,Insurance,0,0,Low
+48,P10048,55,Male,AB-,Radiology,Pneumonia,2025-01-12,26,2,0,Completed,0,None,0,0,133,62,137,187,26.1,4,1,4000,0,7200,9598,20798,Paid,Online,0,0,High
+49,P10049,65,Male,AB+,Laboratory Services,Migraine,2025-10-12,33,0,0,No-Show,1,None,2,0,151,82,135,190,22.8,3,7,4000,0,9000,2436,15436,Paid,Card,1,1,High
+50,P10050,58,Male,AB+,Orthopedics,Fever,2025-01-08,16,5,0,Cancelled,1,None,4,0,139,71,121,249,27.7,2,3,2000,0,5000,9535,16535,Paid,Online,0,1,High
+51,P10051,50,Male,B-,Orthopedics,Back Pain,2025-09-24,37,6,2,Completed,0,None,0,0,128,77,102,286,25.4,2,1,3500,0,5000,11540,20040,Paid,Insurance,0,0,High
+52,P10052,20,Male,B-,Laboratory Services,Diabetes,2025-11-13,43,2,0,No-Show,1,None,1,1,125,72,160,205,28.7,2,6,4000,0,5000,13054,22054,Paid,Online,1,0,High
+53,P10053,56,Male,O-,Neurology,Fracture,2025-03-23,31,3,0,No-Show,0,None,0,1,110,92,101,312,24.9,1,0,2000,0,1200,9594,12794,Paid,Cash,1,0,High
+54,P10054,31,Female,B-,Orthopedics,Back Pain,2025-09-07,31,3,1,No-Show,1,None,5,3,126,77,131,218,18.5,5,3,4000,0,15000,11860,30860,Paid,Card,1,1,Medium
+55,P10055,43,Male,O-,Neurology,Diabetes,2025-01-28,16,4,0,Scheduled,0,None,0,0,117,67,175,183,26.8,2,0,3000,0,3600,769,7369,Paid,Cash,0,0,High
+56,P10056,80,Male,AB-,Neurology,Diabetes,2025-06-24,27,4,0,Completed,0,None,0,0,125,94,149,225,31.6,2,0,3000,0,3600,1468,8068,Unpaid,Insurance,0,0,High
+57,P10057,42,Female,B-,Neurology,Pneumonia,2025-08-30,41,1,0,No-Show,1,None,1,1,142,83,136,100,34.1,1,2,2000,0,3000,8449,13449,Paid,Online,1,1,Medium
+58,P10058,42,Female,AB+,Laboratory Services,Fracture,2025-04-24,25,3,0,No-Show,0,None,0,1,131,81,101,209,27.9,3,0,2500,0,9000,1203,12703,Paid,Card,1,0,Medium
+59,P10059,47,Female,O+,Cardiology,Chest Pain,2025-03-23,37,6,1,No-Show,1,Private Room,5,1,123,65,89,174,30.3,5,2,1500,45000,9000,12767,68267,Paid,Card,1,1,Medium
+60,P10060,45,Male,O+,General Medicine,Fever,2025-08-16,36,3,0,No-Show,0,None,0,2,153,87,126,191,27.0,1,2,3000,0,2500,6512,12012,Paid,Cash,1,0,High
+61,P10061,81,Male,O+,Neurology,Fever,2025-12-11,12,2,0,Cancelled,0,None,0,2,138,76,129,246,23.3,2,0,3000,0,2400,10537,15937,Unpaid,Insurance,0,0,High
+62,P10062,47,Male,AB+,Cardiology,Migraine,2025-05-01,9,1,0,No-Show,1,General Ward,2,3,124,87,130,196,28.8,2,3,3000,7000,3600,1669,15269,Paid,Insurance,1,1,High
+63,P10063,34,Female,O-,General Medicine,Fever,2025-03-19,10,2,0,No-Show,0,None,0,1,137,64,94,263,32.4,0,1,2500,0,0,6199,8699,Unpaid,Card,1,0,High
+64,P10064,37,Male,O+,Orthopedics,Back Pain,2025-03-14,32,1,0,No-Show,0,None,0,1,117,67,111,171,26.2,3,1,3500,0,3600,11466,18566,Paid,Card,1,0,Medium
+65,P10065,16,Female,O+,Pediatrics,Hypertension,2025-10-14,4,4,0,Completed,1,None,2,0,106,91,99,189,26.4,3,4,2500,0,5400,11983,19883,Paid,Online,0,1,Low
+66,P10066,47,Female,A+,Cardiology,Diabetes,2025-09-06,20,2,0,No-Show,0,None,0,2,126,71,107,296,20.7,5,1,3000,0,6000,9285,18285,Unpaid,Online,1,0,High
+67,P10067,51,Male,B-,Laboratory Services,Diabetes,2025-07-25,26,3,1,No-Show,1,General Ward,7,1,145,85,147,231,31.4,2,2,4000,24500,2400,12982,43882,Unpaid,Card,1,1,High
+68,P10068,55,Male,B-,Radiology,Asthma,2025-06-09,28,4,0,Completed,0,None,0,0,153,92,107,256,26.2,2,0,2000,0,3600,9574,15174,Paid,Insurance,0,0,High
+69,P10069,38,Female,B+,Neurology,Chest Pain,2025-05-04,28,2,0,No-Show,1,None,5,1,137,97,84,211,16.1,2,2,3500,0,2400,11981,17881,Unpaid,Online,1,1,Low
+70,P10070,35,Male,B-,Radiology,Hypertension,2025-12-04,44,0,1,No-Show,0,None,0,1,133,78,99,225,19.7,1,0,2500,0,3000,11249,16749,Paid,Cash,1,0,Medium
+71,P10071,66,Male,A+,General Medicine,Migraine,2025-02-17,0,6,2,Completed,0,None,0,1,118,80,137,257,30.9,3,1,4000,0,3600,7583,15183,Unpaid,Online,0,0,High
+72,P10072,40,Female,O+,Laboratory Services,Chest Pain,2025-05-28,23,2,0,No-Show,1,None,3,0,107,70,141,176,20.9,1,3,4000,0,2500,11918,18418,Paid,Insurance,1,1,Medium
+73,P10073,54,Male,AB+,Orthopedics,Chest Pain,2025-06-18,3,1,0,No-Show,1,None,5,2,129,72,103,168,25.3,4,0,3000,0,7200,18720,28920,Paid,Insurance,1,1,Medium
+74,P10074,26,Female,A-,Orthopedics,Back Pain,2025-04-23,31,3,0,Cancelled,0,None,0,0,96,87,94,188,26.2,5,0,2500,0,12500,9289,24289,Unpaid,Online,0,0,Low
+75,P10075,50,Female,AB-,Pediatrics,Kidney Infection,2025-10-05,22,3,1,Completed,0,None,0,1,103,82,177,222,18.1,4,1,3500,0,12000,6772,22272,Paid,Card,0,0,High
+76,P10076,38,Female,AB+,Pediatrics,Chest Pain,2025-03-27,12,6,1,Completed,1,General Ward,4,0,132,83,130,237,27.9,2,3,2500,14000,5000,13295,34795,Unpaid,Cash,0,1,High
+77,P10077,53,Male,O-,General Medicine,Fracture,2025-01-14,6,3,0,Completed,1,General Ward,3,1,125,78,115,291,24.1,1,2,3000,10500,1800,1977,17277,Paid,Insurance,0,0,High
+78,P10078,62,Male,AB+,General Medicine,Migraine,2025-04-26,32,1,0,No-Show,0,None,0,1,141,87,131,174,30.2,1,1,2000,0,3000,9090,14090,Paid,Online,1,0,High
+79,P10079,38,Female,AB+,Radiology,Pneumonia,2025-12-16,12,2,1,Completed,1,None,5,1,129,62,118,193,23.3,5,1,4000,0,12500,13535,30035,Paid,Online,0,1,Medium
+80,P10080,16,Male,B+,General Medicine,Fracture,2025-12-30,35,3,0,Scheduled,0,None,0,2,137,71,105,199,29.7,1,1,2500,0,1200,8517,12217,Unpaid,Card,0,0,Medium
+81,P10081,40,Male,AB+,Laboratory Services,Kidney Infection,2025-05-23,10,4,2,Cancelled,1,None,6,0,122,85,142,213,25.3,2,4,3500,0,5000,11566,20066,Partially Paid,Card,0,1,Medium
+82,P10082,56,Female,AB+,Pediatrics,Migraine,2025-04-08,21,3,0,Scheduled,0,None,0,1,123,70,65,219,29.4,2,1,1500,0,3600,8603,13703,Paid,Card,0,0,Medium
+83,P10083,46,Female,O-,General Medicine,Hypertension,2025-08-02,39,5,2,No-Show,0,None,0,1,128,96,121,265,33.9,0,1,3500,0,0,2077,5577,Paid,Online,1,0,High
+84,P10084,50,Male,O+,General Medicine,Migraine,2025-03-26,27,4,1,No-Show,0,None,0,1,118,69,125,204,29.5,2,1,3000,0,2400,782,6182,Unpaid,Insurance,1,0,High
+85,P10085,35,Male,A-,Radiology,Hypertension,2025-10-29,31,2,0,Scheduled,0,None,0,2,119,79,117,210,22.6,4,1,2000,0,7200,10935,20135,Unpaid,Card,0,0,Medium
+86,P10086,30,Male,O+,Radiology,Fever,2025-05-11,20,4,0,No-Show,1,None,4,2,102,81,94,252,26.1,3,4,3500,0,5400,19774,28674,Unpaid,Insurance,1,1,Medium
+87,P10087,52,Female,A-,Cardiology,Back Pain,2025-05-08,7,2,0,Completed,0,None,0,1,131,99,87,199,27.7,4,3,3000,0,10000,7201,20201,Paid,Card,0,0,Medium
+88,P10088,48,Male,O+,Cardiology,Diabetes,2025-09-27,24,2,0,No-Show,1,None,5,2,122,85,140,247,28.0,0,4,2000,0,0,5933,7933,Paid,Insurance,1,1,High
+89,P10089,14,Female,O-,Cardiology,Hypertension,2025-12-27,27,3,1,No-Show,0,None,0,1,132,84,163,192,28.1,1,2,2000,0,2500,9991,14491,Unpaid,Cash,1,0,High
+90,P10090,75,Male,B+,Cardiology,Back Pain,2025-11-28,22,3,0,Completed,1,None,3,1,116,80,91,214,32.0,3,4,2000,0,9000,17822,28822,Paid,Online,0,1,High
+91,P10091,40,Male,AB+,General Medicine,Hypertension,2025-05-16,5,0,0,Cancelled,0,None,0,1,90,64,168,181,14.7,2,1,2000,0,5000,1659,8659,Paid,Insurance,0,0,Medium
+92,P10092,18,Male,O-,Orthopedics,Migraine,2025-02-06,40,4,0,Completed,0,None,0,0,126,92,112,226,24.6,1,1,4000,0,3000,11696,18696,Partially Paid,Insurance,0,0,Medium
+93,P10093,34,Male,A+,Radiology,Hypertension,2025-06-07,26,3,0,No-Show,0,None,0,1,129,73,92,208,21.7,1,2,3000,0,2500,8422,13922,Paid,Cash,1,0,Medium
+94,P10094,5,Male,AB+,Laboratory Services,Back Pain,2025-07-20,17,2,0,Completed,0,None,0,2,128,84,107,160,17.5,2,0,3500,0,2400,9842,15742,Partially Paid,Cash,0,0,Low
+95,P10095,33,Male,O+,Orthopedics,Pneumonia,2025-12-20,29,4,0,Completed,0,None,0,2,159,65,100,204,24.0,2,0,4000,0,6000,506,10506,Partially Paid,Insurance,0,0,Medium
+96,P10096,43,Male,B+,Orthopedics,Chest Pain,2025-05-06,17,1,0,Completed,0,None,0,1,146,81,149,271,25.5,0,0,3000,0,0,8097,11097,Paid,Online,0,0,High
+97,P10097,52,Female,A+,Laboratory Services,Kidney Infection,2025-05-02,14,1,0,No-Show,0,None,0,0,128,82,118,234,19.1,2,1,2500,0,6000,5416,13916,Unpaid,Insurance,1,0,Medium
+98,P10098,18,Male,O-,Cardiology,Migraine,2025-01-21,20,2,0,No-Show,1,None,1,0,135,68,113,283,21.0,7,1,3000,0,8400,15891,27291,Paid,Insurance,1,1,Medium
+99,P10099,49,Male,B-,Pediatrics,Pneumonia,2025-01-05,10,1,0,No-Show,1,None,1,1,138,76,121,201,30.2,3,4,3000,0,9000,11165,23165,Unpaid,Online,1,1,High
+100,P10100,44,Male,B-,Cardiology,Kidney Infection,2025-08-13,44,2,0,Completed,1,Private Room,4,2,85,86,116,219,23.7,4,3,3000,36000,4800,7908,51708,Paid,Card,0,0,Medium
+101,P10101,42,Female,A-,Radiology,Hypertension,2025-05-08,7,0,0,No-Show,1,None,2,1,133,86,105,169,21.3,1,4,1500,0,1800,4406,7706,Partially Paid,Insurance,1,1,Medium
+102,P10102,62,Male,O-,Laboratory Services,Asthma,2025-12-24,41,1,0,Completed,0,None,0,0,128,74,89,179,29.4,3,1,3000,0,7500,6289,16789,Paid,Insurance,0,0,Medium
+103,P10103,33,Male,B+,Orthopedics,Pneumonia,2025-02-23,9,3,1,Completed,0,None,0,1,110,87,131,216,26.2,1,1,2000,0,3000,6546,11546,Paid,Cash,0,0,Medium
+104,P10104,69,Female,AB+,Neurology,Fever,2025-08-29,11,1,0,Completed,0,None,0,0,127,83,135,178,23.1,1,1,2500,0,2500,9510,14510,Unpaid,Insurance,0,0,Medium
+105,P10105,39,Male,AB-,Orthopedics,Pneumonia,2025-08-05,32,3,2,No-Show,1,None,5,1,146,80,115,177,24.0,2,4,2500,0,6000,10670,19170,Paid,Card,1,0,Medium
+106,P10106,48,Male,O+,Radiology,Fever,2025-09-20,8,7,0,Completed,0,None,0,0,109,81,103,288,21.3,0,0,2000,0,0,2048,4048,Paid,Insurance,0,0,Medium
+107,P10107,45,Male,O-,Orthopedics,Hypertension,2025-09-15,36,1,1,Scheduled,0,None,0,0,113,77,86,111,24.6,2,2,2000,0,5000,10969,17969,Unpaid,Cash,0,0,Low
+108,P10108,14,Female,AB+,General Medicine,Asthma,2025-05-14,29,3,0,Cancelled,0,None,0,0,119,66,75,160,27.9,3,3,3000,0,5400,7419,15819,Paid,Online,0,0,Low
+109,P10109,40,Female,O-,Laboratory Services,Diabetes,2025-08-14,40,1,1,No-Show,0,None,0,0,150,78,187,199,26.3,1,1,2500,0,3000,8159,13659,Partially Paid,Cash,1,0,High
+110,P10110,24,Male,A-,Pediatrics,Migraine,2025-01-05,25,6,0,Completed,0,None,0,3,111,62,90,168,30.2,6,1,2000,0,7200,6137,15337,Paid,Insurance,0,0,Medium
+111,P10111,53,Male,A+,Laboratory Services,Migraine,2025-11-07,24,7,3,No-Show,0,None,0,0,135,86,131,251,21.4,3,2,1500,0,3600,7476,12576,Paid,Online,1,0,High
+112,P10112,55,Female,B+,Cardiology,Fever,2025-11-18,41,3,0,Completed,0,None,0,2,136,74,132,204,19.5,1,1,2000,0,1800,3818,7618,Paid,Card,0,0,High
+113,P10113,33,Male,B-,General Medicine,Back Pain,2025-03-23,19,6,1,Completed,0,None,0,0,146,72,95,143,25.3,0,0,3000,0,0,6020,9020,Paid,Insurance,0,0,Low
+114,P10114,25,Female,B+,Orthopedics,Migraine,2025-10-30,44,4,0,No-Show,1,None,5,0,121,90,125,212,25.5,2,1,3000,0,5000,8619,16619,Paid,Cash,1,0,Medium
+115,P10115,62,Female,AB+,Cardiology,Back Pain,2025-04-26,22,6,0,Completed,0,None,0,1,141,55,96,190,21.4,0,2,2500,0,0,11490,13990,Paid,Card,0,0,Medium
+116,P10116,31,Female,AB-,Neurology,Kidney Infection,2025-01-22,35,3,2,No-Show,0,None,0,2,152,89,111,167,21.6,3,0,1500,0,5400,6179,13079,Paid,Online,1,0,Medium
+117,P10117,54,Female,O-,General Medicine,Fever,2025-06-16,5,6,2,No-Show,1,None,3,2,129,87,85,229,30.4,3,3,3500,0,3600,14847,21947,Partially Paid,Online,1,1,High
+118,P10118,17,Male,B+,Radiology,Chest Pain,2025-01-13,26,2,0,No-Show,1,None,2,2,130,75,122,226,18.6,2,5,2000,0,5000,13244,20244,Paid,Cash,1,1,Medium
+119,P10119,63,Male,AB+,Cardiology,Kidney Infection,2025-04-28,27,3,0,Completed,0,None,0,0,121,78,145,186,26.5,2,4,1500,0,5000,3261,9761,Unpaid,Online,0,0,High
+120,P10120,44,Female,AB+,Pediatrics,Fracture,2025-06-18,4,2,2,No-Show,1,None,2,0,154,69,70,171,22.6,3,2,3500,0,7500,3430,14430,Paid,Card,1,1,Low
+121,P10121,48,Female,O-,Neurology,Kidney Infection,2025-10-10,2,1,0,No-Show,0,None,0,1,117,88,150,162,21.6,3,0,2500,0,7500,5257,15257,Unpaid,Cash,1,0,Medium
+122,P10122,18,Male,AB-,Neurology,Fracture,2025-04-16,8,5,2,No-Show,1,Private Room,6,0,134,67,150,190,27.9,4,4,4000,54000,12000,7678,77678,Partially Paid,Cash,1,1,Medium
+123,P10123,39,Female,AB+,General Medicine,Migraine,2025-03-10,32,2,0,No-Show,0,None,0,0,124,86,75,185,32.0,1,2,3500,0,1200,11058,15758,Paid,Insurance,1,0,Medium
+124,P10124,74,Female,AB-,General Medicine,Fracture,2025-04-17,41,4,0,Scheduled,0,None,0,0,121,67,123,236,25.0,1,2,3000,0,1200,6238,10438,Paid,Card,0,0,High
+125,P10125,71,Male,A-,Laboratory Services,Kidney Infection,2025-05-15,3,3,1,No-Show,0,None,0,0,144,81,121,196,33.3,1,0,4000,0,2500,1144,7644,Paid,Card,1,0,High
+126,P10126,26,Male,B+,General Medicine,Migraine,2025-11-08,11,2,0,Scheduled,0,None,0,3,138,70,96,214,27.4,2,0,3000,0,2400,7524,12924,Paid,Insurance,0,0,High
+127,P10127,55,Female,A-,Cardiology,Pneumonia,2025-03-17,41,3,1,No-Show,1,None,2,0,154,69,122,189,27.8,2,1,4000,0,3600,8576,16176,Unpaid,Insurance,1,0,High
+128,P10128,51,Female,O-,Cardiology,Hypertension,2025-08-22,35,3,0,No-Show,0,None,0,0,102,66,98,258,34.3,2,2,4000,0,5000,9637,18637,Paid,Card,1,0,High
+129,P10129,85,Female,AB+,General Medicine,Chest Pain,2025-01-07,25,7,3,No-Show,1,None,6,0,150,85,95,274,25.1,7,1,4000,0,17500,2068,23568,Paid,Card,1,1,High
+130,P10130,51,Male,AB-,Neurology,Kidney Infection,2025-05-26,29,1,0,No-Show,1,None,2,0,143,85,113,209,23.2,1,5,2000,0,1200,15124,18324,Paid,Card,1,1,Medium
+131,P10131,34,Male,B-,Neurology,Back Pain,2025-09-13,42,0,1,No-Show,0,None,0,2,94,82,147,245,26.9,3,3,2000,0,3600,9980,15580,Unpaid,Card,1,0,High
+132,P10132,25,Male,B+,Cardiology,Asthma,2025-01-16,12,6,2,Scheduled,0,None,0,0,120,68,89,200,19.1,2,0,3500,0,2400,3061,8961,Paid,Online,0,0,Low
+133,P10133,12,Male,AB-,General Medicine,Hypertension,2025-06-05,29,4,0,Cancelled,0,None,0,1,92,87,74,210,27.0,5,0,2000,0,6000,4248,12248,Paid,Cash,0,0,Low
+134,P10134,51,Male,AB-,Cardiology,Hypertension,2025-07-01,1,7,2,Completed,1,None,1,0,138,90,112,216,18.1,5,1,3000,0,6000,1130,10130,Unpaid,Cash,0,0,Medium
+135,P10135,56,Female,AB+,Radiology,Fracture,2025-12-07,2,2,0,Scheduled,0,None,0,1,120,79,147,232,22.1,3,1,3500,0,3600,3762,10862,Unpaid,Insurance,0,0,High
+136,P10136,52,Male,O-,General Medicine,Kidney Infection,2025-06-04,10,1,1,No-Show,0,None,0,4,138,78,112,158,30.2,2,2,3000,0,6000,10441,19441,Paid,Insurance,1,0,High
+137,P10137,64,Male,AB+,General Medicine,Chest Pain,2025-02-12,32,1,0,No-Show,0,None,0,1,160,76,120,232,30.8,1,1,3500,0,1800,4382,9682,Paid,Online,1,0,High
+138,P10138,50,Female,B-,Radiology,Pneumonia,2025-05-24,19,1,1,Completed,1,None,3,0,167,92,99,181,22.8,5,3,3500,0,15000,12670,31170,Paid,Insurance,0,1,Medium
+139,P10139,33,Female,A-,Pediatrics,Fever,2025-09-28,9,2,0,No-Show,0,None,0,0,124,79,121,227,22.4,1,0,2500,0,3000,9775,15275,Paid,Online,1,0,Medium
+140,P10140,19,Female,A-,Cardiology,Migraine,2025-10-05,23,4,0,Completed,0,None,0,0,105,84,65,199,26.1,2,1,2500,0,3600,5962,12062,Paid,Cash,0,0,Low
+141,P10141,11,Male,AB-,Orthopedics,Diabetes,2025-11-15,14,5,0,Completed,0,None,0,1,117,93,150,100,33.1,4,1,4000,0,10000,10522,24522,Unpaid,Cash,0,0,Medium
+142,P10142,36,Female,AB+,Cardiology,Fever,2025-02-08,30,4,0,No-Show,1,Private Room,4,0,114,89,116,209,14.4,6,5,4000,36000,7200,1371,48571,Partially Paid,Online,1,1,Low
+143,P10143,40,Male,B-,Radiology,Pneumonia,2025-10-03,41,3,1,No-Show,0,None,0,0,116,71,76,207,21.1,6,3,2000,0,10800,8178,20978,Paid,Cash,1,0,Low
+144,P10144,30,Female,O+,Neurology,Pneumonia,2025-12-03,20,2,0,Completed,0,None,0,2,138,81,122,330,16.3,1,0,2500,0,1200,4291,7991,Unpaid,Cash,0,0,High
+145,P10145,76,Female,AB-,General Medicine,Asthma,2025-09-25,7,2,1,No-Show,0,None,0,0,126,94,103,224,22.9,3,0,2500,0,7500,8600,18600,Partially Paid,Cash,1,0,Medium
+146,P10146,58,Male,A+,Neurology,Asthma,2025-05-29,10,1,0,Completed,1,None,4,0,133,87,77,164,30.5,7,5,3000,0,8400,14516,25916,Paid,Cash,0,1,Medium
+147,P10147,50,Male,AB-,Orthopedics,Fever,2025-10-14,15,1,0,Completed,0,None,0,1,129,79,124,144,25.5,4,3,3000,0,10000,770,13770,Paid,Cash,0,0,Medium
+148,P10148,37,Male,AB+,Pediatrics,Asthma,2025-05-29,24,3,1,No-Show,0,None,0,2,136,82,153,195,17.5,2,0,3500,0,2400,9580,15480,Paid,Insurance,1,0,Medium
+149,P10149,37,Female,A-,Orthopedics,Back Pain,2025-08-15,26,0,1,No-Show,0,None,0,0,125,87,117,140,21.2,0,2,3000,0,0,2216,5216,Paid,Online,1,0,Low
+150,P10150,72,Female,AB+,General Medicine,Migraine,2025-08-08,25,2,1,No-Show,1,None,4,0,104,72,105,276,28.3,4,3,3500,0,12000,8710,24210,Paid,Cash,1,1,High
+151,P10151,20,Male,B+,Orthopedics,Back Pain,2025-10-10,14,3,1,No-Show,1,None,1,1,115,77,89,214,25.5,3,4,2000,0,7500,13712,23212,Partially Paid,Online,1,1,Medium
+152,P10152,34,Female,O+,Cardiology,Diabetes,2025-12-21,42,5,3,Completed,0,None,0,0,130,97,123,197,26.0,1,0,1500,0,3000,5327,9827,Unpaid,Card,0,0,Medium
+153,P10153,37,Female,A-,General Medicine,Fever,2025-07-20,14,1,0,Completed,0,None,0,1,119,57,93,157,21.1,0,1,4000,0,0,11472,15472,Paid,Online,0,0,Low
+154,P10154,62,Female,AB-,Radiology,Fever,2025-10-15,28,2,1,Completed,0,None,0,1,129,84,73,224,24.6,2,3,4000,0,6000,11588,21588,Paid,Card,0,0,Medium
+155,P10155,68,Female,B-,Neurology,Chest Pain,2025-08-13,11,3,1,No-Show,0,None,0,2,114,71,99,205,14.5,2,1,1500,0,6000,2109,9609,Unpaid,Insurance,1,0,Medium
+156,P10156,41,Female,B-,Radiology,Diabetes,2025-02-17,13,0,0,No-Show,0,None,0,0,116,76,133,178,24.9,0,1,3000,0,0,1512,4512,Unpaid,Online,1,0,Medium
+157,P10157,25,Male,B-,General Medicine,Pneumonia,2025-10-10,25,1,0,No-Show,0,None,0,1,113,73,118,144,25.3,0,1,4000,0,0,964,4964,Paid,Online,1,0,Low
+158,P10158,43,Female,B+,Laboratory Services,Asthma,2025-06-29,9,2,0,Completed,0,None,0,0,115,60,94,223,15.4,0,3,2000,0,0,5433,7433,Paid,Cash,0,0,Low
+159,P10159,27,Male,AB-,Neurology,Kidney Infection,2025-06-29,28,4,0,Scheduled,1,None,2,0,111,71,72,176,29.1,3,3,3500,0,9000,10929,23429,Paid,Online,0,0,Low
+160,P10160,54,Male,AB-,Orthopedics,Diabetes,2025-12-05,20,2,1,Completed,1,None,2,0,152,101,124,204,34.4,1,2,4000,0,2500,15354,21854,Unpaid,Cash,0,1,High
+161,P10161,27,Female,A-,Orthopedics,Kidney Infection,2025-11-27,39,2,0,No-Show,1,None,2,1,143,67,150,247,28.1,3,4,2500,0,7500,3007,13007,Paid,Insurance,1,0,High
+162,P10162,77,Female,B-,Radiology,Pneumonia,2025-01-10,11,4,0,Cancelled,0,None,0,1,117,100,84,218,30.3,1,2,4000,0,1200,779,5979,Paid,Online,0,0,High
+163,P10163,22,Female,AB-,Radiology,Asthma,2025-06-13,31,8,2,No-Show,0,None,0,2,102,84,102,197,24.0,0,1,1500,0,0,11135,12635,Paid,Cash,1,0,Medium
+164,P10164,54,Male,O+,General Medicine,Fracture,2025-11-06,43,1,1,Scheduled,1,General Ward,1,1,134,96,96,190,26.7,0,3,3000,3500,0,7741,14241,Paid,Insurance,0,0,Medium
+165,P10165,68,Female,O+,Laboratory Services,Back Pain,2025-03-16,43,4,0,Completed,1,None,3,0,131,84,112,243,24.8,5,3,4000,0,12500,6194,22694,Paid,Online,0,1,High
+166,P10166,9,Female,B+,Laboratory Services,Back Pain,2025-07-19,42,5,0,No-Show,1,Private Room,3,1,108,89,164,195,20.9,4,3,2500,27000,4800,14628,48928,Paid,Online,1,0,Medium
+167,P10167,25,Female,AB-,Laboratory Services,Fever,2025-11-01,3,10,1,Completed,0,None,0,1,127,69,72,243,26.0,2,2,2000,0,2400,11521,15921,Paid,Card,0,0,Medium
+168,P10168,7,Male,AB+,Laboratory Services,Fever,2025-06-30,41,2,0,No-Show,0,None,0,0,112,73,110,201,25.2,0,1,3500,0,0,6606,10106,Paid,Card,1,0,Low
+169,P10169,39,Male,A-,Cardiology,Kidney Infection,2025-06-27,0,2,0,No-Show,1,None,1,0,100,89,115,267,25.8,3,2,2000,0,5400,7007,14407,Paid,Cash,1,1,Medium
+170,P10170,30,Female,B+,Neurology,Back Pain,2025-08-25,25,6,3,No-Show,0,None,0,2,145,83,65,161,27.3,2,0,2000,0,6000,9438,17438,Paid,Card,1,0,Medium
+171,P10171,68,Female,O-,General Medicine,Fever,2025-07-29,2,2,0,Completed,0,None,0,0,127,66,123,251,30.7,4,2,2500,0,7200,10127,19827,Partially Paid,Card,0,0,High
+172,P10172,34,Male,O-,Cardiology,Kidney Infection,2025-08-03,21,1,0,No-Show,1,Private Room,5,0,119,57,128,231,22.5,6,2,2000,45000,15000,1795,63795,Paid,Insurance,1,1,Medium
+173,P10173,35,Female,B-,Neurology,Fever,2025-12-11,24,3,2,No-Show,0,None,0,4,122,80,83,172,19.8,3,1,3500,0,9000,11397,23897,Partially Paid,Card,1,0,Medium
+174,P10174,65,Female,A-,General Medicine,Kidney Infection,2025-01-06,33,2,0,Completed,1,Private Room,1,0,117,65,106,200,27.9,4,4,3500,9000,4800,12568,29868,Unpaid,Online,0,1,Medium
+175,P10175,35,Male,O+,Neurology,Asthma,2025-08-08,18,2,0,Completed,0,None,0,1,145,82,118,207,25.9,0,1,2500,0,0,1866,4366,Partially Paid,Cash,0,0,Medium
+176,P10176,38,Male,O+,Neurology,Kidney Infection,2025-08-20,21,3,1,No-Show,0,None,0,0,101,68,137,166,28.3,2,1,2500,0,2400,2382,7282,Paid,Online,1,0,Medium
+177,P10177,74,Male,AB-,Orthopedics,Diabetes,2025-12-06,41,1,0,No-Show,1,None,6,0,120,68,141,172,26.1,3,2,1500,0,7500,15279,24279,Partially Paid,Card,1,1,High
+178,P10178,56,Male,A+,General Medicine,Migraine,2025-12-10,17,1,0,Completed,0,None,0,0,132,80,114,237,26.4,3,2,3000,0,5400,11669,20069,Unpaid,Cash,0,0,High
+179,P10179,35,Male,AB+,Cardiology,Fracture,2025-02-08,40,2,0,No-Show,1,General Ward,6,0,138,89,103,218,30.4,3,2,3500,21000,9000,6514,40014,Paid,Card,1,1,Medium
+180,P10180,15,Female,O-,General Medicine,Hypertension,2025-09-24,8,1,0,No-Show,0,None,0,4,154,78,126,162,21.5,1,3,2000,0,3000,678,5678,Paid,Cash,1,0,Medium
+181,P10181,64,Male,B+,Neurology,Kidney Infection,2025-01-13,44,2,0,Completed,0,None,0,0,152,89,89,194,23.1,2,4,3500,0,2400,2015,7915,Paid,Online,0,0,Medium
+182,P10182,26,Female,B+,General Medicine,Back Pain,2025-07-29,39,3,1,No-Show,0,None,0,1,129,81,128,179,26.7,0,3,2500,0,0,11070,13570,Paid,Cash,1,0,Medium
+183,P10183,54,Female,O+,General Medicine,Pneumonia,2025-02-23,25,3,0,Completed,0,None,0,0,141,86,109,215,29.9,2,0,3500,0,2400,1115,7015,Paid,Online,0,0,High
+184,P10184,60,Female,A-,Laboratory Services,Hypertension,2025-06-27,10,1,0,Completed,0,None,0,1,104,88,150,202,25.1,3,1,2500,0,3600,6469,12569,Paid,Online,0,0,High
+185,P10185,57,Male,O-,General Medicine,Chest Pain,2025-12-18,12,4,0,Completed,0,None,0,1,133,64,104,192,23.5,0,1,3500,0,0,11857,15357,Unpaid,Insurance,0,0,Medium
+186,P10186,44,Male,A+,Neurology,Asthma,2025-05-10,16,4,0,No-Show,1,None,6,0,140,88,99,239,17.2,3,6,3000,0,3600,11458,18058,Paid,Card,1,1,Medium
+187,P10187,43,Male,AB+,Cardiology,Migraine,2025-04-23,41,3,0,Completed,0,None,0,2,127,74,138,286,22.8,3,3,3500,0,9000,8442,20942,Partially Paid,Cash,0,0,High
+188,P10188,49,Male,AB-,Cardiology,Chest Pain,2025-07-03,11,2,1,No-Show,1,Private Room,1,2,144,75,92,195,18.0,5,2,1500,9000,12500,7361,30361,Paid,Insurance,1,1,Medium
+189,P10189,53,Female,O-,Laboratory Services,Kidney Infection,2025-07-17,0,2,1,Completed,0,None,0,3,126,82,152,205,22.9,1,1,3000,0,2500,9018,14518,Partially Paid,Online,0,0,High
+190,P10190,28,Female,B+,Neurology,Diabetes,2025-02-14,5,5,2,No-Show,0,None,0,1,139,90,145,260,25.2,2,3,4000,0,6000,3228,13228,Paid,Online,1,0,High
+191,P10191,68,Female,O+,General Medicine,Diabetes,2025-01-06,13,1,0,No-Show,0,None,0,2,136,70,139,250,24.7,1,2,2500,0,2500,1166,6166,Paid,Card,1,0,High
+192,P10192,38,Female,A+,Cardiology,Kidney Infection,2025-08-03,12,3,0,Completed,0,None,0,0,129,72,121,243,22.3,1,0,1500,0,2500,5204,9204,Paid,Cash,0,0,Medium
+193,P10193,40,Female,O-,Cardiology,Pneumonia,2025-11-02,16,2,0,Completed,1,General Ward,4,1,115,90,114,273,35.4,1,4,4000,14000,1800,13608,33408,Partially Paid,Cash,0,1,High
+194,P10194,33,Male,A+,General Medicine,Fracture,2025-06-03,25,3,0,Scheduled,0,None,0,0,128,90,120,133,27.2,1,5,4000,0,2500,9761,16261,Paid,Card,0,0,Medium
+195,P10195,52,Female,O+,Cardiology,Chest Pain,2025-07-19,15,1,0,No-Show,1,None,4,0,149,66,127,197,19.6,3,7,1500,0,5400,17753,24653,Paid,Online,1,1,Medium
+196,P10196,48,Female,A-,Pediatrics,Diabetes,2025-10-06,22,1,0,Completed,0,None,0,1,135,74,194,199,24.4,2,1,1500,0,3600,3589,8689,Paid,Online,0,0,High
+197,P10197,64,Female,O-,Laboratory Services,Kidney Infection,2025-01-11,6,4,1,No-Show,0,None,0,2,139,88,106,216,24.0,5,1,2000,0,12500,11517,26017,Paid,Card,1,0,High
+198,P10198,31,Male,A-,Pediatrics,Diabetes,2025-08-11,16,1,0,Completed,0,None,0,1,156,92,134,157,26.6,4,2,3000,0,7200,7484,17684,Unpaid,Online,0,0,Medium
+199,P10199,46,Female,B+,Laboratory Services,Diabetes,2025-09-10,35,3,0,No-Show,0,None,0,0,103,75,97,227,16.7,1,1,3500,0,2500,10161,16161,Unpaid,Card,1,0,Low
+200,P10200,45,Female,O-,Radiology,Fracture,2025-03-11,7,1,0,Completed,0,None,0,1,127,64,92,196,22.4,2,1,1500,0,3600,1237,6337,Unpaid,Cash,0,0,Medium
+201,P10201,34,Female,A-,Radiology,Back Pain,2025-03-25,32,4,0,Completed,0,None,0,0,152,98,79,157,24.0,0,5,2500,0,0,11805,14305,Unpaid,Cash,0,0,Low
+202,P10202,30,Female,A-,Orthopedics,Kidney Infection,2025-04-22,7,4,0,Cancelled,0,None,0,1,102,82,132,180,28.0,0,0,3500,0,0,5263,8763,Unpaid,Card,0,0,Medium
+203,P10203,90,Female,B+,Laboratory Services,Diabetes,2025-01-05,8,3,0,Completed,0,None,0,2,120,91,175,200,34.9,1,1,3000,0,3000,11449,17449,Paid,Card,0,0,High
+204,P10204,39,Female,B+,Radiology,Hypertension,2025-08-25,28,1,0,No-Show,0,None,0,0,123,76,100,250,23.8,0,3,1500,0,0,11263,12763,Paid,Online,1,0,Medium
+205,P10205,45,Male,AB+,Cardiology,Pneumonia,2025-02-27,38,2,1,Completed,0,None,0,1,127,82,142,184,27.9,1,1,2500,0,1200,6015,9715,Paid,Card,0,0,High
+206,P10206,34,Female,B+,Radiology,Pneumonia,2025-03-02,36,2,0,Completed,1,None,4,1,152,66,131,186,36.0,1,3,4000,0,1800,13317,19117,Paid,Online,0,1,High
+207,P10207,77,Male,AB+,Neurology,Hypertension,2025-08-03,8,2,0,Cancelled,0,None,0,0,145,92,148,208,24.4,4,3,1500,0,4800,5073,11373,Partially Paid,Card,0,0,High
+208,P10208,31,Female,B-,Radiology,Hypertension,2025-05-25,27,4,0,Completed,0,None,0,1,126,75,129,185,24.1,2,0,3000,0,5000,7071,15071,Paid,Insurance,0,0,Medium
+209,P10209,65,Female,O-,Orthopedics,Diabetes,2025-05-08,9,2,0,Completed,0,None,0,0,125,84,137,178,23.3,0,0,4000,0,0,3629,7629,Paid,Card,0,0,Medium
+210,P10210,87,Female,O+,Radiology,Asthma,2025-05-21,35,0,0,Scheduled,1,None,1,0,132,91,75,307,30.0,7,3,4000,0,17500,10580,32080,Unpaid,Card,0,1,High
+211,P10211,40,Female,B+,Radiology,Pneumonia,2025-04-19,19,3,0,Completed,1,None,7,2,124,65,94,238,22.8,7,5,2000,0,21000,14677,37677,Paid,Cash,0,1,Medium
+212,P10212,44,Male,B+,Cardiology,Fever,2025-10-06,23,5,2,Scheduled,0,None,0,1,146,71,65,217,31.7,2,1,3500,0,6000,11172,20672,Paid,Online,0,0,Medium
+213,P10213,34,Female,AB+,Pediatrics,Asthma,2025-06-16,27,3,1,No-Show,1,None,2,0,122,63,115,217,21.1,3,5,3500,0,9000,6771,19271,Paid,Insurance,1,1,Medium
+214,P10214,39,Male,AB-,General Medicine,Fever,2025-08-05,3,1,1,Completed,0,None,0,1,126,60,85,178,19.7,2,2,3500,0,6000,5098,14598,Partially Paid,Cash,0,0,Low
+215,P10215,6,Male,A-,Cardiology,Kidney Infection,2025-01-03,5,4,1,Completed,0,None,0,0,114,67,126,283,23.0,1,1,3500,0,3000,11462,17962,Paid,Insurance,0,0,Medium
+216,P10216,32,Male,B-,Cardiology,Chest Pain,2025-11-20,43,3,0,No-Show,1,General Ward,2,2,116,72,127,224,24.3,6,1,2500,7000,7200,15612,32312,Paid,Online,1,0,Medium
+217,P10217,53,Female,AB+,General Medicine,Fever,2025-03-08,41,4,1,No-Show,0,None,0,1,120,80,73,170,23.2,1,0,3500,0,3000,7039,13539,Unpaid,Cash,1,0,Low
+218,P10218,34,Male,AB-,General Medicine,Fever,2025-10-20,38,5,2,No-Show,0,None,0,3,131,83,65,211,21.9,1,0,2500,0,2500,662,5662,Paid,Card,1,0,Medium
+219,P10219,82,Male,AB-,Radiology,Pneumonia,2025-05-08,26,3,0,Completed,0,None,0,0,138,93,106,212,28.2,4,1,3000,0,4800,6707,14507,Paid,Insurance,0,0,High
+220,P10220,13,Female,AB-,Pediatrics,Back Pain,2025-04-13,34,3,1,No-Show,1,Private Room,1,0,131,93,102,185,25.4,6,8,2000,9000,15000,17508,43508,Partially Paid,Card,1,1,Low
+221,P10221,33,Female,AB+,Radiology,Migraine,2025-12-17,2,0,1,No-Show,1,None,3,0,132,83,125,293,25.3,3,3,3500,0,9000,12743,25243,Unpaid,Insurance,1,1,High
+222,P10222,41,Male,AB+,Cardiology,Chest Pain,2025-10-19,28,2,1,No-Show,0,None,0,0,145,91,118,263,26.5,1,1,4000,0,1200,4173,9373,Partially Paid,Cash,1,0,High
+223,P10223,57,Female,B+,Cardiology,Back Pain,2025-05-09,8,3,1,Completed,0,None,0,2,123,59,117,259,18.7,2,3,3500,0,3600,5131,12231,Unpaid,Insurance,0,0,High
+224,P10224,19,Male,O-,Neurology,Fracture,2025-10-28,21,3,1,No-Show,1,None,5,1,117,75,107,248,19.7,4,4,4000,0,4800,19959,28759,Paid,Online,1,0,Medium
+225,P10225,57,Female,O-,Pediatrics,Fever,2025-10-03,6,3,0,Cancelled,0,None,0,1,132,84,90,184,23.2,0,0,4000,0,0,2349,6349,Paid,Cash,0,0,Medium
+226,P10226,40,Male,O-,Radiology,Fracture,2025-06-18,17,5,0,No-Show,0,None,0,0,117,73,121,101,24.3,1,0,3500,0,2500,7726,13726,Partially Paid,Insurance,1,0,Low
+227,P10227,25,Female,AB+,Pediatrics,Kidney Infection,2025-08-17,40,2,1,No-Show,1,Private Room,2,0,85,70,112,217,24.7,5,0,2500,18000,12500,13227,46227,Paid,Insurance,1,1,Low
+228,P10228,71,Male,B-,Pediatrics,Migraine,2025-07-29,37,4,0,No-Show,1,None,1,0,158,73,110,205,28.5,2,4,2000,0,5000,11119,18119,Unpaid,Insurance,1,1,High
+229,P10229,68,Female,O+,Orthopedics,Chest Pain,2025-10-24,1,2,0,Completed,0,None,0,1,145,88,95,171,22.8,3,1,3500,0,7500,1385,12385,Paid,Insurance,0,0,Medium
+230,P10230,44,Female,A-,Neurology,Asthma,2025-05-26,38,5,2,No-Show,0,None,0,2,123,85,128,171,25.7,0,3,2500,0,0,7362,9862,Paid,Online,1,0,Medium
+231,P10231,8,Female,AB+,Laboratory Services,Migraine,2025-06-18,28,2,0,No-Show,0,None,0,2,117,84,105,193,22.6,1,2,4000,0,3000,11412,18412,Paid,Online,1,0,Low
+232,P10232,25,Male,B-,General Medicine,Back Pain,2025-02-08,25,1,0,Completed,0,None,0,0,109,77,126,179,31.6,1,0,4000,0,1800,3757,9557,Paid,Card,0,0,Medium
+233,P10233,57,Male,B+,General Medicine,Fever,2025-03-30,6,4,0,No-Show,0,None,0,0,152,78,99,188,28.7,2,0,2500,0,6000,11371,19871,Paid,Cash,1,0,Medium
+234,P10234,42,Male,AB+,Orthopedics,Kidney Infection,2025-04-01,3,6,2,Completed,0,None,0,0,115,78,100,200,19.5,5,0,3000,0,9000,2524,14524,Unpaid,Cash,0,0,Low
+235,P10235,36,Male,B+,Laboratory Services,Back Pain,2025-08-20,37,1,1,No-Show,0,None,0,2,133,74,98,201,18.9,3,2,2000,0,3600,9047,14647,Partially Paid,Insurance,1,0,Medium
+236,P10236,62,Male,AB+,General Medicine,Fever,2025-03-10,21,2,2,Scheduled,0,None,0,2,133,69,161,240,25.9,3,1,3000,0,5400,7922,16322,Partially Paid,Cash,0,0,High
+237,P10237,40,Male,AB-,Cardiology,Back Pain,2025-01-13,0,3,0,No-Show,0,None,0,1,116,81,142,243,18.7,0,0,3500,0,0,3368,6868,Partially Paid,Online,1,0,Medium
+238,P10238,55,Female,AB-,Laboratory Services,Pneumonia,2025-02-08,12,5,2,Cancelled,1,None,3,0,132,79,93,219,26.1,3,4,2000,0,9000,7913,18913,Paid,Card,0,1,Medium
+239,P10239,42,Female,B-,Laboratory Services,Migraine,2025-06-07,13,2,0,No-Show,1,General Ward,1,2,85,71,141,198,23.9,3,3,1500,3500,7500,8396,20896,Unpaid,Card,1,1,Medium
+240,P10240,66,Female,A-,Neurology,Fever,2025-01-16,15,2,1,No-Show,0,None,0,0,120,60,112,221,22.2,2,1,3500,0,5000,10695,19195,Paid,Card,1,0,Medium
+241,P10241,30,Male,AB+,Orthopedics,Chest Pain,2025-07-01,25,3,1,Completed,0,None,0,0,122,92,94,165,25.7,1,0,2000,0,1200,6322,9522,Paid,Online,0,0,Low
+242,P10242,13,Female,B-,Radiology,Back Pain,2025-02-22,41,6,1,No-Show,0,None,0,0,140,74,114,224,22.3,2,1,1500,0,5000,3935,10435,Paid,Cash,1,0,Medium
+243,P10243,51,Male,AB+,Orthopedics,Migraine,2025-08-17,7,5,2,Completed,1,None,4,0,114,86,92,273,25.8,6,2,4000,0,15000,18161,37161,Paid,Online,0,0,Medium
+244,P10244,47,Male,AB-,Pediatrics,Asthma,2025-12-03,44,4,0,Scheduled,0,None,0,0,121,77,89,176,24.4,1,0,3000,0,1800,10585,15385,Paid,Insurance,0,0,Low
+245,P10245,48,Female,A-,Neurology,Pneumonia,2025-07-18,27,2,0,No-Show,0,None,0,0,135,82,128,173,20.3,1,1,4000,0,1800,8567,14367,Unpaid,Insurance,1,0,Medium
+246,P10246,57,Female,AB-,General Medicine,Back Pain,2025-04-02,33,2,0,Completed,1,None,4,0,123,79,108,184,14.0,0,3,3500,0,0,11939,15439,Paid,Insurance,0,0,Low
+247,P10247,76,Male,O-,Laboratory Services,Fracture,2025-03-19,41,4,0,No-Show,0,None,0,2,114,80,143,134,32.5,2,1,4000,0,6000,8796,18796,Paid,Cash,1,0,High
+248,P10248,65,Female,O-,Pediatrics,Pneumonia,2025-12-23,43,7,2,No-Show,0,None,0,1,147,84,149,214,22.7,2,0,3000,0,6000,8277,17277,Paid,Online,1,0,High
+249,P10249,45,Male,AB-,Orthopedics,Migraine,2025-06-12,7,4,0,Completed,1,General Ward,1,4,97,65,77,248,25.9,3,5,4000,3500,5400,8007,20907,Paid,Cash,0,1,High
+250,P10250,32,Male,B+,General Medicine,Kidney Infection,2025-04-28,24,3,1,No-Show,0,None,0,0,123,71,105,188,20.9,3,3,1500,0,7500,4218,13218,Paid,Insurance,1,0,Low
+251,P10251,46,Female,B+,Orthopedics,Kidney Infection,2025-08-28,38,1,1,No-Show,0,None,0,1,133,70,95,277,28.4,2,1,3000,0,6000,2236,11236,Paid,Online,1,0,High
+252,P10252,74,Male,B-,Pediatrics,Pneumonia,2025-10-26,4,2,0,No-Show,0,None,0,1,147,79,75,242,34.6,2,0,3000,0,3600,1575,8175,Unpaid,Cash,1,0,High
+253,P10253,44,Male,B-,Cardiology,Kidney Infection,2025-07-27,19,4,2,Cancelled,1,None,1,0,110,68,129,221,24.8,3,6,3500,0,9000,18647,31147,Paid,Insurance,0,1,Medium
+254,P10254,37,Female,A+,Pediatrics,Migraine,2025-03-11,11,4,0,Completed,0,None,0,1,112,81,112,160,29.3,2,3,2000,0,2400,6961,11361,Paid,Card,0,0,Medium
+255,P10255,86,Male,A+,General Medicine,Diabetes,2025-08-07,17,7,2,Completed,0,None,0,1,150,87,159,217,27.9,1,1,3500,0,1200,10502,15202,Paid,Card,0,0,High
+256,P10256,48,Male,B+,Orthopedics,Kidney Infection,2025-06-20,17,2,0,Cancelled,0,None,0,0,140,95,93,143,24.1,0,0,2000,0,0,11344,13344,Unpaid,Online,0,0,Low
+257,P10257,28,Male,B+,Neurology,Back Pain,2025-08-16,11,1,0,No-Show,0,None,0,0,112,66,142,219,25.8,4,3,2500,0,10000,8571,21071,Paid,Card,1,0,Medium
+258,P10258,18,Female,O-,Cardiology,Migraine,2025-12-29,5,1,0,Completed,0,None,0,3,106,83,106,149,25.4,1,1,1500,0,1800,11608,14908,Paid,Cash,0,0,Medium
+259,P10259,29,Female,AB+,Laboratory Services,Fever,2025-11-05,28,3,0,Completed,0,None,0,0,104,96,84,215,24.7,3,1,3500,0,7500,8840,19840,Paid,Insurance,0,0,Low
+260,P10260,46,Male,B+,Neurology,Pneumonia,2025-04-01,21,6,1,No-Show,1,None,1,1,116,69,99,232,31.8,3,5,2000,0,7500,7255,16755,Unpaid,Insurance,1,1,High
+261,P10261,46,Male,AB-,Radiology,Fever,2025-12-27,5,3,0,Completed,0,None,0,1,112,80,65,180,26.8,2,1,3000,0,3600,3263,9863,Paid,Cash,0,0,Low
+262,P10262,67,Female,O+,Neurology,Chest Pain,2025-11-07,8,4,2,No-Show,0,None,0,0,120,98,92,226,20.1,1,1,1500,0,1800,9295,12595,Paid,Cash,1,0,Medium
+263,P10263,59,Male,AB-,Pediatrics,Back Pain,2025-02-12,39,2,0,No-Show,0,None,0,0,137,72,103,227,18.4,1,3,4000,0,1800,1289,7089,Paid,Online,1,0,Medium
+264,P10264,32,Male,B-,Pediatrics,Fracture,2025-03-16,37,5,1,Completed,1,ICU,5,2,143,68,125,123,28.0,6,3,1500,125000,18000,1035,145535,Partially Paid,Insurance,0,0,Medium
+265,P10265,25,Male,AB-,Radiology,Chest Pain,2025-12-28,21,2,0,No-Show,1,General Ward,1,1,123,64,100,227,21.9,2,2,3000,3500,6000,16401,28901,Paid,Online,1,1,Medium
+266,P10266,42,Female,O-,Cardiology,Pneumonia,2025-09-10,12,2,1,Scheduled,0,None,0,0,128,81,87,217,30.1,2,2,3000,0,6000,11657,20657,Paid,Online,0,0,Medium
+267,P10267,23,Male,B+,Cardiology,Chest Pain,2025-03-11,32,3,0,Completed,0,None,0,1,130,79,119,245,36.4,1,0,3000,0,1200,8264,12464,Paid,Cash,0,0,High
+268,P10268,26,Female,B-,Radiology,Back Pain,2025-10-04,17,4,0,Completed,0,None,0,0,132,90,86,208,26.5,2,1,3500,0,6000,9474,18974,Paid,Insurance,0,0,Medium
+269,P10269,44,Male,O-,Orthopedics,Pneumonia,2025-04-09,10,1,0,No-Show,0,None,0,0,130,85,124,155,26.5,0,0,4000,0,0,3591,7591,Paid,Insurance,1,0,Medium
+270,P10270,32,Female,A+,Pediatrics,Chest Pain,2025-07-23,31,6,0,Scheduled,1,None,3,2,138,75,70,161,24.4,2,5,4000,0,6000,16267,26267,Paid,Cash,0,1,Low
+271,P10271,55,Male,B-,Neurology,Hypertension,2025-12-25,25,1,0,No-Show,1,General Ward,5,0,108,85,106,182,26.4,3,2,3000,17500,5400,4574,30474,Unpaid,Cash,1,1,Medium
+272,P10272,74,Male,O-,General Medicine,Fracture,2025-06-17,37,2,0,No-Show,1,None,2,0,134,73,114,253,26.6,4,2,2500,0,4800,15204,22504,Paid,Insurance,1,1,High
+273,P10273,83,Male,AB+,General Medicine,Pneumonia,2025-01-09,16,1,0,No-Show,0,None,0,1,139,81,102,191,22.6,3,1,3500,0,9000,10952,23452,Paid,Online,1,0,High
+274,P10274,35,Male,B-,Radiology,Fever,2025-10-02,38,4,0,Completed,0,None,0,2,117,79,65,237,21.8,2,0,2000,0,2400,5140,9540,Partially Paid,Card,0,0,Medium
+275,P10275,64,Female,O+,Neurology,Chest Pain,2025-02-12,1,2,0,No-Show,0,None,0,0,140,59,144,243,26.0,3,0,2500,0,9000,10433,21933,Paid,Insurance,1,0,High
+276,P10276,55,Male,A+,Laboratory Services,Fracture,2025-09-06,37,1,0,Scheduled,0,None,0,1,153,76,126,225,28.7,3,1,2500,0,3600,5795,11895,Paid,Cash,0,0,High
+277,P10277,46,Female,A-,Orthopedics,Fever,2025-02-18,17,3,1,No-Show,1,None,5,1,111,64,78,168,31.9,2,2,1500,0,2400,7881,11781,Unpaid,Insurance,1,1,Medium
+278,P10278,65,Female,B-,Laboratory Services,Chest Pain,2025-07-12,16,1,0,Scheduled,0,None,0,0,131,85,134,182,25.1,2,0,3500,0,2400,4188,10088,Unpaid,Card,0,0,High
+279,P10279,75,Female,A+,Cardiology,Hypertension,2025-01-11,11,4,1,Completed,0,None,0,0,158,96,97,268,25.8,3,0,1500,0,7500,8980,17980,Unpaid,Card,0,0,High
+280,P10280,6,Female,AB+,General Medicine,Fracture,2025-10-10,14,3,0,No-Show,1,None,6,1,118,78,122,166,25.4,0,2,4000,0,0,20326,24326,Partially Paid,Card,1,0,Low
+281,P10281,63,Male,A-,Radiology,Fever,2025-01-28,8,1,1,Completed,0,None,0,1,130,79,137,190,20.4,4,1,4000,0,10000,604,14604,Paid,Online,0,0,Medium
+282,P10282,60,Male,O+,General Medicine,Fever,2025-08-19,11,4,1,Completed,1,None,5,1,133,81,87,197,29.8,1,3,1500,0,2500,12717,16717,Paid,Online,0,1,High
+283,P10283,60,Male,O+,Laboratory Services,Migraine,2025-04-06,34,1,0,Completed,0,None,0,1,142,101,88,194,26.7,4,1,3000,0,12000,7512,22512,Paid,Insurance,0,0,Medium
+284,P10284,1,Male,AB+,Laboratory Services,Back Pain,2025-02-20,12,2,1,No-Show,0,None,0,1,121,74,111,194,24.5,1,1,4000,0,3000,3552,10552,Paid,Card,1,0,Low
+285,P10285,31,Male,B+,General Medicine,Migraine,2025-07-15,38,4,2,No-Show,0,None,0,2,137,78,122,197,20.4,0,1,2000,0,0,1386,3386,Unpaid,Insurance,1,0,Medium
+286,P10286,36,Female,B+,Cardiology,Diabetes,2025-02-16,16,3,2,Completed,1,None,6,3,119,76,161,206,24.5,1,4,2500,0,3000,15526,21026,Paid,Cash,0,0,High
+287,P10287,44,Male,A-,Orthopedics,Kidney Infection,2025-10-09,38,3,1,No-Show,0,None,0,1,119,61,78,257,22.6,2,1,3500,0,6000,7502,17002,Paid,Online,1,0,Medium
+288,P10288,64,Male,A-,Radiology,Back Pain,2025-03-01,9,3,1,Completed,1,General Ward,3,1,147,84,120,138,28.6,2,7,3000,10500,2400,17137,33037,Paid,Card,0,0,High
+289,P10289,35,Male,B+,Laboratory Services,Fever,2025-03-06,15,4,1,Completed,0,None,0,1,140,76,122,145,32.1,2,1,2000,0,3600,10751,16351,Paid,Cash,0,0,Medium
+290,P10290,53,Male,A-,Orthopedics,Migraine,2025-06-08,26,1,0,No-Show,0,None,0,2,124,93,113,170,17.7,0,0,3000,0,0,2009,5009,Paid,Online,1,0,Medium
+291,P10291,50,Female,A+,Pediatrics,Kidney Infection,2025-08-16,3,0,0,Completed,0,None,0,0,131,86,91,167,28.7,2,0,3500,0,3600,7323,14423,Paid,Insurance,0,0,Medium
+292,P10292,90,Female,B+,Neurology,Back Pain,2025-12-03,41,3,0,Completed,0,None,0,0,132,58,135,187,27.0,1,3,3000,0,2500,4372,9872,Paid,Online,0,0,High
+293,P10293,44,Female,AB-,Radiology,Fracture,2025-05-03,15,3,0,Completed,0,None,0,1,127,69,138,164,26.9,2,1,3000,0,5000,4811,12811,Paid,Online,0,0,Medium
+294,P10294,18,Female,AB-,Radiology,Fracture,2025-11-16,43,4,0,Cancelled,0,None,0,0,152,69,147,159,14.5,1,1,2500,0,3000,6827,12327,Paid,Cash,0,0,Low
+295,P10295,34,Male,O-,Radiology,Pneumonia,2025-12-12,35,4,0,No-Show,0,None,0,0,119,83,87,241,21.1,1,1,2000,0,1200,5741,8941,Partially Paid,Card,1,0,Medium
+296,P10296,62,Female,B+,Neurology,Migraine,2025-05-22,13,2,0,No-Show,1,General Ward,4,2,147,82,122,218,21.2,2,3,1500,14000,6000,10492,31992,Paid,Online,1,1,High
+297,P10297,63,Male,O-,Cardiology,Asthma,2025-09-05,31,2,0,No-Show,1,General Ward,6,0,137,78,92,254,17.9,2,5,3000,21000,2400,14404,40804,Paid,Insurance,1,0,Medium
+298,P10298,13,Female,AB-,Radiology,Hypertension,2025-11-25,11,3,1,Completed,0,None,0,4,111,79,65,248,26.6,2,2,2500,0,2400,3186,8086,Paid,Card,0,0,Medium
+299,P10299,40,Male,A-,Radiology,Fever,2025-01-09,19,0,1,No-Show,0,None,0,1,131,83,122,252,23.2,2,2,2500,0,6000,6469,14969,Paid,Online,1,0,High
+300,P10300,36,Male,B+,Radiology,Pneumonia,2025-02-06,23,3,0,Completed,0,None,0,1,158,79,155,193,23.6,1,1,3500,0,1800,4273,9573,Paid,Online,0,0,High
+301,P10301,44,Male,B+,Orthopedics,Diabetes,2025-01-06,32,5,0,No-Show,1,None,5,2,121,91,165,169,21.6,9,3,1500,0,10800,12212,24512,Unpaid,Online,1,1,High
+302,P10302,35,Female,O-,Cardiology,Kidney Infection,2025-07-29,43,4,0,Completed,1,General Ward,3,1,152,63,134,213,24.0,1,0,3500,10500,3000,5134,22134,Paid,Online,0,1,High
+303,P10303,23,Male,A-,Cardiology,Hypertension,2025-05-16,21,3,1,No-Show,1,General Ward,2,2,137,88,101,284,23.5,4,7,1500,7000,4800,16284,29584,Unpaid,Card,1,0,High
+304,P10304,46,Male,B-,Radiology,Asthma,2025-08-20,35,2,0,No-Show,1,None,1,1,128,84,84,219,32.5,4,5,2500,0,12000,14059,28559,Partially Paid,Insurance,1,1,High
+305,P10305,34,Male,B-,Pediatrics,Fever,2025-07-25,8,1,0,No-Show,0,None,0,0,143,85,69,169,27.0,1,1,3000,0,1200,8595,12795,Unpaid,Insurance,1,0,Low
+306,P10306,42,Female,A-,Orthopedics,Hypertension,2025-04-05,25,1,0,No-Show,0,None,0,2,115,74,117,160,26.8,2,1,4000,0,3600,1712,9312,Paid,Cash,1,0,Medium
+307,P10307,27,Male,O-,Cardiology,Chest Pain,2025-04-26,17,3,1,No-Show,0,None,0,1,132,80,89,215,26.6,3,2,2000,0,9000,9453,20453,Paid,Online,1,0,Medium
+308,P10308,57,Female,AB+,Radiology,Fever,2025-07-30,6,4,1,Completed,1,None,6,1,160,80,76,181,26.1,2,3,2500,0,5000,7809,15309,Unpaid,Cash,0,0,Medium
+309,P10309,54,Male,AB-,Cardiology,Diabetes,2025-01-18,27,1,0,No-Show,0,None,0,0,107,76,106,227,17.4,1,2,2000,0,2500,2814,7314,Paid,Card,1,0,Medium
+310,P10310,61,Female,B+,Orthopedics,Back Pain,2025-06-24,37,2,0,Completed,0,None,0,1,155,89,138,195,18.5,0,2,2000,0,0,6950,8950,Paid,Card,0,0,High
+311,P10311,80,Female,A+,Cardiology,Asthma,2025-06-14,39,3,0,No-Show,0,None,0,0,112,77,109,220,23.8,1,1,2000,0,2500,8732,13232,Unpaid,Online,1,0,High
+312,P10312,25,Male,O-,Orthopedics,Asthma,2025-01-17,5,2,0,Completed,0,None,0,2,121,107,90,244,24.9,2,0,2000,0,6000,5792,13792,Partially Paid,Insurance,0,0,Medium
+313,P10313,57,Female,A+,Orthopedics,Kidney Infection,2025-07-12,22,3,1,Completed,1,None,4,2,125,79,65,197,29.7,1,0,1500,0,1200,15986,18686,Unpaid,Online,0,1,Medium
+314,P10314,41,Male,A-,Radiology,Migraine,2025-09-02,0,2,0,Completed,1,None,1,2,134,76,123,248,20.2,2,3,3000,0,6000,20175,29175,Paid,Online,0,1,High
+315,P10315,29,Female,A-,Radiology,Hypertension,2025-09-12,37,1,1,No-Show,1,General Ward,5,5,114,63,123,226,31.8,2,1,3000,17500,3600,2796,26896,Partially Paid,Card,1,1,High
+316,P10316,47,Female,A-,Neurology,Hypertension,2025-09-26,19,2,0,No-Show,1,None,3,2,150,78,123,236,22.3,1,2,2500,0,1200,13457,17157,Paid,Card,1,1,High
+317,P10317,28,Male,B+,Neurology,Back Pain,2025-10-31,22,2,0,No-Show,1,General Ward,4,0,116,81,98,183,29.7,4,2,4000,14000,12000,8518,38518,Paid,Card,1,1,Medium
+318,P10318,36,Male,B+,Neurology,Hypertension,2025-01-21,28,4,2,No-Show,0,None,0,1,106,86,99,202,25.0,2,2,3500,0,5000,5654,14154,Paid,Online,1,0,Medium
+319,P10319,35,Female,O+,Cardiology,Back Pain,2025-10-22,4,5,1,No-Show,0,None,0,0,153,79,101,196,17.0,2,3,2500,0,2400,4437,9337,Paid,Cash,1,0,Low
+320,P10320,58,Female,AB-,Neurology,Asthma,2025-03-18,15,6,2,No-Show,0,None,0,1,131,84,115,237,26.0,0,0,4000,0,0,4849,8849,Paid,Card,1,0,High
+321,P10321,58,Female,A-,Orthopedics,Asthma,2025-02-11,13,5,0,Completed,0,None,0,1,121,64,97,173,29.1,1,0,3500,0,2500,5192,11192,Paid,Cash,0,0,Medium
+322,P10322,21,Female,O-,Radiology,Migraine,2025-01-05,8,3,1,No-Show,0,None,0,0,138,75,116,225,18.5,3,1,4000,0,7500,6961,18461,Paid,Online,1,0,Medium
+323,P10323,40,Male,AB-,Neurology,Diabetes,2025-06-29,31,2,1,No-Show,0,None,0,0,136,87,191,149,14.0,2,0,4000,0,6000,11602,21602,Paid,Cash,1,0,Medium
+324,P10324,20,Female,AB+,Pediatrics,Fever,2025-10-08,42,3,0,No-Show,1,General Ward,2,2,114,67,108,201,22.3,1,2,3000,7000,2500,17756,30256,Paid,Online,1,1,Medium
+325,P10325,25,Male,O-,Radiology,Kidney Infection,2025-10-16,5,1,0,No-Show,1,General Ward,6,1,108,73,99,188,23.5,1,1,4000,21000,1200,16943,43143,Paid,Cash,1,1,Low
+326,P10326,50,Male,B+,Neurology,Asthma,2025-09-08,24,2,0,Completed,1,None,2,4,133,60,94,191,18.8,2,0,1500,0,6000,14750,22250,Paid,Online,0,1,Medium
+327,P10327,38,Male,B+,Neurology,Migraine,2025-10-18,36,2,0,Completed,1,None,5,0,123,92,122,155,31.2,3,1,2500,0,7500,19686,29686,Paid,Cash,0,1,Medium
+328,P10328,23,Female,A+,Laboratory Services,Migraine,2025-04-24,18,0,0,Completed,1,General Ward,4,0,135,82,65,132,24.4,6,3,2000,14000,18000,1973,35973,Paid,Card,0,1,Low
+329,P10329,46,Female,A+,General Medicine,Asthma,2025-09-09,17,3,2,Completed,0,None,0,0,134,86,111,241,27.1,1,0,3500,0,1800,11078,16378,Paid,Online,0,0,High
+330,P10330,31,Male,A-,Neurology,Fever,2025-12-31,4,2,1,Completed,0,None,0,1,103,72,97,161,30.7,0,0,4000,0,0,3011,7011,Paid,Cash,0,0,Medium
+331,P10331,79,Male,B+,Cardiology,Chest Pain,2025-03-22,8,3,0,Cancelled,0,None,0,3,116,72,100,234,27.7,0,0,2500,0,0,6777,9277,Paid,Card,0,0,High
+332,P10332,37,Male,B-,Radiology,Back Pain,2025-10-13,28,2,0,No-Show,0,None,0,2,98,103,84,164,20.0,1,1,1500,0,1800,11428,14728,Paid,Card,1,0,Low
+333,P10333,45,Female,O+,Radiology,Kidney Infection,2025-03-24,5,2,2,Completed,1,Private Room,4,2,143,67,166,227,25.4,3,0,1500,36000,3600,12253,53353,Paid,Online,0,1,High
+334,P10334,6,Female,AB+,Cardiology,Asthma,2025-04-06,19,2,0,No-Show,1,None,4,5,143,74,128,169,14.0,3,2,4000,0,3600,17707,25307,Paid,Cash,1,1,Medium
+335,P10335,43,Female,A+,Pediatrics,Pneumonia,2025-02-25,12,3,2,No-Show,1,None,4,1,122,86,91,238,28.6,3,3,2000,0,9000,4839,15839,Paid,Card,1,1,Medium
+336,P10336,46,Female,AB-,Orthopedics,Diabetes,2025-01-24,12,3,0,Scheduled,1,None,3,1,142,88,147,169,22.7,4,4,4000,0,4800,7777,16577,Paid,Online,0,1,Medium
+337,P10337,35,Male,A-,Orthopedics,Back Pain,2025-12-07,23,2,0,Scheduled,1,None,5,2,124,74,65,169,19.7,4,4,3500,0,7200,14732,25432,Unpaid,Cash,0,1,Low
+338,P10338,72,Male,O+,General Medicine,Migraine,2025-07-16,33,2,1,No-Show,0,None,0,0,105,84,142,246,23.7,2,3,2000,0,2400,11010,15410,Partially Paid,Online,1,0,High
+339,P10339,36,Female,B-,Orthopedics,Fever,2025-09-17,6,4,0,Completed,1,None,3,2,101,75,71,145,21.0,3,1,3500,0,5400,13593,22493,Paid,Card,0,1,Low
+340,P10340,28,Female,O+,Orthopedics,Back Pain,2025-06-08,37,4,0,No-Show,0,None,0,1,123,73,150,194,25.4,2,1,4000,0,2400,11810,18210,Paid,Card,1,0,Medium
+341,P10341,46,Male,B+,Pediatrics,Diabetes,2025-09-16,42,7,1,Completed,1,Private Room,3,0,124,87,136,235,20.7,2,4,1500,27000,6000,15888,50388,Paid,Cash,0,1,Medium
+342,P10342,22,Male,AB-,Laboratory Services,Asthma,2025-07-05,20,4,0,No-Show,0,None,0,1,97,60,137,251,15.2,1,2,4000,0,1200,8878,14078,Paid,Online,1,0,Medium
+343,P10343,43,Male,A+,Cardiology,Asthma,2025-01-19,15,3,0,No-Show,1,General Ward,3,0,111,81,121,178,29.3,1,1,2500,10500,1200,10711,24911,Unpaid,Online,1,1,Medium
+344,P10344,13,Female,A-,Cardiology,Pneumonia,2025-03-27,27,5,0,Completed,0,None,0,0,112,69,149,210,21.6,3,3,1500,0,7500,1008,10008,Unpaid,Insurance,0,0,Medium
+345,P10345,45,Female,A-,Radiology,Chest Pain,2025-07-19,10,6,0,Completed,1,None,4,3,128,78,66,164,24.8,2,2,3500,0,3600,15556,22656,Paid,Cash,0,1,Medium
+346,P10346,49,Male,A+,Laboratory Services,Pneumonia,2025-03-08,26,1,0,No-Show,0,None,0,0,116,69,96,188,25.5,3,2,1500,0,3600,3452,8552,Unpaid,Card,1,0,Medium
+347,P10347,29,Male,A+,Orthopedics,Chest Pain,2025-12-28,39,3,1,No-Show,1,None,1,1,112,74,68,119,24.7,5,0,2000,0,9000,13829,24829,Partially Paid,Insurance,1,1,Low
+348,P10348,43,Male,AB-,Cardiology,Fracture,2025-02-03,4,5,1,Completed,0,None,0,1,122,67,100,253,30.8,2,1,3000,0,5000,10441,18441,Paid,Cash,0,0,High
+349,P10349,62,Male,O-,Pediatrics,Fracture,2025-06-15,11,4,1,Completed,0,None,0,2,171,82,142,214,27.8,0,3,3500,0,0,5256,8756,Partially Paid,Online,0,0,High
+350,P10350,38,Female,AB+,Cardiology,Diabetes,2025-04-04,27,4,0,Completed,0,None,0,1,132,82,127,278,33.4,2,1,3500,0,6000,5166,14666,Paid,Card,0,0,High
+351,P10351,60,Female,B-,Cardiology,Back Pain,2025-09-17,5,6,1,Completed,0,None,0,2,142,75,113,239,29.0,0,3,3000,0,0,6215,9215,Unpaid,Card,0,0,High
+352,P10352,13,Male,O+,Orthopedics,Hypertension,2025-09-27,1,1,0,Completed,1,None,6,2,133,83,131,252,24.8,0,3,2500,0,0,13273,15773,Partially Paid,Online,0,1,High
+353,P10353,63,Male,A+,Pediatrics,Pneumonia,2025-12-09,34,4,0,No-Show,0,None,0,1,155,84,125,150,28.1,1,1,2000,0,3000,10295,15295,Paid,Card,1,0,High
+354,P10354,19,Female,AB-,General Medicine,Hypertension,2025-06-15,20,5,1,No-Show,0,None,0,0,129,98,121,137,31.4,1,3,2000,0,3000,10912,15912,Unpaid,Insurance,1,0,Medium
+355,P10355,68,Male,A+,Radiology,Diabetes,2025-09-29,3,5,1,Completed,0,None,0,1,153,91,99,237,21.3,3,0,3500,0,5400,10900,19800,Paid,Insurance,0,0,High
+356,P10356,32,Male,AB-,Pediatrics,Migraine,2025-04-20,5,1,0,Completed,0,None,0,0,123,89,125,199,20.9,0,3,2500,0,0,8803,11303,Partially Paid,Online,0,0,Medium
+357,P10357,68,Female,B+,Cardiology,Fracture,2025-01-10,16,3,1,Completed,1,None,1,0,129,70,69,171,25.3,5,6,2000,0,9000,16146,27146,Unpaid,Cash,0,0,Medium
+358,P10358,82,Male,AB-,Orthopedics,Kidney Infection,2025-12-08,28,5,1,No-Show,0,None,0,2,141,89,102,214,26.9,4,3,2500,0,12000,5235,19735,Paid,Card,1,0,High
+359,P10359,51,Female,AB+,Cardiology,Kidney Infection,2025-06-11,22,3,0,Cancelled,0,None,0,0,120,91,95,237,22.3,2,2,2500,0,2400,3510,8410,Paid,Cash,0,0,Medium
+360,P10360,36,Male,O+,Neurology,Chest Pain,2025-06-16,29,3,0,No-Show,1,None,4,1,125,97,73,202,25.5,3,4,4000,0,5400,10164,19564,Partially Paid,Cash,1,1,Medium
+361,P10361,45,Female,B-,Cardiology,Asthma,2025-02-11,41,3,0,No-Show,1,None,4,1,107,90,83,242,20.8,3,2,3000,0,9000,20179,32179,Paid,Cash,1,1,Medium
+362,P10362,31,Female,B-,General Medicine,Asthma,2025-01-20,42,1,0,Cancelled,0,None,0,0,137,73,106,196,17.1,0,3,1500,0,0,4508,6008,Paid,Card,0,0,Low
+363,P10363,18,Male,A-,Neurology,Fever,2025-03-15,2,4,1,Completed,1,None,8,2,106,86,106,191,21.4,5,1,4000,0,6000,17576,27576,Paid,Cash,0,1,Low
+364,P10364,58,Male,AB-,Pediatrics,Kidney Infection,2025-03-11,42,3,0,No-Show,0,None,0,1,120,75,105,213,24.1,1,1,2000,0,1200,5383,8583,Partially Paid,Cash,1,0,Medium
+365,P10365,80,Male,A+,Orthopedics,Hypertension,2025-12-13,20,6,1,Completed,0,None,0,0,133,68,134,249,23.0,1,0,2000,0,3000,8396,13396,Unpaid,Insurance,0,0,High
+366,P10366,59,Female,B+,Pediatrics,Chest Pain,2025-05-13,18,2,0,No-Show,1,None,1,0,114,74,142,232,20.1,10,6,2000,0,25000,1402,28402,Paid,Cash,1,0,Medium
+367,P10367,60,Male,AB+,Laboratory Services,Migraine,2025-11-18,31,4,1,No-Show,1,None,2,0,115,72,81,174,31.7,3,5,3500,0,9000,2961,15461,Paid,Insurance,1,0,Medium
+368,P10368,38,Male,A+,Orthopedics,Fracture,2025-12-18,36,3,0,No-Show,0,None,0,1,133,96,129,243,20.9,2,0,4000,0,3600,1652,9252,Paid,Insurance,1,0,Medium
+369,P10369,17,Female,AB-,Orthopedics,Pneumonia,2025-07-30,41,5,1,No-Show,0,None,0,1,99,77,109,169,27.9,3,0,3000,0,7500,3067,13567,Partially Paid,Insurance,1,0,Low
+370,P10370,79,Female,AB+,Pediatrics,Hypertension,2025-06-16,26,0,1,Cancelled,0,None,0,1,145,92,119,204,27.8,4,1,2500,0,7200,8940,18640,Paid,Cash,0,0,High
+371,P10371,25,Female,A-,Radiology,Chest Pain,2025-12-16,30,2,0,No-Show,0,None,0,1,127,65,112,150,25.1,2,1,3500,0,3600,5365,12465,Partially Paid,Card,1,0,Medium
+372,P10372,76,Male,B-,Cardiology,Pneumonia,2025-02-26,33,5,0,No-Show,0,None,0,2,175,99,133,222,25.0,2,0,4000,0,2400,11121,17521,Unpaid,Insurance,1,0,High
+373,P10373,27,Female,AB-,Neurology,Asthma,2025-09-10,26,2,0,Cancelled,0,None,0,0,143,88,101,151,30.4,1,2,2000,0,1800,9212,13012,Paid,Cash,0,0,Medium
+374,P10374,27,Female,O-,Radiology,Back Pain,2025-07-27,37,2,0,Cancelled,0,None,0,1,140,77,92,233,30.2,0,0,2000,0,0,10531,12531,Unpaid,Online,0,0,Medium
+375,P10375,45,Male,O-,Orthopedics,Hypertension,2025-12-24,4,2,0,Completed,0,None,0,0,94,97,114,227,25.8,2,1,1500,0,2400,1368,5268,Paid,Cash,0,0,Medium
+376,P10376,61,Female,AB-,Radiology,Fracture,2025-02-16,41,2,0,No-Show,1,General Ward,2,0,122,83,138,202,24.9,5,2,2500,7000,9000,20371,38871,Partially Paid,Cash,1,1,High
+377,P10377,55,Male,AB-,Pediatrics,Back Pain,2025-01-19,41,1,1,No-Show,0,None,0,0,151,93,161,205,30.6,0,2,4000,0,0,1247,5247,Unpaid,Cash,1,0,High
+378,P10378,50,Female,B+,Laboratory Services,Fever,2025-09-29,0,4,0,Completed,0,None,0,0,117,85,95,185,25.0,1,0,3500,0,1200,4397,9097,Paid,Insurance,0,0,Medium
+379,P10379,54,Female,B+,Laboratory Services,Chest Pain,2025-08-25,17,4,0,No-Show,0,None,0,0,130,89,96,228,16.2,1,0,2000,0,2500,7322,11822,Paid,Insurance,1,0,Medium
+380,P10380,42,Female,O+,Laboratory Services,Migraine,2025-04-04,38,6,1,No-Show,0,None,0,1,150,73,71,162,29.5,0,1,2000,0,0,1845,3845,Unpaid,Cash,1,0,Medium
+381,P10381,49,Male,O-,Radiology,Chest Pain,2025-10-07,18,2,1,Completed,0,None,0,1,119,83,81,203,30.5,3,3,3500,0,5400,5341,14241,Paid,Card,0,0,Medium
+382,P10382,39,Female,B+,Laboratory Services,Diabetes,2025-04-01,41,4,0,No-Show,0,None,0,2,148,61,195,204,21.3,1,2,2000,0,2500,4178,8678,Partially Paid,Cash,1,0,High
+383,P10383,78,Female,AB+,Orthopedics,Hypertension,2025-03-31,13,4,0,Completed,0,None,0,0,138,74,144,186,26.7,1,1,2500,0,1800,6010,10310,Paid,Cash,0,0,High
+384,P10384,43,Male,O+,General Medicine,Fever,2025-01-18,9,1,0,No-Show,0,None,0,2,113,98,109,158,26.2,1,2,3000,0,3000,10424,16424,Partially Paid,Insurance,1,0,Medium
+385,P10385,33,Female,B-,Cardiology,Pneumonia,2025-03-04,11,1,0,No-Show,0,None,0,1,137,87,150,248,20.4,3,2,3000,0,3600,5846,12446,Unpaid,Card,1,0,High
+386,P10386,60,Female,A-,General Medicine,Hypertension,2025-07-20,8,1,0,No-Show,0,None,0,2,144,93,93,252,22.3,2,0,2500,0,2400,3179,8079,Paid,Cash,1,0,High
+387,P10387,61,Female,A-,Pediatrics,Fever,2025-12-14,19,4,2,Scheduled,0,None,0,1,149,94,116,201,23.6,4,0,2000,0,4800,6465,13265,Paid,Online,0,0,High
+388,P10388,46,Female,A+,Laboratory Services,Hypertension,2025-02-12,12,2,2,Completed,0,None,0,2,126,80,105,184,26.8,0,1,3000,0,0,9794,12794,Paid,Cash,0,0,Medium
+389,P10389,53,Female,A-,Pediatrics,Fracture,2025-01-05,38,6,2,Completed,1,None,2,2,136,88,128,239,21.3,3,4,3500,0,7500,16636,27636,Paid,Cash,0,0,High
+390,P10390,44,Female,A+,Radiology,Pneumonia,2025-04-13,40,2,0,No-Show,0,None,0,0,145,66,103,205,17.7,1,1,3000,0,1800,5900,10700,Paid,Insurance,1,0,Medium
+391,P10391,58,Male,AB+,Cardiology,Back Pain,2025-03-28,38,4,0,Completed,0,None,0,2,143,87,132,175,27.2,3,2,3000,0,5400,10678,19078,Paid,Cash,0,0,High
+392,P10392,27,Female,AB+,Neurology,Diabetes,2025-04-23,31,1,0,Scheduled,0,None,0,1,158,85,201,190,21.4,4,0,2500,0,12000,5770,20270,Paid,Cash,0,0,High
+393,P10393,68,Female,O-,Pediatrics,Chest Pain,2025-12-01,23,3,1,Completed,0,None,0,1,124,106,88,210,29.1,2,1,3000,0,5000,2442,10442,Paid,Insurance,0,0,High
+394,P10394,53,Female,O+,Pediatrics,Migraine,2025-07-21,4,4,0,Completed,1,None,1,1,110,78,145,201,26.2,5,2,2000,0,6000,15940,23940,Paid,Card,0,1,High
+395,P10395,53,Male,O-,Neurology,Fever,2025-12-18,39,3,1,No-Show,0,None,0,2,135,68,140,201,25.9,5,1,3500,0,15000,9259,27759,Partially Paid,Card,1,0,High
+396,P10396,39,Female,B+,Cardiology,Diabetes,2025-11-24,7,1,1,No-Show,0,None,0,0,136,63,129,189,27.2,3,1,3000,0,3600,3353,9953,Paid,Cash,1,0,Medium
+397,P10397,45,Female,O+,Pediatrics,Asthma,2025-11-03,34,4,0,Completed,1,ICU,3,0,149,78,132,123,35.6,4,0,2000,75000,7200,3984,88184,Paid,Card,0,1,High
+398,P10398,16,Male,A-,Neurology,Back Pain,2025-10-10,38,1,0,No-Show,0,None,0,5,120,82,101,223,28.1,1,1,2500,0,2500,964,5964,Partially Paid,Cash,1,0,High
+399,P10399,25,Female,O-,Radiology,Fever,2025-04-08,17,2,2,No-Show,0,None,0,3,105,65,98,119,24.0,3,1,3500,0,7500,7682,18682,Unpaid,Cash,1,0,Low
+400,P10400,49,Female,A-,General Medicine,Fever,2025-11-08,32,1,0,No-Show,0,None,0,0,116,71,161,195,24.9,1,2,2000,0,1800,7083,10883,Paid,Cash,1,0,High
+401,P10401,25,Male,O-,Neurology,Migraine,2025-10-22,3,3,0,Completed,0,None,0,2,110,78,107,180,30.6,1,3,3500,0,2500,10367,16367,Unpaid,Insurance,0,0,Medium
+402,P10402,35,Male,O+,Pediatrics,Migraine,2025-07-17,8,3,0,Completed,0,None,0,1,127,81,138,186,33.3,2,1,3000,0,3600,6682,13282,Paid,Cash,0,0,High
+403,P10403,41,Female,AB+,Cardiology,Fracture,2025-12-07,7,0,0,Completed,1,None,3,1,142,87,95,194,19.9,2,2,3000,0,5000,8241,16241,Unpaid,Online,0,0,Medium
+404,P10404,46,Female,B-,Neurology,Kidney Infection,2025-12-06,37,3,0,No-Show,0,None,0,0,132,74,157,215,22.9,1,1,4000,0,1200,6766,11966,Partially Paid,Card,1,0,High
+405,P10405,55,Female,A-,Laboratory Services,Kidney Infection,2025-10-27,6,2,0,Completed,0,None,0,1,131,98,122,184,24.8,4,1,2500,0,10000,9450,21950,Unpaid,Card,0,0,Medium
+406,P10406,53,Female,AB-,Pediatrics,Fever,2025-09-07,36,2,0,No-Show,0,None,0,2,136,92,131,235,23.1,1,2,4000,0,3000,5165,12165,Unpaid,Cash,1,0,High
+407,P10407,44,Male,A+,General Medicine,Migraine,2025-07-25,22,1,1,No-Show,0,None,0,2,125,80,140,159,27.1,2,3,4000,0,6000,8121,18121,Paid,Card,1,0,High
+408,P10408,44,Male,AB-,Neurology,Fracture,2025-12-12,30,0,1,Completed,0,None,0,1,136,77,100,157,24.9,1,2,1500,0,1800,9153,12453,Paid,Card,0,0,Medium
+409,P10409,56,Female,O-,Cardiology,Kidney Infection,2025-09-01,25,1,0,Completed,1,None,4,0,155,83,99,240,23.3,2,3,4000,0,2400,9831,16231,Paid,Insurance,0,1,High
+410,P10410,59,Male,AB+,Neurology,Kidney Infection,2025-01-25,39,2,0,Cancelled,0,None,0,1,130,75,145,214,22.4,4,2,3500,0,10000,5913,19413,Paid,Cash,0,0,High
+411,P10411,21,Female,B-,General Medicine,Fever,2025-09-15,3,2,1,Completed,1,None,3,0,109,87,100,183,33.7,1,5,3500,0,1800,4404,9704,Unpaid,Online,0,0,Medium
+412,P10412,55,Female,B+,Radiology,Hypertension,2025-06-24,39,2,0,Completed,0,None,0,1,116,74,65,238,27.4,1,2,4000,0,1200,8433,13633,Paid,Cash,0,0,Medium
+413,P10413,26,Male,AB-,Cardiology,Back Pain,2025-09-24,44,3,3,Completed,1,General Ward,6,0,138,67,65,223,23.8,3,2,2500,21000,7500,5987,36987,Paid,Insurance,0,0,Low
+414,P10414,15,Female,AB-,Pediatrics,Kidney Infection,2025-05-22,8,0,0,Completed,0,None,0,0,120,78,98,201,25.4,1,0,2500,0,3000,11713,17213,Paid,Online,0,0,Low
+415,P10415,51,Female,AB+,Laboratory Services,Diabetes,2025-09-06,26,3,2,No-Show,0,None,0,0,135,90,166,208,28.0,1,0,3000,0,1200,7367,11567,Paid,Online,1,0,High
+416,P10416,26,Female,O+,Cardiology,Migraine,2025-03-01,40,3,0,No-Show,1,None,5,1,135,82,94,220,28.2,3,3,3500,0,5400,6118,15018,Unpaid,Online,1,1,Medium
+417,P10417,34,Male,O+,Laboratory Services,Hypertension,2025-12-07,29,3,0,Completed,0,None,0,1,122,90,134,174,25.6,2,0,4000,0,6000,7356,17356,Partially Paid,Insurance,0,0,Medium
+418,P10418,53,Female,O-,Laboratory Services,Hypertension,2025-08-07,18,3,1,Completed,0,None,0,0,127,74,66,231,25.7,3,1,3500,0,5400,11213,20113,Paid,Online,0,0,Medium
+419,P10419,57,Female,AB+,Neurology,Asthma,2025-03-12,19,5,0,Completed,1,Private Room,1,0,129,69,95,203,30.1,4,2,3500,9000,7200,7002,26702,Paid,Card,0,1,Medium
+420,P10420,42,Female,AB+,Laboratory Services,Diabetes,2025-03-04,13,3,1,No-Show,0,None,0,0,134,81,163,184,30.7,3,0,2000,0,7500,8955,18455,Paid,Insurance,1,0,High
+421,P10421,43,Female,A+,Cardiology,Migraine,2025-06-23,11,1,0,Completed,0,None,0,0,123,63,91,250,27.3,4,1,3500,0,10000,9581,23081,Paid,Cash,0,0,Medium
+422,P10422,52,Female,O+,Pediatrics,Pneumonia,2025-01-10,25,4,1,No-Show,1,None,3,2,157,81,159,170,24.7,3,1,4000,0,9000,5647,18647,Paid,Cash,1,1,High
+423,P10423,42,Male,B+,Pediatrics,Fracture,2025-12-08,12,0,0,Scheduled,1,None,2,2,115,85,100,222,22.9,2,2,3500,0,6000,7872,17372,Paid,Cash,0,1,Medium
+424,P10424,76,Female,B-,Cardiology,Asthma,2025-12-11,37,2,0,No-Show,1,None,6,1,145,70,117,176,27.4,3,5,1500,0,3600,11162,16262,Paid,Card,1,1,High
+425,P10425,57,Male,O-,Orthopedics,Diabetes,2025-08-09,31,3,0,Completed,0,None,0,0,131,67,170,171,30.5,2,0,2000,0,6000,2120,10120,Paid,Insurance,0,0,High
+426,P10426,28,Male,B-,General Medicine,Pneumonia,2025-11-22,0,4,0,Scheduled,0,None,0,0,115,103,94,256,22.5,0,0,2000,0,0,4867,6867,Partially Paid,Cash,0,0,Medium
+427,P10427,33,Male,A-,Laboratory Services,Fracture,2025-10-25,10,3,1,No-Show,0,None,0,0,132,77,110,236,16.8,2,1,2000,0,5000,8481,15481,Paid,Insurance,1,0,Medium
+428,P10428,25,Female,O-,Pediatrics,Diabetes,2025-11-19,43,4,0,No-Show,0,None,0,1,144,86,159,253,26.4,1,1,1500,0,2500,8631,12631,Partially Paid,Online,1,0,High
+429,P10429,56,Female,B+,Laboratory Services,Asthma,2025-01-03,18,2,0,No-Show,1,None,6,2,133,81,99,252,23.4,1,3,3000,0,2500,19262,24762,Unpaid,Insurance,1,1,High
+430,P10430,2,Male,A+,Pediatrics,Fracture,2025-01-17,21,3,2,No-Show,0,None,0,2,122,70,151,168,26.7,1,2,4000,0,1800,6130,11930,Paid,Card,1,0,Medium
+431,P10431,53,Male,A+,Cardiology,Hypertension,2025-01-18,3,2,0,Completed,0,None,0,0,126,95,72,291,26.1,0,0,3000,0,0,6709,9709,Unpaid,Cash,0,0,Medium
+432,P10432,31,Male,O-,General Medicine,Diabetes,2025-08-04,6,3,0,Completed,0,None,0,2,118,93,149,128,24.9,0,2,3000,0,0,11178,14178,Paid,Card,0,0,Medium
+433,P10433,24,Male,AB+,Laboratory Services,Hypertension,2025-01-02,13,2,0,Completed,0,None,0,2,134,71,125,183,30.0,3,0,2500,0,9000,9843,21343,Paid,Card,0,0,High
+434,P10434,45,Female,A-,Neurology,Diabetes,2025-08-23,34,3,1,No-Show,1,None,3,1,136,74,187,173,30.2,3,2,3500,0,3600,11289,18389,Paid,Insurance,1,1,High
+435,P10435,48,Male,B+,Radiology,Fracture,2025-09-07,35,2,1,Completed,1,General Ward,2,0,154,98,128,235,26.5,2,0,3500,7000,3600,18572,32672,Paid,Cash,0,0,High
+436,P10436,65,Female,A-,Pediatrics,Kidney Infection,2025-12-03,18,5,2,No-Show,0,None,0,1,155,77,111,212,27.8,3,2,2500,0,5400,7914,15814,Paid,Cash,1,0,High
+437,P10437,46,Female,O-,Pediatrics,Diabetes,2025-09-09,3,1,1,Completed,1,General Ward,3,0,115,79,144,266,22.0,1,2,1500,10500,1200,13316,26516,Partially Paid,Online,0,0,High
+438,P10438,42,Female,AB-,Orthopedics,Hypertension,2025-06-09,0,1,0,Scheduled,0,None,0,2,144,85,127,204,27.5,1,2,1500,0,1800,4325,7625,Unpaid,Online,0,0,High
+439,P10439,30,Female,B+,Laboratory Services,Diabetes,2025-03-24,20,2,1,Completed,1,None,6,0,122,79,137,166,28.1,1,3,1500,0,1200,8445,11145,Unpaid,Online,0,1,Medium
+440,P10440,81,Female,A-,Orthopedics,Back Pain,2025-06-28,7,2,0,Completed,1,None,1,2,143,78,100,257,24.0,5,0,4000,0,6000,16415,26415,Paid,Insurance,0,1,High
+441,P10441,50,Female,B+,Orthopedics,Migraine,2025-01-21,20,4,1,Completed,1,General Ward,6,1,149,80,135,238,24.4,5,3,4000,21000,15000,9491,49491,Unpaid,Cash,0,1,High
+442,P10442,6,Male,O-,Laboratory Services,Hypertension,2025-08-30,10,4,1,Completed,0,None,0,2,116,66,126,219,22.6,2,0,2000,0,2400,8392,12792,Paid,Card,0,0,Medium
+443,P10443,23,Female,B+,Neurology,Chest Pain,2025-07-20,10,3,2,No-Show,0,None,0,1,152,83,115,206,30.6,2,1,3500,0,2400,2993,8893,Unpaid,Insurance,1,0,High
+444,P10444,54,Female,AB-,General Medicine,Fever,2025-09-18,17,3,0,No-Show,0,None,0,0,111,84,119,205,25.9,1,1,3000,0,1200,1861,6061,Paid,Cash,1,0,Medium
+445,P10445,37,Male,B-,Laboratory Services,Chest Pain,2025-06-05,25,1,0,No-Show,0,None,0,1,104,96,94,246,24.1,1,1,3500,0,1200,1250,5950,Paid,Insurance,1,0,Medium
+446,P10446,85,Female,O-,Laboratory Services,Fever,2025-07-09,37,4,1,Scheduled,0,None,0,1,106,86,119,216,27.4,0,2,2000,0,0,9198,11198,Paid,Insurance,0,0,High
+447,P10447,27,Male,B-,General Medicine,Kidney Infection,2025-01-13,29,5,1,Completed,0,None,0,0,111,69,113,179,21.8,2,1,2500,0,3600,11558,17658,Paid,Insurance,0,0,Low
+448,P10448,50,Female,AB-,Neurology,Fracture,2025-05-30,14,1,0,Completed,1,None,5,0,106,79,101,224,29.2,3,0,3000,0,9000,9878,21878,Paid,Cash,0,1,Medium
+449,P10449,35,Female,A+,Laboratory Services,Hypertension,2025-05-26,26,3,2,No-Show,1,None,1,2,132,92,126,229,31.1,2,4,3000,0,2400,19391,24791,Paid,Cash,1,1,High
+450,P10450,50,Female,A+,Radiology,Pneumonia,2025-06-28,11,2,1,Completed,1,None,2,0,133,78,129,148,24.0,4,3,4000,0,12000,14637,30637,Partially Paid,Card,0,1,Medium
+451,P10451,50,Female,O-,Cardiology,Pneumonia,2025-10-25,15,1,0,Completed,0,None,0,0,123,73,117,217,28.5,1,1,3500,0,3000,3112,9612,Unpaid,Cash,0,0,High
+452,P10452,52,Male,AB+,Neurology,Fracture,2025-05-30,44,5,1,No-Show,0,None,0,0,135,74,103,144,30.6,0,2,1500,0,0,11068,12568,Paid,Online,1,0,Medium
+453,P10453,40,Male,O+,General Medicine,Asthma,2025-04-19,40,2,1,No-Show,0,None,0,0,125,86,115,255,21.0,3,0,3000,0,5400,8119,16519,Unpaid,Cash,1,0,Medium
+454,P10454,60,Female,O+,Radiology,Fracture,2025-12-01,24,3,1,No-Show,0,None,0,0,141,78,135,278,22.9,3,0,2000,0,3600,11132,16732,Partially Paid,Card,1,0,High
+455,P10455,75,Female,O+,Neurology,Fracture,2025-02-01,27,4,0,No-Show,0,None,0,1,131,82,126,183,27.9,0,0,4000,0,0,9968,13968,Paid,Cash,1,0,High
+456,P10456,38,Male,A+,Neurology,Kidney Infection,2025-08-26,35,4,0,No-Show,0,None,0,1,142,80,81,226,28.0,4,2,3000,0,7200,1925,12125,Partially Paid,Cash,1,0,Medium
+457,P10457,46,Female,B+,Neurology,Back Pain,2025-10-06,40,6,1,Completed,0,None,0,1,144,83,147,176,19.5,0,3,3000,0,0,3043,6043,Paid,Cash,0,0,Medium
+458,P10458,71,Female,O+,Laboratory Services,Back Pain,2025-01-20,16,2,2,No-Show,0,None,0,1,123,93,99,167,28.7,2,0,3500,0,5000,11234,19734,Paid,Insurance,1,0,Medium
+459,P10459,82,Male,O+,Cardiology,Fever,2025-04-13,3,1,0,Completed,0,None,0,0,146,88,141,289,30.7,1,2,2500,0,2500,10541,15541,Paid,Online,0,0,High
+460,P10460,48,Female,AB-,Laboratory Services,Pneumonia,2025-09-28,0,1,0,Completed,1,None,3,0,149,72,146,140,28.2,2,3,2000,0,3600,1960,7560,Paid,Card,0,0,Medium
+461,P10461,39,Male,AB-,Radiology,Pneumonia,2025-01-16,14,4,0,No-Show,0,None,0,1,157,76,107,220,26.7,2,0,4000,0,5000,11129,20129,Unpaid,Insurance,1,0,High
+462,P10462,53,Female,B+,Laboratory Services,Pneumonia,2025-02-09,31,3,0,Completed,1,None,4,0,150,99,69,192,15.7,2,2,3000,0,2400,12158,17558,Paid,Cash,0,1,Low
+463,P10463,14,Male,B+,Pediatrics,Migraine,2025-09-09,38,5,1,No-Show,0,None,0,1,114,64,123,189,23.1,0,0,2000,0,0,9948,11948,Paid,Cash,1,0,Medium
+464,P10464,72,Female,B-,Pediatrics,Pneumonia,2025-09-14,12,5,0,Completed,1,None,1,3,106,62,142,232,22.7,2,2,3000,0,2400,5263,10663,Paid,Insurance,0,1,High
+465,P10465,42,Male,AB-,Radiology,Migraine,2025-05-30,43,3,0,Completed,0,None,0,0,131,67,141,247,18.2,0,0,4000,0,0,789,4789,Partially Paid,Cash,0,0,Medium
+466,P10466,51,Male,AB-,Laboratory Services,Migraine,2025-10-20,33,2,0,No-Show,0,None,0,0,118,108,106,135,31.8,1,0,2000,0,3000,4757,9757,Unpaid,Card,1,0,Medium
+467,P10467,74,Male,A-,Cardiology,Kidney Infection,2025-01-21,0,6,0,Completed,0,None,0,2,121,82,90,245,28.7,1,4,2000,0,1200,7006,10206,Paid,Insurance,0,0,High
+468,P10468,37,Male,AB+,Orthopedics,Migraine,2025-12-02,16,1,0,Completed,0,None,0,1,104,72,92,202,20.8,3,4,3500,0,7500,3747,14747,Paid,Cash,0,0,Low
+469,P10469,64,Female,AB+,Orthopedics,Asthma,2025-07-15,41,4,1,Completed,1,None,4,0,116,71,132,218,29.5,4,4,2500,0,4800,11655,18955,Unpaid,Insurance,0,1,High
+470,P10470,90,Female,B+,General Medicine,Chest Pain,2025-03-31,12,3,0,Completed,0,None,0,0,142,79,133,194,28.4,3,0,3500,0,5400,8083,16983,Partially Paid,Insurance,0,0,High
+471,P10471,57,Female,O-,General Medicine,Chest Pain,2025-11-15,5,3,0,Completed,1,None,4,0,97,76,147,253,26.9,5,7,2000,0,12500,12262,26762,Paid,Cash,0,1,High
+472,P10472,79,Male,B-,Laboratory Services,Chest Pain,2025-01-09,6,1,0,No-Show,0,None,0,1,118,73,91,140,31.2,1,0,3000,0,1800,5418,10218,Partially Paid,Cash,1,0,Medium
+473,P10473,40,Female,AB-,Orthopedics,Diabetes,2025-10-02,41,4,1,Completed,1,None,1,1,88,71,113,214,26.7,1,3,3500,0,2500,15522,21522,Paid,Insurance,0,0,Medium
+474,P10474,51,Female,A-,General Medicine,Migraine,2025-10-09,44,5,0,Completed,0,None,0,1,124,75,99,237,27.1,2,0,4000,0,3600,4246,11846,Paid,Card,0,0,High
+475,P10475,14,Male,A-,Laboratory Services,Diabetes,2025-06-04,11,2,2,Completed,0,None,0,1,127,64,168,185,23.7,1,1,2000,0,1800,4215,8015,Unpaid,Card,0,0,Medium
+476,P10476,37,Female,A+,Laboratory Services,Diabetes,2025-09-10,19,1,0,Completed,0,None,0,0,130,70,110,130,24.0,0,3,4000,0,0,1274,5274,Paid,Cash,0,0,Low
+477,P10477,44,Male,B-,General Medicine,Asthma,2025-12-12,4,3,1,No-Show,0,None,0,1,126,87,107,237,28.5,2,0,2500,0,2400,11870,16770,Paid,Online,1,0,High
+478,P10478,39,Female,A-,Orthopedics,Kidney Infection,2025-12-08,1,5,1,Completed,0,None,0,1,95,80,117,254,25.8,2,0,4000,0,6000,8211,18211,Paid,Cash,0,0,Medium
+479,P10479,63,Male,AB+,Neurology,Back Pain,2025-11-15,2,2,1,Completed,0,None,0,1,149,67,134,236,31.5,1,3,1500,0,1200,4156,6856,Paid,Online,0,0,High
+480,P10480,45,Male,A+,Cardiology,Kidney Infection,2025-09-22,21,5,0,No-Show,0,None,0,0,125,82,101,222,27.3,1,0,3000,0,3000,6901,12901,Unpaid,Insurance,1,0,Medium
+481,P10481,71,Male,AB-,Radiology,Fracture,2025-09-19,44,1,0,Completed,1,None,6,0,119,77,138,234,24.7,1,1,3000,0,2500,1960,7460,Partially Paid,Cash,0,1,High
+482,P10482,53,Male,A-,General Medicine,Hypertension,2025-09-20,35,2,0,No-Show,1,None,4,0,119,68,101,257,29.3,2,3,3500,0,6000,17708,27208,Paid,Online,1,1,High
+483,P10483,35,Male,B+,Laboratory Services,Chest Pain,2025-06-05,42,1,0,Scheduled,0,None,0,0,134,80,85,215,34.3,0,0,2000,0,0,4100,6100,Partially Paid,Card,0,0,Medium
+484,P10484,38,Male,A+,Pediatrics,Back Pain,2025-02-16,27,3,0,Completed,0,None,0,1,122,69,130,273,22.4,4,2,2500,0,7200,11356,21056,Paid,Insurance,0,0,High
+485,P10485,23,Male,O-,Cardiology,Diabetes,2025-08-02,3,2,1,No-Show,0,None,0,1,114,77,168,249,25.9,2,2,2500,0,2400,7603,12503,Paid,Online,1,0,High
+486,P10486,88,Female,B-,Pediatrics,Fracture,2025-03-04,22,5,2,No-Show,0,None,0,1,144,68,124,215,24.4,1,1,1500,0,2500,1868,5868,Paid,Online,1,0,High
+487,P10487,1,Female,B+,Orthopedics,Chest Pain,2025-02-10,39,3,0,No-Show,0,None,0,0,120,63,97,210,23.8,6,1,3500,0,15000,1738,20238,Paid,Online,1,0,Low
+488,P10488,41,Female,B-,Orthopedics,Asthma,2025-11-18,9,3,0,No-Show,0,None,0,2,109,82,113,203,27.7,1,3,1500,0,2500,5821,9821,Paid,Insurance,1,0,Medium
+489,P10489,47,Female,O-,Neurology,Chest Pain,2025-08-07,25,5,1,No-Show,0,None,0,0,125,72,115,222,30.5,2,1,2000,0,5000,10024,17024,Unpaid,Insurance,1,0,High
+490,P10490,18,Female,AB+,Neurology,Migraine,2025-01-05,22,1,0,Completed,1,None,2,3,127,84,67,226,30.3,1,1,1500,0,1800,3189,6489,Paid,Card,0,1,Medium
+491,P10491,45,Male,A+,Cardiology,Diabetes,2025-08-08,32,3,0,No-Show,0,None,0,1,108,78,152,241,25.7,2,2,4000,0,2400,3055,9455,Unpaid,Insurance,1,0,High
+492,P10492,44,Male,O+,General Medicine,Pneumonia,2025-07-17,30,7,2,Completed,0,None,0,0,116,77,127,201,37.0,2,3,2500,0,6000,3789,12289,Paid,Card,0,0,High
+493,P10493,51,Female,A+,Pediatrics,Kidney Infection,2025-11-13,13,3,0,No-Show,0,None,0,0,121,66,137,155,26.3,1,1,3500,0,1200,10919,15619,Paid,Card,1,0,Medium
+494,P10494,40,Male,B+,Neurology,Pneumonia,2025-05-05,32,1,0,No-Show,0,None,0,1,133,83,115,156,28.9,2,2,2000,0,6000,2149,10149,Paid,Insurance,1,0,Medium
+495,P10495,40,Female,AB-,General Medicine,Fracture,2025-10-06,36,3,1,No-Show,0,None,0,0,127,69,120,242,26.5,0,1,3000,0,0,5017,8017,Paid,Card,1,0,High
+496,P10496,34,Male,A+,Laboratory Services,Fracture,2025-04-01,2,2,2,Completed,1,None,5,0,111,71,98,184,34.3,4,2,2500,0,12000,7267,21767,Paid,Cash,0,0,Medium
+497,P10497,63,Female,B+,General Medicine,Pneumonia,2025-02-24,19,1,0,Completed,0,None,0,0,135,92,119,136,23.4,3,3,4000,0,7500,6847,18347,Unpaid,Insurance,0,0,Medium
+498,P10498,50,Female,B-,Cardiology,Back Pain,2025-06-30,29,5,0,Completed,0,None,0,1,141,83,100,150,24.2,4,2,4000,0,4800,6851,15651,Paid,Insurance,0,0,Medium
+499,P10499,54,Female,A+,Neurology,Chest Pain,2025-05-13,44,3,0,No-Show,0,None,0,0,108,89,146,190,24.3,0,2,3000,0,0,2418,5418,Unpaid,Card,1,0,Medium
+500,P10500,10,Female,AB-,Pediatrics,Fracture,2025-06-05,0,5,2,Completed,0,None,0,1,119,83,121,258,16.4,1,1,1500,0,2500,3051,7051,Paid,Cash,0,0,Medium
+501,P10501,43,Male,O+,Orthopedics,Chest Pain,2025-09-26,7,5,1,Completed,1,General Ward,4,0,141,67,65,180,32.9,4,7,3000,14000,12000,13401,42401,Paid,Cash,0,0,Medium
+502,P10502,68,Male,A+,General Medicine,Asthma,2025-03-10,8,4,1,No-Show,0,None,0,2,133,80,158,270,27.2,1,2,3500,0,1800,925,6225,Paid,Card,1,0,High
+503,P10503,31,Male,A+,Pediatrics,Migraine,2025-06-09,44,2,1,No-Show,0,None,0,0,119,63,110,250,22.2,4,1,2000,0,12000,6251,20251,Paid,Online,1,0,Medium
+504,P10504,34,Male,O+,Pediatrics,Kidney Infection,2025-03-12,34,4,1,No-Show,1,None,3,0,116,66,119,233,21.9,5,1,3000,0,15000,1817,19817,Paid,Card,1,0,Medium
+505,P10505,57,Male,AB-,Radiology,Pneumonia,2025-02-12,17,1,0,No-Show,0,None,0,0,127,94,90,188,27.7,1,0,2500,0,1800,3856,8156,Unpaid,Insurance,1,0,Medium
+506,P10506,27,Male,O+,Pediatrics,Fever,2025-12-27,3,1,0,No-Show,1,None,4,1,144,69,91,232,18.9,2,5,1500,0,2400,18033,21933,Paid,Card,1,1,Medium
+507,P10507,63,Male,A-,Pediatrics,Kidney Infection,2025-04-21,14,1,0,Completed,1,Private Room,9,0,140,89,130,244,30.8,4,3,3500,81000,4800,9781,99081,Unpaid,Cash,0,1,High
+508,P10508,67,Female,O+,Laboratory Services,Asthma,2025-05-31,41,2,1,Cancelled,0,None,0,1,131,79,142,246,33.3,2,1,3500,0,2400,3520,9420,Unpaid,Insurance,0,0,High
+509,P10509,33,Female,O-,Neurology,Hypertension,2025-07-05,44,3,1,No-Show,1,General Ward,2,1,136,77,65,140,28.2,2,0,3000,7000,3600,4826,18426,Partially Paid,Insurance,1,0,Low
+510,P10510,23,Female,O-,Radiology,Back Pain,2025-06-21,43,2,1,No-Show,0,None,0,0,117,82,97,163,25.9,1,1,1500,0,3000,10663,15163,Paid,Card,1,0,Low
+511,P10511,41,Male,A+,Cardiology,Back Pain,2025-11-05,7,4,0,No-Show,0,None,0,0,139,73,189,240,29.7,0,1,3500,0,0,1881,5381,Paid,Cash,1,0,High
+512,P10512,34,Male,AB-,Radiology,Hypertension,2025-10-26,7,4,0,Completed,0,None,0,0,160,76,140,200,22.3,2,3,3000,0,3600,7491,14091,Paid,Cash,0,0,Medium
+513,P10513,49,Male,O+,Orthopedics,Back Pain,2025-11-14,30,1,0,Completed,1,None,6,1,132,101,91,192,30.0,1,2,3500,0,3000,4533,11033,Paid,Card,0,1,Medium
+514,P10514,44,Female,O-,Radiology,Pneumonia,2025-12-12,9,3,1,No-Show,0,None,0,2,151,65,111,176,24.1,3,1,3000,0,5400,11559,19959,Paid,Online,1,0,Medium
+515,P10515,52,Female,A-,Radiology,Chest Pain,2025-08-08,43,4,0,No-Show,1,General Ward,4,1,145,78,108,221,29.3,3,1,3000,14000,5400,9962,32362,Unpaid,Card,1,1,High
+516,P10516,36,Female,AB-,Neurology,Asthma,2025-08-08,0,3,0,No-Show,0,None,0,0,135,72,122,180,25.8,2,0,1500,0,3600,9966,15066,Paid,Cash,1,0,Medium
+517,P10517,57,Male,O+,Orthopedics,Hypertension,2025-09-03,9,1,0,No-Show,0,None,0,1,126,78,91,210,27.2,2,1,1500,0,3600,3687,8787,Paid,Cash,1,0,Medium
+518,P10518,34,Male,O+,Cardiology,Fracture,2025-10-02,40,5,1,No-Show,1,None,1,2,113,71,143,226,26.8,3,3,3500,0,3600,12880,19980,Unpaid,Online,1,1,High
+519,P10519,73,Male,B-,Neurology,Asthma,2025-08-20,8,5,2,No-Show,0,None,0,0,116,86,124,212,29.3,3,1,4000,0,9000,2158,15158,Paid,Online,1,0,High
+520,P10520,45,Male,A+,General Medicine,Back Pain,2025-05-26,40,2,0,No-Show,1,None,3,0,117,62,113,236,25.7,2,3,4000,0,3600,3689,11289,Paid,Online,1,1,Medium
+521,P10521,79,Male,AB-,Laboratory Services,Hypertension,2025-11-06,2,0,0,Cancelled,0,None,0,0,131,72,95,202,27.0,1,1,2000,0,1200,11319,14519,Partially Paid,Insurance,0,0,High
+522,P10522,54,Female,A-,Radiology,Fracture,2025-11-17,6,2,1,No-Show,0,None,0,0,139,74,106,265,24.9,1,3,3500,0,1200,11317,16017,Unpaid,Cash,1,0,High
+523,P10523,4,Female,B-,Laboratory Services,Pneumonia,2025-09-03,4,6,1,Cancelled,0,None,0,0,122,89,92,178,18.0,1,3,3500,0,2500,8941,14941,Paid,Card,0,0,Low
+524,P10524,62,Female,A-,Orthopedics,Back Pain,2025-10-21,36,0,0,Completed,0,None,0,0,143,82,86,243,35.3,0,1,1500,0,0,8589,10089,Paid,Online,0,0,High
+525,P10525,47,Female,O-,General Medicine,Pneumonia,2025-07-25,12,5,3,Scheduled,0,None,0,1,119,80,77,186,27.9,5,2,2500,0,12500,1767,16767,Paid,Card,0,0,Medium
+526,P10526,53,Female,A+,Neurology,Kidney Infection,2025-12-25,6,2,0,No-Show,0,None,0,0,119,87,83,221,23.8,1,1,4000,0,3000,1478,8478,Unpaid,Insurance,1,0,Medium
+527,P10527,59,Male,B-,Cardiology,Diabetes,2025-03-09,23,2,0,No-Show,0,None,0,0,146,72,121,236,30.2,0,1,3000,0,0,11029,14029,Paid,Online,1,0,High
+528,P10528,58,Female,AB+,Cardiology,Pneumonia,2025-09-18,16,1,0,No-Show,0,None,0,2,114,71,101,206,36.7,2,0,3500,0,2400,11545,17445,Unpaid,Card,1,0,High
+529,P10529,43,Female,O-,General Medicine,Fever,2025-10-12,34,2,0,Scheduled,0,None,0,0,121,79,118,209,25.7,0,3,4000,0,0,6513,10513,Paid,Online,0,0,Medium
+530,P10530,20,Female,B-,Pediatrics,Back Pain,2025-08-06,39,2,1,No-Show,0,None,0,3,134,85,114,229,23.3,2,2,2500,0,3600,10537,16637,Partially Paid,Insurance,1,0,Medium
+531,P10531,58,Male,AB-,Pediatrics,Fracture,2025-02-14,1,3,0,Completed,1,Private Room,3,2,113,90,126,212,20.1,4,2,2000,27000,7200,14232,50432,Paid,Card,0,1,Medium
+532,P10532,23,Male,A+,General Medicine,Diabetes,2025-06-21,40,3,1,No-Show,0,None,0,1,147,55,135,145,28.9,2,0,4000,0,6000,1265,11265,Paid,Insurance,1,0,Medium
+533,P10533,45,Female,AB+,Radiology,Chest Pain,2025-05-08,1,2,0,No-Show,0,None,0,2,132,77,109,248,23.6,0,1,3000,0,0,8668,11668,Paid,Insurance,1,0,High
+534,P10534,56,Male,A+,Neurology,Back Pain,2025-11-16,12,3,1,Completed,0,None,0,3,127,76,123,195,21.0,0,0,2000,0,0,1858,3858,Paid,Online,0,0,High
+535,P10535,90,Female,A+,Neurology,Asthma,2025-06-13,20,5,1,Completed,0,None,0,1,123,81,132,200,29.5,3,1,3000,0,3600,11714,18314,Paid,Cash,0,0,High
+536,P10536,52,Male,AB+,Orthopedics,Back Pain,2025-07-17,41,5,0,No-Show,0,None,0,1,139,93,108,249,27.9,0,0,1500,0,0,11230,12730,Paid,Card,1,0,High
+537,P10537,65,Female,B-,Pediatrics,Migraine,2025-12-19,31,1,0,Completed,0,None,0,0,151,74,138,271,30.9,1,0,3000,0,2500,8896,14396,Paid,Insurance,0,0,High
+538,P10538,46,Female,B-,Cardiology,Fever,2025-01-06,27,2,1,Completed,0,None,0,0,114,82,94,189,25.4,5,2,2500,0,15000,11650,29150,Paid,Cash,0,0,Medium
+539,P10539,15,Female,B-,Neurology,Fracture,2025-03-07,1,2,0,No-Show,0,None,0,0,115,89,103,280,18.0,2,1,3500,0,6000,2723,12223,Unpaid,Card,1,0,Medium
+540,P10540,88,Male,AB-,Orthopedics,Hypertension,2025-03-30,12,2,0,No-Show,0,None,0,2,129,63,100,167,28.3,1,1,2000,0,3000,756,5756,Paid,Insurance,1,0,High
+541,P10541,52,Female,B+,Cardiology,Pneumonia,2025-03-20,27,3,1,No-Show,1,Private Room,7,2,150,79,102,277,27.9,4,4,1500,63000,12000,3546,80046,Paid,Cash,1,1,High
+542,P10542,32,Male,AB-,Neurology,Migraine,2025-03-19,33,1,0,Completed,0,None,0,2,142,71,90,223,24.5,2,1,3000,0,2400,4093,9493,Paid,Online,0,0,Medium
+543,P10543,35,Female,B+,Cardiology,Hypertension,2025-10-04,14,0,1,Completed,1,None,2,1,121,65,134,222,21.7,3,0,2500,0,5400,10296,18196,Paid,Online,0,1,Medium
+544,P10544,37,Female,O+,Cardiology,Pneumonia,2025-07-01,11,3,3,No-Show,0,None,0,2,129,88,153,240,21.6,1,1,3000,0,3000,3783,9783,Unpaid,Online,1,0,High
+545,P10545,31,Female,O+,Laboratory Services,Asthma,2025-06-25,9,4,0,Completed,0,None,0,1,125,81,77,180,27.7,3,0,2000,0,7500,2032,11532,Paid,Cash,0,0,Medium
+546,P10546,19,Male,O+,Pediatrics,Chest Pain,2025-03-22,25,2,0,Completed,1,None,3,5,143,73,120,201,25.1,3,3,2500,0,7500,17722,27722,Unpaid,Online,0,1,High
+547,P10547,70,Female,B+,Neurology,Chest Pain,2025-03-14,14,4,0,No-Show,0,None,0,0,123,78,132,172,22.8,1,2,4000,0,3000,8356,15356,Paid,Cash,1,0,Medium
+548,P10548,32,Male,A-,Laboratory Services,Fracture,2025-06-19,34,2,0,No-Show,0,None,0,4,116,75,104,240,30.6,0,2,4000,0,0,9487,13487,Partially Paid,Card,1,0,High
+549,P10549,41,Male,A-,Orthopedics,Diabetes,2025-07-07,30,1,1,Completed,1,None,2,0,125,66,145,187,25.1,3,8,3000,0,3600,1341,7941,Paid,Cash,0,1,Medium
+550,P10550,71,Female,AB+,Radiology,Asthma,2025-06-02,9,6,2,Completed,0,None,0,0,139,84,136,215,31.9,0,1,1500,0,0,10270,11770,Paid,Insurance,0,0,High
+551,P10551,42,Male,AB-,Pediatrics,Pneumonia,2025-06-28,27,4,0,Completed,0,None,0,0,127,79,150,143,25.1,0,0,2000,0,0,11690,13690,Paid,Insurance,0,0,Medium
+552,P10552,15,Female,B+,Neurology,Pneumonia,2025-03-29,26,3,1,No-Show,1,Private Room,3,1,107,71,94,153,23.9,3,3,3500,27000,9000,14504,54004,Paid,Insurance,1,1,Low
+553,P10553,90,Female,O-,Radiology,Pneumonia,2025-07-24,11,2,0,Cancelled,1,None,8,4,150,68,112,249,26.4,5,1,2500,0,15000,12999,30499,Paid,Online,0,1,High
+554,P10554,31,Female,B+,Orthopedics,Migraine,2025-08-03,15,4,1,No-Show,0,None,0,0,115,64,154,201,23.3,3,2,2000,0,7500,8435,17935,Paid,Online,1,0,Medium
+555,P10555,77,Female,O-,Orthopedics,Pneumonia,2025-05-23,10,4,0,No-Show,0,None,0,1,113,84,124,253,29.4,0,2,1500,0,0,9523,11023,Partially Paid,Online,1,0,High
+556,P10556,39,Male,B-,Neurology,Fever,2025-10-13,10,2,0,Completed,0,None,0,0,144,55,99,206,32.4,1,2,2500,0,1800,6143,10443,Unpaid,Insurance,0,0,Medium
+557,P10557,24,Female,B-,Orthopedics,Fracture,2025-05-26,34,3,0,No-Show,1,None,4,0,106,76,104,176,27.9,3,1,4000,0,9000,18904,31904,Unpaid,Online,1,1,Low
+558,P10558,33,Male,AB+,Orthopedics,Fracture,2025-09-21,25,1,0,No-Show,1,None,1,0,124,101,146,138,26.8,5,1,3500,0,12500,8726,24726,Paid,Insurance,1,0,Medium
+559,P10559,45,Male,O-,Neurology,Diabetes,2025-04-23,41,2,0,No-Show,0,None,0,0,125,105,126,199,23.0,3,0,2000,0,5400,2188,9588,Paid,Insurance,1,0,Medium
+560,P10560,26,Female,A+,Laboratory Services,Back Pain,2025-05-16,22,2,1,Completed,0,None,0,2,134,59,74,279,21.1,1,2,3000,0,1800,7328,12128,Paid,Card,0,0,Medium
+561,P10561,52,Male,O-,Cardiology,Migraine,2025-11-02,1,3,1,Completed,1,None,1,1,112,95,78,294,21.7,3,2,3000,0,3600,4326,10926,Paid,Card,0,0,Medium
+562,P10562,20,Female,AB-,Orthopedics,Migraine,2025-12-09,2,6,2,Cancelled,0,None,0,3,97,86,93,149,26.6,1,1,3000,0,2500,793,6293,Paid,Cash,0,0,Low
+563,P10563,24,Male,AB+,General Medicine,Migraine,2025-07-28,36,3,0,Completed,0,None,0,1,147,69,87,176,26.3,1,0,3000,0,1200,3799,7999,Paid,Insurance,0,0,Medium
+564,P10564,52,Male,O-,General Medicine,Fracture,2025-12-27,14,3,0,Completed,1,None,7,0,133,77,135,186,27.6,6,1,3000,0,10800,2017,15817,Unpaid,Cash,0,1,High
+565,P10565,62,Male,A+,Orthopedics,Fever,2025-08-18,3,3,0,Completed,0,None,0,4,155,78,98,231,14.0,1,2,4000,0,2500,5792,12292,Partially Paid,Cash,0,0,High
+566,P10566,39,Female,O+,Orthopedics,Migraine,2025-12-24,17,7,3,Completed,1,None,3,1,142,81,83,233,26.8,8,4,1500,0,14400,20306,36206,Partially Paid,Online,0,0,Medium
+567,P10567,43,Male,A+,Pediatrics,Migraine,2025-11-23,12,5,1,Completed,0,None,0,1,131,89,106,241,15.0,2,1,3500,0,2400,11115,17015,Paid,Insurance,0,0,Medium
+568,P10568,67,Male,AB-,Cardiology,Diabetes,2025-05-01,16,3,0,No-Show,0,None,0,1,128,87,163,265,30.5,3,0,2000,0,5400,2023,9423,Paid,Cash,1,0,High
+569,P10569,64,Male,B-,Cardiology,Asthma,2025-05-31,43,2,1,No-Show,0,None,0,1,150,88,133,293,25.8,0,1,4000,0,0,8451,12451,Paid,Online,1,0,High
+570,P10570,62,Female,B+,Neurology,Kidney Infection,2025-04-26,19,4,2,No-Show,1,General Ward,3,3,132,79,119,208,24.8,2,1,1500,10500,6000,14759,32759,Paid,Online,1,1,High
+571,P10571,61,Male,B+,Orthopedics,Kidney Infection,2025-03-19,7,0,0,Completed,0,None,0,2,146,92,154,228,30.5,3,0,3500,0,7500,10987,21987,Paid,Online,0,0,High
+572,P10572,40,Female,B+,Laboratory Services,Kidney Infection,2025-08-11,31,6,2,No-Show,1,None,4,1,132,90,130,227,25.5,4,3,3500,0,7200,15359,26059,Paid,Insurance,1,0,High
+573,P10573,41,Female,O+,Neurology,Migraine,2025-10-18,19,0,0,Cancelled,0,None,0,3,134,82,112,224,20.0,2,0,3500,0,5000,1854,10354,Paid,Card,0,0,High
+574,P10574,47,Male,O+,Radiology,Chest Pain,2025-08-17,40,4,0,Completed,1,General Ward,2,1,158,84,106,173,28.6,1,3,2000,7000,2500,2939,14439,Unpaid,Card,0,1,High
+575,P10575,62,Female,AB-,Neurology,Pneumonia,2025-12-23,41,3,0,No-Show,1,None,2,1,127,103,115,214,24.9,4,2,2500,0,10000,12214,24714,Paid,Cash,1,0,High
+576,P10576,21,Male,B-,Radiology,Diabetes,2025-01-02,33,4,0,No-Show,1,None,1,2,112,72,146,164,24.8,1,0,2000,0,1800,6235,10035,Unpaid,Cash,1,1,Medium
+577,P10577,41,Female,AB+,Pediatrics,Diabetes,2025-09-18,26,2,1,No-Show,0,None,0,0,130,84,166,228,25.0,3,2,1500,0,9000,6617,17117,Paid,Cash,1,0,High
+578,P10578,41,Female,O-,Pediatrics,Back Pain,2025-04-26,2,2,1,Scheduled,0,None,0,0,114,91,97,120,27.6,3,1,4000,0,3600,11137,18737,Paid,Cash,0,0,Low
+579,P10579,1,Female,A+,Neurology,Hypertension,2025-05-15,36,3,1,No-Show,0,None,0,1,112,61,114,109,30.1,2,2,2500,0,6000,4639,13139,Unpaid,Online,1,0,Low
+580,P10580,80,Male,A-,Laboratory Services,Diabetes,2025-12-17,20,0,1,No-Show,0,None,0,1,131,94,158,226,20.9,3,2,2500,0,3600,8064,14164,Partially Paid,Cash,1,0,High
+581,P10581,38,Male,B+,Radiology,Fever,2025-08-02,38,1,0,No-Show,1,None,3,0,119,82,138,238,30.7,1,2,3500,0,1800,4712,10012,Paid,Insurance,1,0,High
+582,P10582,61,Male,A-,Neurology,Back Pain,2025-05-20,44,6,0,Completed,0,None,0,2,119,78,130,266,29.3,0,1,2500,0,0,689,3189,Unpaid,Card,0,0,High
+583,P10583,47,Male,O-,Radiology,Fever,2025-02-08,11,3,0,No-Show,1,None,2,0,112,72,93,152,25.2,4,3,4000,0,7200,13107,24307,Paid,Online,1,1,Low
+584,P10584,77,Female,B-,Radiology,Chest Pain,2025-09-19,32,2,0,Completed,1,Private Room,4,3,129,87,85,214,23.4,2,0,3000,36000,6000,14519,59519,Unpaid,Card,0,1,High
+585,P10585,35,Female,O+,Neurology,Pneumonia,2025-05-13,6,4,1,Completed,0,None,0,0,134,76,86,217,20.3,1,2,4000,0,2500,4788,11288,Paid,Cash,0,0,Low
+586,P10586,34,Male,AB+,Cardiology,Back Pain,2025-09-04,10,4,0,No-Show,0,None,0,3,104,93,70,249,20.7,0,0,1500,0,0,1462,2962,Partially Paid,Cash,1,0,Medium
+587,P10587,53,Female,AB+,Pediatrics,Fracture,2025-08-25,17,2,1,Scheduled,0,None,0,1,116,79,117,214,30.3,3,0,2500,0,3600,11568,17668,Unpaid,Card,0,0,High
+588,P10588,62,Male,AB-,General Medicine,Kidney Infection,2025-07-20,38,5,1,No-Show,0,None,0,0,133,93,115,175,29.5,0,5,2500,0,0,11798,14298,Paid,Card,1,0,High
+589,P10589,90,Male,A-,Cardiology,Migraine,2025-07-20,3,3,0,Completed,0,None,0,0,160,97,102,240,23.1,2,1,1500,0,6000,6913,14413,Paid,Online,0,0,High
+590,P10590,59,Female,O+,Pediatrics,Kidney Infection,2025-06-03,35,5,0,Completed,0,None,0,0,127,90,150,198,31.5,3,1,4000,0,3600,6125,13725,Paid,Cash,0,0,High
+591,P10591,62,Male,B-,Neurology,Chest Pain,2025-10-30,2,4,1,Scheduled,0,None,0,1,133,91,140,234,24.5,2,2,2500,0,6000,6921,15421,Paid,Cash,0,0,High
+592,P10592,36,Female,AB-,General Medicine,Migraine,2025-09-06,16,4,0,Completed,0,None,0,0,115,77,116,186,30.4,0,2,3500,0,0,9960,13460,Paid,Card,0,0,Medium
+593,P10593,1,Male,AB+,General Medicine,Fever,2025-12-18,12,3,0,No-Show,0,None,0,1,106,78,86,147,23.6,0,0,3000,0,0,2078,5078,Paid,Insurance,1,0,Low
+594,P10594,13,Male,O+,Pediatrics,Chest Pain,2025-11-13,16,5,0,Completed,0,None,0,1,129,87,150,165,25.3,1,0,1500,0,3000,9297,13797,Paid,Online,0,0,Medium
+595,P10595,26,Male,O-,Orthopedics,Pneumonia,2025-12-22,29,1,1,No-Show,1,None,3,1,145,72,73,191,23.6,2,3,4000,0,3600,16938,24538,Unpaid,Card,1,0,Low
+596,P10596,29,Female,AB+,Orthopedics,Back Pain,2025-03-19,37,2,0,No-Show,0,None,0,0,91,88,113,216,25.1,3,3,2000,0,5400,4367,11767,Paid,Insurance,1,0,Medium
+597,P10597,22,Female,O+,Laboratory Services,Back Pain,2025-03-17,29,3,0,No-Show,0,None,0,1,135,75,159,244,36.4,1,2,1500,0,1200,5161,7861,Paid,Online,1,0,High
+598,P10598,23,Female,B+,Pediatrics,Chest Pain,2025-07-04,26,5,1,No-Show,1,None,4,0,146,87,121,219,26.0,4,2,4000,0,4800,11310,20110,Unpaid,Online,1,0,Medium
+599,P10599,48,Female,B+,Radiology,Asthma,2025-03-27,16,4,0,No-Show,1,None,5,1,128,72,141,226,34.4,1,2,2000,0,1800,3573,7373,Paid,Cash,1,1,High
+600,P10600,31,Male,A+,Laboratory Services,Hypertension,2025-10-01,4,1,0,Cancelled,1,None,5,0,142,56,104,197,15.2,2,2,3500,0,3600,19374,26474,Unpaid,Online,0,1,Low
+601,P10601,38,Male,B-,Cardiology,Kidney Infection,2025-08-16,17,1,0,No-Show,0,None,0,0,158,62,136,240,20.0,2,1,3000,0,2400,9715,15115,Paid,Card,1,0,High
+602,P10602,52,Female,A+,Radiology,Kidney Infection,2025-07-28,5,2,0,No-Show,1,None,2,0,137,90,147,271,25.6,2,4,2000,0,2400,20228,24628,Paid,Online,1,0,High
+603,P10603,35,Male,A+,General Medicine,Migraine,2025-11-30,43,5,0,No-Show,0,None,0,0,142,87,129,213,33.7,1,0,2000,0,2500,8338,12838,Paid,Cash,1,0,High
+604,P10604,45,Female,O+,Laboratory Services,Migraine,2025-10-08,3,2,1,Completed,1,None,1,1,144,80,112,158,21.2,2,3,4000,0,5000,9664,18664,Unpaid,Card,0,1,Medium
+605,P10605,58,Female,O-,Radiology,Diabetes,2025-08-04,24,2,1,Completed,1,Private Room,5,0,133,66,157,283,20.1,4,2,3000,45000,4800,11094,63894,Paid,Cash,0,1,High
+606,P10606,39,Male,A+,Pediatrics,Pneumonia,2025-03-03,19,2,1,Completed,0,None,0,1,127,84,65,245,36.4,8,3,2500,0,20000,8952,31452,Paid,Online,0,0,High
+607,P10607,67,Female,AB+,Cardiology,Migraine,2025-03-18,37,2,0,No-Show,1,None,4,0,135,75,128,247,30.7,5,2,3500,0,12500,8279,24279,Unpaid,Insurance,1,1,High
+608,P10608,58,Male,O+,Radiology,Migraine,2025-04-17,33,2,1,No-Show,0,None,0,1,120,72,115,183,32.0,2,1,2000,0,3600,1725,7325,Paid,Card,1,0,High
+609,P10609,48,Male,O+,Laboratory Services,Fever,2025-08-28,0,4,2,Completed,1,None,3,0,134,77,124,253,28.4,2,4,4000,0,3600,19946,27546,Paid,Online,0,1,High
+610,P10610,59,Female,B-,Orthopedics,Pneumonia,2025-12-30,23,2,0,Completed,0,None,0,1,128,80,112,203,22.3,0,1,2000,0,0,7307,9307,Paid,Card,0,0,Medium
+611,P10611,83,Female,B+,Laboratory Services,Pneumonia,2025-09-27,0,3,1,No-Show,0,None,0,2,121,89,104,228,32.3,2,1,2000,0,6000,2533,10533,Partially Paid,Card,1,0,High
+612,P10612,42,Female,B+,General Medicine,Pneumonia,2025-11-01,15,2,0,Cancelled,0,None,0,0,124,63,97,229,17.3,4,1,3500,0,4800,3306,11606,Paid,Cash,0,0,Low
+613,P10613,26,Female,AB+,Orthopedics,Fever,2025-01-21,6,3,1,Cancelled,0,None,0,0,120,78,83,184,29.9,2,1,2500,0,6000,11167,19667,Unpaid,Card,0,0,Low
+614,P10614,34,Male,B-,General Medicine,Asthma,2025-06-28,15,5,1,Completed,1,None,3,1,108,69,167,182,16.5,3,3,3500,0,7500,6041,17041,Paid,Card,0,1,Medium
+615,P10615,45,Male,O-,Cardiology,Diabetes,2025-03-15,37,8,2,No-Show,0,None,0,2,128,82,137,241,25.7,1,0,4000,0,3000,7916,14916,Paid,Online,1,0,High
+616,P10616,35,Male,A+,Neurology,Fever,2025-11-15,44,5,0,No-Show,1,None,1,2,141,81,145,152,26.6,3,1,2000,0,5400,18448,25848,Paid,Insurance,1,1,High
+617,P10617,17,Male,A-,Cardiology,Fever,2025-12-04,7,2,0,No-Show,1,None,2,0,135,63,90,161,24.0,1,6,4000,0,1800,7959,13759,Unpaid,Card,1,0,Low
+618,P10618,22,Female,A+,Neurology,Back Pain,2025-02-12,32,3,0,Completed,1,None,5,0,126,88,124,171,22.0,3,4,2500,0,9000,6346,17846,Unpaid,Insurance,0,1,Low
+619,P10619,29,Female,A+,Orthopedics,Back Pain,2025-11-06,41,3,0,Completed,1,Private Room,1,1,130,73,113,151,33.1,2,3,3500,9000,2400,5118,20018,Paid,Card,0,0,Medium
+620,P10620,56,Female,O-,Laboratory Services,Hypertension,2025-12-13,5,3,2,No-Show,1,None,2,2,147,78,128,233,17.3,4,4,3500,0,4800,9939,18239,Paid,Insurance,1,1,High
+621,P10621,37,Female,A+,Neurology,Migraine,2025-09-19,38,3,1,No-Show,0,None,0,0,138,72,130,166,22.7,2,0,3000,0,3600,9206,15806,Paid,Card,1,0,Medium
+622,P10622,18,Female,B+,Neurology,Kidney Infection,2025-11-03,6,3,0,Completed,0,None,0,1,150,67,65,208,27.7,0,0,1500,0,0,1454,2954,Paid,Insurance,0,0,Medium
+623,P10623,37,Female,AB-,Cardiology,Kidney Infection,2025-12-03,34,1,0,Completed,1,None,1,3,128,81,65,233,28.5,3,1,3000,0,5400,1810,10210,Unpaid,Card,0,1,Medium
+624,P10624,57,Male,A-,General Medicine,Diabetes,2025-04-30,27,0,1,No-Show,0,None,0,0,129,81,141,244,29.9,2,1,4000,0,6000,2756,12756,Paid,Insurance,1,0,High
+625,P10625,42,Male,B+,Orthopedics,Pneumonia,2025-02-19,36,3,0,Completed,1,None,2,0,126,84,115,153,29.7,3,1,2000,0,7500,12408,21908,Paid,Card,0,1,Medium
+626,P10626,66,Male,O-,Pediatrics,Hypertension,2025-01-17,15,4,1,No-Show,0,None,0,0,121,82,108,198,31.5,1,1,3000,0,2500,5204,10704,Paid,Online,1,0,High
+627,P10627,72,Male,AB+,General Medicine,Asthma,2025-10-31,6,1,0,No-Show,0,None,0,1,137,73,98,262,22.0,2,2,2000,0,2400,7341,11741,Paid,Cash,1,0,High
+628,P10628,66,Female,O-,Orthopedics,Kidney Infection,2025-05-25,36,3,1,No-Show,0,None,0,0,108,103,90,202,26.9,2,0,3500,0,2400,9826,15726,Paid,Card,1,0,Medium
+629,P10629,39,Male,A+,Radiology,Kidney Infection,2025-02-23,23,3,1,Completed,0,None,0,3,135,84,147,215,23.5,2,3,3000,0,6000,1984,10984,Paid,Card,0,0,High
+630,P10630,37,Female,A+,Radiology,Pneumonia,2025-05-06,40,3,1,No-Show,0,None,0,0,131,62,102,300,18.9,1,0,2000,0,1200,5820,9020,Paid,Online,1,0,Medium
+631,P10631,35,Male,A-,Pediatrics,Hypertension,2025-02-09,41,1,0,No-Show,0,None,0,0,115,80,101,226,24.5,2,1,4000,0,5000,4731,13731,Paid,Cash,1,0,Medium
+632,P10632,43,Male,B+,Orthopedics,Asthma,2025-05-03,16,0,0,No-Show,0,None,0,0,127,58,85,191,23.4,2,2,2000,0,5000,7250,14250,Paid,Insurance,1,0,Low
+633,P10633,27,Female,A-,General Medicine,Diabetes,2025-05-26,25,1,0,Completed,0,None,0,0,105,86,132,193,29.0,1,1,2500,0,2500,1879,6879,Paid,Insurance,0,0,Medium
+634,P10634,12,Male,AB+,Cardiology,Kidney Infection,2025-09-23,36,1,0,No-Show,0,None,0,2,122,60,134,139,29.1,2,0,2000,0,2400,10853,15253,Paid,Online,1,0,Medium
+635,P10635,60,Female,A-,Radiology,Fracture,2025-09-16,32,4,0,No-Show,1,General Ward,3,0,155,74,115,255,26.8,3,5,3500,10500,3600,12500,30100,Paid,Insurance,1,1,High
+636,P10636,43,Female,O-,Orthopedics,Back Pain,2025-03-26,21,5,3,No-Show,1,Private Room,6,1,163,87,122,196,28.2,0,4,2500,54000,0,16173,72673,Partially Paid,Insurance,1,1,High
+637,P10637,47,Female,B-,Neurology,Asthma,2025-12-16,42,1,0,No-Show,0,None,0,1,113,64,119,202,25.4,1,2,3500,0,1800,5993,11293,Unpaid,Cash,1,0,Medium
+638,P10638,54,Male,O+,General Medicine,Kidney Infection,2025-10-31,23,3,1,Completed,0,None,0,0,148,76,68,252,31.3,1,3,4000,0,1200,11971,17171,Unpaid,Insurance,0,0,High
+639,P10639,20,Male,AB+,Cardiology,Chest Pain,2025-02-19,24,1,1,Completed,0,None,0,0,111,75,98,189,25.5,0,0,3500,0,0,2186,5686,Paid,Online,0,0,Low
+640,P10640,39,Male,A-,Cardiology,Migraine,2025-04-11,1,1,1,No-Show,0,None,0,0,123,78,71,231,28.0,4,2,3500,0,10000,3279,16779,Unpaid,Online,1,0,Medium
+641,P10641,53,Female,B-,Orthopedics,Back Pain,2025-10-27,2,1,1,No-Show,0,None,0,0,132,70,125,169,30.4,4,2,3500,0,4800,6961,15261,Unpaid,Online,1,0,Medium
+642,P10642,40,Female,O-,Laboratory Services,Kidney Infection,2025-06-29,5,3,1,Completed,0,None,0,0,142,80,130,191,32.0,2,0,3000,0,2400,5918,11318,Paid,Online,0,0,High
+643,P10643,38,Female,AB-,Neurology,Fever,2025-06-07,37,4,2,No-Show,1,Private Room,5,2,123,80,120,136,27.7,3,2,1500,45000,7500,6050,60050,Paid,Cash,1,1,Medium
+644,P10644,22,Male,A+,Radiology,Chest Pain,2025-11-25,37,3,2,Completed,0,None,0,0,134,86,119,187,19.4,0,3,2500,0,0,8149,10649,Partially Paid,Online,0,0,Low
+645,P10645,65,Female,AB+,Laboratory Services,Pneumonia,2025-05-05,0,5,0,Completed,1,Private Room,6,1,122,77,82,215,19.7,3,2,3500,54000,9000,5978,72478,Paid,Online,0,1,Medium
+646,P10646,57,Male,B-,Cardiology,Fever,2025-08-06,16,2,1,Scheduled,1,None,1,4,145,85,157,283,24.2,3,4,2000,0,7500,19451,28951,Paid,Online,0,1,High
+647,P10647,72,Male,A+,General Medicine,Chest Pain,2025-02-12,36,1,0,No-Show,1,General Ward,2,0,148,67,142,255,19.8,2,5,2000,7000,2400,6244,17644,Paid,Insurance,1,1,High
+648,P10648,76,Male,B+,Pediatrics,Chest Pain,2025-09-07,36,5,2,No-Show,0,None,0,1,118,75,126,224,22.5,2,1,3000,0,5000,10085,18085,Unpaid,Cash,1,0,High
+649,P10649,23,Male,A-,Pediatrics,Hypertension,2025-04-11,38,2,0,Scheduled,1,None,3,0,95,65,136,192,22.5,0,3,4000,0,0,7172,11172,Paid,Online,0,0,Low
+650,P10650,50,Female,B-,General Medicine,Diabetes,2025-07-26,21,6,0,Cancelled,1,None,3,0,117,92,92,214,25.7,1,1,4000,0,2500,9472,15972,Paid,Online,0,1,Medium
+651,P10651,39,Male,A-,Pediatrics,Migraine,2025-04-23,37,1,0,No-Show,0,None,0,1,147,72,107,217,24.1,1,1,2500,0,2500,8113,13113,Unpaid,Online,1,0,Medium
+652,P10652,62,Male,A-,Pediatrics,Migraine,2025-05-13,10,0,0,Completed,0,None,0,0,116,79,86,202,33.0,1,1,1500,0,1200,3586,6286,Partially Paid,Card,0,0,Medium
+653,P10653,48,Female,AB+,Radiology,Chest Pain,2025-04-10,29,1,1,No-Show,0,None,0,1,152,71,130,187,16.2,1,0,2500,0,1800,2178,6478,Partially Paid,Card,1,0,Medium
+654,P10654,53,Male,A+,General Medicine,Migraine,2025-07-29,5,5,1,Completed,0,None,0,2,125,85,114,178,24.3,4,3,3500,0,10000,9063,22563,Paid,Insurance,0,0,Medium
+655,P10655,65,Male,B+,General Medicine,Fever,2025-09-19,14,1,1,No-Show,0,None,0,1,147,76,151,153,33.4,0,2,1500,0,0,4113,5613,Paid,Insurance,1,0,High
+656,P10656,45,Female,O-,Cardiology,Chest Pain,2025-07-19,10,3,1,No-Show,0,None,0,0,115,88,132,154,21.9,1,0,2000,0,1200,873,4073,Partially Paid,Card,1,0,Medium
+657,P10657,18,Male,O-,Neurology,Kidney Infection,2025-01-14,25,3,1,Completed,0,None,0,1,100,69,103,160,21.4,2,2,1500,0,6000,2720,10220,Paid,Insurance,0,0,Low
+658,P10658,38,Male,AB-,Pediatrics,Asthma,2025-06-08,35,1,0,Completed,0,None,0,2,106,87,73,214,20.9,0,1,3500,0,0,2303,5803,Partially Paid,Online,0,0,Low
+659,P10659,42,Female,O-,Orthopedics,Hypertension,2025-12-03,34,4,0,No-Show,0,None,0,1,92,73,77,133,22.1,3,1,1500,0,9000,3409,13909,Paid,Insurance,1,0,Low
+660,P10660,24,Male,A-,Cardiology,Chest Pain,2025-01-11,7,3,0,Completed,1,None,5,0,138,88,109,215,28.7,4,5,2000,0,4800,13130,19930,Paid,Online,0,1,Medium
+661,P10661,54,Male,B-,Neurology,Migraine,2025-07-03,27,7,2,Completed,0,None,0,0,109,95,145,186,31.4,3,3,3500,0,9000,8090,20590,Paid,Card,0,0,High
+662,P10662,1,Female,O+,Orthopedics,Diabetes,2025-06-29,31,2,0,No-Show,0,None,0,1,108,70,160,170,20.5,1,2,2500,0,1800,5676,9976,Unpaid,Insurance,1,0,Low
+663,P10663,42,Female,O-,Radiology,Fracture,2025-12-03,21,6,1,Completed,0,None,0,1,127,76,122,180,22.3,4,1,2000,0,4800,8620,15420,Unpaid,Cash,0,0,Medium
+664,P10664,34,Female,A-,Cardiology,Pneumonia,2025-01-14,42,4,0,Completed,1,None,4,2,147,80,125,216,22.3,4,4,3000,0,7200,13606,23806,Paid,Insurance,0,1,High
+665,P10665,54,Female,A+,Orthopedics,Hypertension,2025-04-10,13,5,0,Scheduled,0,None,0,1,153,85,114,215,32.7,1,3,1500,0,1800,6457,9757,Unpaid,Card,0,0,High
+666,P10666,42,Male,O-,Orthopedics,Pneumonia,2025-04-08,37,3,0,No-Show,0,None,0,2,150,70,103,222,18.9,1,0,2500,0,3000,10306,15806,Paid,Card,1,0,Medium
+667,P10667,40,Male,AB-,Laboratory Services,Chest Pain,2025-06-22,8,4,2,Scheduled,1,None,1,2,134,99,103,162,33.3,3,4,4000,0,7500,16646,28146,Partially Paid,Cash,0,0,High
+668,P10668,65,Male,A+,Radiology,Pneumonia,2025-05-25,42,5,0,No-Show,0,None,0,2,134,50,86,145,30.6,4,2,3000,0,7200,8848,19048,Unpaid,Online,1,0,Medium
+669,P10669,37,Male,A+,General Medicine,Pneumonia,2025-11-12,35,2,1,No-Show,0,None,0,0,124,75,135,205,19.9,4,1,2500,0,4800,2601,9901,Unpaid,Card,1,0,Medium
+670,P10670,69,Female,O+,Laboratory Services,Back Pain,2025-10-31,7,2,0,No-Show,0,None,0,0,133,103,145,211,24.1,2,2,3000,0,5000,4725,12725,Unpaid,Insurance,1,0,High
+671,P10671,41,Female,AB-,Radiology,Fracture,2025-10-31,0,4,0,Completed,1,None,2,0,119,88,65,180,23.3,4,3,3000,0,7200,14521,24721,Paid,Insurance,0,0,Low
+672,P10672,15,Male,O+,Cardiology,Asthma,2025-10-09,1,7,2,Scheduled,1,None,5,1,115,82,132,252,18.3,4,4,1500,0,4800,11804,18104,Paid,Card,0,1,Medium
+673,P10673,47,Male,O+,Pediatrics,Fever,2025-05-08,10,0,0,Completed,0,None,0,1,134,70,123,233,29.4,2,0,3000,0,6000,11894,20894,Paid,Insurance,0,0,High
+674,P10674,35,Female,B-,Cardiology,Fracture,2025-01-27,1,2,1,Completed,0,None,0,1,115,79,121,237,30.8,6,1,2000,0,18000,2325,22325,Paid,Online,0,0,High
+675,P10675,48,Female,A-,Radiology,Back Pain,2025-01-03,31,5,1,No-Show,1,None,3,2,134,82,123,166,27.0,3,3,1500,0,9000,1456,11956,Unpaid,Insurance,1,0,High
+676,P10676,40,Male,A-,Pediatrics,Pneumonia,2025-03-21,27,2,1,Completed,0,None,0,1,147,90,117,188,28.3,3,2,2500,0,9000,833,12333,Paid,Card,0,0,High
+677,P10677,50,Female,AB-,Laboratory Services,Diabetes,2025-09-30,35,3,0,No-Show,1,General Ward,2,1,113,82,125,218,30.8,3,2,3500,7000,7500,18783,36783,Paid,Cash,1,1,High
+678,P10678,46,Female,AB+,Orthopedics,Pneumonia,2025-01-01,18,2,0,Scheduled,1,Private Room,4,1,112,81,90,206,21.8,3,3,3500,36000,7500,6171,53171,Paid,Online,0,1,Medium
+679,P10679,45,Male,AB+,General Medicine,Back Pain,2025-03-03,19,1,0,No-Show,0,None,0,1,106,84,102,165,26.9,2,4,4000,0,5000,7128,16128,Unpaid,Cash,1,0,Medium
+680,P10680,48,Female,A+,Radiology,Asthma,2025-05-04,41,6,1,No-Show,1,None,4,0,144,74,106,230,29.4,8,1,4000,0,20000,6667,30667,Unpaid,Online,1,1,High
+681,P10681,21,Female,AB+,General Medicine,Asthma,2025-03-21,35,2,0,No-Show,1,None,3,1,133,65,110,213,28.9,8,2,2500,0,20000,6558,29058,Paid,Online,1,1,Medium
+682,P10682,56,Female,O-,General Medicine,Diabetes,2025-07-18,11,1,0,Completed,0,None,0,1,122,79,150,217,24.4,2,1,3500,0,3600,8606,15706,Partially Paid,Online,0,0,High
+683,P10683,39,Male,AB-,Cardiology,Fracture,2025-02-20,12,0,0,Scheduled,0,None,0,0,137,85,112,224,17.4,1,2,3000,0,1800,6118,10918,Unpaid,Cash,0,0,Medium
+684,P10684,38,Male,B-,Radiology,Asthma,2025-08-09,4,1,0,No-Show,0,None,0,0,119,75,163,225,24.8,3,1,3000,0,9000,4090,16090,Unpaid,Insurance,1,0,High
+685,P10685,53,Male,A-,Pediatrics,Back Pain,2025-06-03,30,0,1,Completed,0,None,0,0,116,72,123,189,26.5,0,3,4000,0,0,7411,11411,Paid,Cash,0,0,Medium
+686,P10686,22,Male,O-,Orthopedics,Fever,2025-05-31,12,0,0,Completed,1,None,6,1,164,72,96,177,19.4,5,1,3000,0,9000,11619,23619,Paid,Online,0,1,Low
+687,P10687,59,Male,AB-,Radiology,Fever,2025-01-22,38,3,0,Completed,0,None,0,0,142,78,65,208,30.5,1,1,1500,0,2500,9218,13218,Partially Paid,Cash,0,0,Medium
+688,P10688,62,Male,AB+,Radiology,Chest Pain,2025-02-23,19,1,0,No-Show,0,None,0,0,143,79,65,158,28.3,1,1,3000,0,2500,6995,12495,Paid,Cash,1,0,Medium
+689,P10689,39,Female,B-,Laboratory Services,Back Pain,2025-02-07,21,3,1,Completed,0,None,0,1,114,97,149,199,31.7,3,2,3000,0,9000,6190,18190,Unpaid,Online,0,0,High
+690,P10690,50,Male,A-,Cardiology,Pneumonia,2025-05-24,22,2,0,Completed,0,None,0,3,123,89,91,203,22.6,0,3,1500,0,0,10277,11777,Unpaid,Cash,0,0,Medium
+691,P10691,31,Female,A+,Cardiology,Fracture,2025-12-23,34,3,0,No-Show,0,None,0,1,155,84,138,164,26.6,2,4,4000,0,5000,1455,10455,Paid,Cash,1,0,Medium
+692,P10692,52,Male,A-,General Medicine,Back Pain,2025-03-27,15,1,0,No-Show,0,None,0,0,145,69,119,176,28.5,1,1,4000,0,1800,7182,12982,Partially Paid,Cash,1,0,Medium
+693,P10693,50,Male,B+,Neurology,Back Pain,2025-05-06,37,3,1,No-Show,1,None,4,0,139,91,110,137,25.2,2,1,4000,0,3600,18212,25812,Unpaid,Online,1,1,Medium
+694,P10694,27,Female,O+,Orthopedics,Diabetes,2025-08-13,11,2,2,Completed,0,None,0,1,109,79,134,201,26.3,3,4,4000,0,9000,2244,15244,Partially Paid,Online,0,0,Medium
+695,P10695,73,Female,A+,Pediatrics,Diabetes,2025-02-02,15,1,0,Completed,0,None,0,1,133,79,184,197,29.0,2,2,2500,0,2400,1596,6496,Paid,Online,0,0,High
+696,P10696,46,Female,O-,Pediatrics,Kidney Infection,2025-03-11,18,1,1,No-Show,1,None,2,1,98,64,83,199,24.9,5,2,2000,0,15000,10211,27211,Paid,Cash,1,0,Medium
+697,P10697,41,Male,AB+,Radiology,Fever,2025-04-12,35,1,0,No-Show,1,None,1,0,155,91,144,202,23.3,4,3,4000,0,4800,17688,26488,Partially Paid,Cash,1,1,High
+698,P10698,53,Male,O-,General Medicine,Diabetes,2025-10-17,17,2,0,No-Show,1,None,2,0,138,81,149,169,28.8,6,2,2500,0,18000,14376,34876,Paid,Card,1,1,High
+699,P10699,61,Male,O-,General Medicine,Fever,2025-07-24,5,2,0,Completed,1,None,4,1,119,68,125,176,26.2,2,9,4000,0,5000,5042,14042,Partially Paid,Insurance,0,1,Medium
+700,P10700,51,Female,O-,Orthopedics,Diabetes,2025-04-22,6,7,1,No-Show,0,None,0,0,120,87,158,184,21.8,0,2,3500,0,0,8716,12216,Paid,Cash,1,0,Medium
+701,P10701,55,Female,AB-,Cardiology,Migraine,2025-12-26,34,5,0,Scheduled,1,None,2,0,130,92,122,198,22.6,5,5,4000,0,6000,12717,22717,Paid,Cash,0,1,Medium
+702,P10702,25,Female,O+,Neurology,Migraine,2025-10-20,17,0,0,Completed,0,None,0,1,126,71,101,201,23.3,2,0,4000,0,3600,2163,9763,Paid,Card,0,0,Medium
+703,P10703,52,Female,O-,Laboratory Services,Fever,2025-12-26,9,1,0,No-Show,0,None,0,1,107,77,120,207,30.3,1,2,1500,0,2500,10468,14468,Paid,Card,1,0,High
+704,P10704,48,Male,AB+,General Medicine,Fracture,2025-03-10,32,2,1,Completed,0,None,0,1,114,81,117,154,25.6,0,0,1500,0,0,9744,11244,Paid,Insurance,0,0,Medium
+705,P10705,50,Female,O+,General Medicine,Hypertension,2025-01-31,5,2,1,Completed,0,None,0,3,149,83,84,158,27.3,2,2,2500,0,2400,10775,15675,Paid,Cash,0,0,Medium
+706,P10706,24,Male,B-,Neurology,Pneumonia,2025-02-14,32,4,1,No-Show,0,None,0,2,114,71,104,173,31.1,2,2,3000,0,3600,11604,18204,Unpaid,Cash,1,0,Medium
+707,P10707,61,Male,A+,Laboratory Services,Asthma,2025-08-24,6,0,0,No-Show,1,None,4,0,124,89,110,139,18.5,1,8,1500,0,3000,15505,20005,Partially Paid,Card,1,1,Low
+708,P10708,22,Male,A-,General Medicine,Asthma,2025-08-12,36,4,1,No-Show,0,None,0,1,144,81,126,208,22.8,2,1,4000,0,2400,10886,17286,Partially Paid,Insurance,1,0,Medium
+709,P10709,34,Male,B-,Neurology,Back Pain,2025-10-23,1,5,3,Completed,0,None,0,0,124,78,135,216,24.9,1,1,1500,0,1200,8428,11128,Paid,Cash,0,0,Medium
+710,P10710,51,Male,B+,Orthopedics,Chest Pain,2025-02-05,32,2,0,No-Show,0,None,0,1,150,67,95,183,25.5,1,0,4000,0,3000,4450,11450,Paid,Online,1,0,Medium
+711,P10711,40,Male,A-,Neurology,Hypertension,2025-09-17,10,3,0,No-Show,0,None,0,1,132,88,106,145,26.3,0,1,3500,0,0,6437,9937,Paid,Online,1,0,Medium
+712,P10712,16,Male,O-,Neurology,Fever,2025-06-11,18,1,0,No-Show,0,None,0,0,126,59,94,186,28.9,1,0,2000,0,2500,7832,12332,Paid,Card,1,0,Low
+713,P10713,28,Male,O-,Pediatrics,Diabetes,2025-08-08,22,3,1,Completed,0,None,0,3,129,62,146,217,24.3,4,1,4000,0,12000,11400,27400,Unpaid,Cash,0,0,High
+714,P10714,57,Male,O-,General Medicine,Asthma,2025-06-29,6,3,0,Cancelled,1,Private Room,3,0,126,92,101,225,24.2,2,3,4000,27000,5000,7265,43265,Paid,Card,0,0,Medium
+715,P10715,46,Male,A+,Pediatrics,Migraine,2025-07-15,4,7,0,Scheduled,0,None,0,1,153,72,70,139,33.0,2,0,3500,0,6000,8636,18136,Paid,Card,0,0,Medium
+716,P10716,52,Female,A+,Radiology,Diabetes,2025-06-13,43,2,0,No-Show,0,None,0,0,127,78,140,219,22.2,2,2,4000,0,5000,6603,15603,Paid,Card,1,0,Medium
+717,P10717,29,Male,B-,General Medicine,Pneumonia,2025-12-29,4,1,0,No-Show,0,None,0,1,132,96,117,242,27.7,4,2,1500,0,10000,9083,20583,Unpaid,Insurance,1,0,High
+718,P10718,28,Male,B+,Cardiology,Hypertension,2025-09-07,29,4,2,No-Show,1,None,2,0,135,76,94,204,21.6,8,2,2000,0,24000,8464,34464,Paid,Cash,1,0,Low
+719,P10719,28,Male,O-,Laboratory Services,Chest Pain,2025-03-20,39,2,0,Cancelled,1,None,1,2,166,82,73,166,26.8,2,8,3000,0,5000,12495,20495,Paid,Cash,0,1,Medium
+720,P10720,51,Male,A+,Laboratory Services,Hypertension,2025-05-14,30,1,0,No-Show,0,None,0,0,145,88,108,245,22.6,3,4,3500,0,5400,1868,10768,Paid,Insurance,1,0,Medium
+721,P10721,19,Male,AB-,General Medicine,Fracture,2025-04-08,28,5,2,No-Show,0,None,0,1,124,62,111,185,21.2,7,0,4000,0,21000,3269,28269,Paid,Insurance,1,0,Low
+722,P10722,51,Male,A-,Laboratory Services,Chest Pain,2025-10-21,43,2,1,No-Show,0,None,0,2,148,72,104,202,30.9,3,0,2000,0,3600,8579,14179,Paid,Card,1,0,High
+723,P10723,40,Female,O-,Neurology,Fracture,2025-12-30,2,2,0,No-Show,0,None,0,0,136,88,132,202,24.3,4,0,3000,0,7200,3436,13636,Paid,Cash,1,0,Medium
+724,P10724,30,Female,O-,Pediatrics,Fracture,2025-10-04,0,2,2,Completed,0,None,0,1,104,72,121,187,28.1,1,0,3500,0,3000,9819,16319,Paid,Card,0,0,Medium
+725,P10725,26,Female,A+,Cardiology,Fracture,2025-04-11,2,2,2,No-Show,0,None,0,0,155,84,96,173,22.8,1,2,2500,0,1800,827,5127,Paid,Online,1,0,Low
+726,P10726,63,Male,AB+,General Medicine,Kidney Infection,2025-12-30,27,2,0,No-Show,1,None,1,0,130,68,136,233,22.9,3,2,2000,0,7500,11966,21466,Paid,Card,1,1,High
+727,P10727,57,Male,B-,Radiology,Pneumonia,2025-05-15,1,0,0,Completed,1,Private Room,2,1,127,78,78,186,29.0,7,2,1500,18000,21000,9824,50324,Unpaid,Insurance,0,1,Medium
+728,P10728,49,Female,O+,Cardiology,Hypertension,2025-10-22,18,5,0,No-Show,1,General Ward,1,0,129,69,107,193,26.7,1,2,4000,3500,1800,1700,11000,Paid,Card,1,0,Medium
+729,P10729,67,Male,A+,Radiology,Hypertension,2025-01-10,30,5,1,No-Show,1,None,7,1,133,76,69,183,24.5,5,3,1500,0,6000,19611,27111,Partially Paid,Insurance,1,1,Medium
+730,P10730,23,Female,A+,Orthopedics,Diabetes,2025-09-24,26,4,4,No-Show,1,None,4,0,117,66,198,223,30.7,7,3,2000,0,8400,19609,30009,Paid,Insurance,1,1,High
+731,P10731,42,Male,A-,Pediatrics,Chest Pain,2025-01-17,36,1,0,No-Show,0,None,0,0,114,75,107,213,29.3,4,4,2500,0,7200,4095,13795,Paid,Cash,1,0,Medium
+732,P10732,36,Female,A+,Laboratory Services,Migraine,2025-06-22,29,2,0,No-Show,0,None,0,0,97,79,112,226,23.0,0,0,2000,0,0,11986,13986,Unpaid,Insurance,1,0,Medium
+733,P10733,49,Female,AB-,Neurology,Asthma,2025-06-20,19,4,1,No-Show,0,None,0,1,126,104,110,206,27.7,2,2,4000,0,6000,8018,18018,Paid,Insurance,1,0,High
+734,P10734,60,Male,AB+,Neurology,Diabetes,2025-06-30,33,2,0,No-Show,1,None,1,0,164,77,184,234,21.7,2,2,4000,0,5000,6689,15689,Paid,Insurance,1,0,High
+735,P10735,40,Female,AB-,Laboratory Services,Back Pain,2025-01-04,20,5,1,Completed,0,None,0,3,130,83,97,204,28.2,2,2,3500,0,3600,8260,15360,Unpaid,Cash,0,0,High
+736,P10736,65,Female,A+,General Medicine,Diabetes,2025-10-15,11,2,1,No-Show,0,None,0,0,140,73,133,181,26.0,3,0,3000,0,7500,11152,21652,Paid,Online,1,0,High
+737,P10737,75,Female,A-,Pediatrics,Pneumonia,2025-01-17,12,1,0,Completed,1,General Ward,1,1,154,81,87,203,32.3,8,0,3500,3500,14400,3388,24788,Paid,Insurance,0,1,High
+738,P10738,34,Male,O+,Neurology,Fracture,2025-07-07,43,6,2,Completed,0,None,0,1,91,65,65,270,26.1,4,1,2500,0,10000,10830,23330,Unpaid,Online,0,0,Medium
+739,P10739,28,Male,A-,General Medicine,Chest Pain,2025-02-10,27,6,1,Completed,0,None,0,0,147,87,132,209,29.1,0,1,2500,0,0,5083,7583,Paid,Insurance,0,0,High
+740,P10740,20,Female,A-,Orthopedics,Back Pain,2025-10-30,15,1,0,Scheduled,1,None,1,1,106,69,110,143,29.6,6,6,4000,0,7200,14557,25757,Paid,Cash,0,0,Low
+741,P10741,44,Female,B+,Pediatrics,Migraine,2025-10-21,9,3,2,Completed,1,ICU,2,1,113,90,164,229,30.8,7,2,1500,50000,8400,4748,64648,Paid,Insurance,0,1,High
+742,P10742,43,Male,B+,Neurology,Fracture,2025-06-16,12,2,0,Scheduled,0,None,0,0,126,86,85,202,34.8,5,1,3500,0,6000,2681,12181,Paid,Insurance,0,0,Medium
+743,P10743,59,Female,B-,Orthopedics,Kidney Infection,2025-11-17,19,6,0,Completed,1,General Ward,4,1,139,65,121,193,32.5,5,3,1500,14000,12500,12916,40916,Paid,Online,0,0,High
+744,P10744,37,Female,O-,Radiology,Chest Pain,2025-11-14,40,6,0,Completed,0,None,0,0,113,86,115,233,25.2,1,2,4000,0,2500,9284,15784,Paid,Insurance,0,0,Medium
+745,P10745,54,Female,AB-,Radiology,Asthma,2025-12-04,14,2,1,Completed,1,Private Room,2,0,153,86,127,172,30.2,5,3,2500,18000,9000,17047,46547,Unpaid,Online,0,0,High
+746,P10746,34,Male,B+,Pediatrics,Chest Pain,2025-01-18,7,7,0,Completed,1,None,6,2,127,61,67,222,22.8,2,4,2000,0,3600,19436,25036,Unpaid,Card,0,1,Medium
+747,P10747,39,Male,AB-,Pediatrics,Diabetes,2025-08-27,8,5,0,Completed,0,None,0,0,121,60,150,234,29.3,2,1,1500,0,5000,5885,12385,Paid,Card,0,0,High
+748,P10748,47,Male,O-,Radiology,Hypertension,2025-12-16,32,4,0,Completed,0,None,0,2,143,63,99,178,25.9,0,1,4000,0,0,11986,15986,Partially Paid,Card,0,0,Medium
+749,P10749,5,Female,O-,General Medicine,Hypertension,2025-10-21,33,3,2,No-Show,0,None,0,0,140,63,134,204,27.9,3,1,3000,0,9000,2524,14524,Unpaid,Online,1,0,Medium
+750,P10750,12,Male,AB+,General Medicine,Pneumonia,2025-07-10,25,6,1,No-Show,1,ICU,6,1,98,79,167,142,24.4,5,1,2500,150000,12500,14528,179528,Paid,Card,1,1,Medium
+751,P10751,79,Female,B+,Cardiology,Diabetes,2025-10-27,44,2,0,No-Show,0,None,0,1,138,84,166,248,25.6,0,2,4000,0,0,4186,8186,Partially Paid,Cash,1,0,High
+752,P10752,26,Female,A+,General Medicine,Fever,2025-03-31,19,4,0,Completed,0,None,0,1,131,89,118,161,23.5,1,0,3500,0,1800,8159,13459,Paid,Card,0,0,Medium
+753,P10753,21,Male,A-,Neurology,Migraine,2025-09-04,17,6,0,Cancelled,0,None,0,1,117,64,79,215,21.3,0,5,2000,0,0,10366,12366,Paid,Insurance,0,0,Low
+754,P10754,44,Male,AB-,Orthopedics,Chest Pain,2025-04-19,7,2,1,No-Show,0,None,0,1,135,69,78,231,23.5,1,2,3500,0,1200,4637,9337,Partially Paid,Insurance,1,0,Medium
+755,P10755,88,Male,AB-,Laboratory Services,Fever,2025-08-16,10,3,0,Completed,0,None,0,0,120,65,132,276,22.1,1,1,2500,0,3000,5567,11067,Paid,Online,0,0,High
+756,P10756,66,Female,O+,Neurology,Pneumonia,2025-03-23,28,1,1,No-Show,1,None,3,0,123,72,136,217,22.9,1,5,4000,0,3000,18392,25392,Unpaid,Insurance,1,1,High
+757,P10757,1,Female,A-,Pediatrics,Fever,2025-04-24,31,2,2,No-Show,0,None,0,2,105,78,125,213,26.5,1,0,4000,0,3000,2340,9340,Paid,Card,1,0,Medium
+758,P10758,52,Male,O+,Cardiology,Kidney Infection,2025-09-25,15,2,0,Scheduled,0,None,0,0,108,75,65,191,19.9,0,3,3500,0,0,3662,7162,Paid,Cash,0,0,Low
+759,P10759,35,Male,B+,Orthopedics,Migraine,2025-07-28,13,3,1,Cancelled,1,None,1,0,135,82,101,160,17.4,7,4,3500,0,21000,8511,33011,Unpaid,Card,0,1,Low
+760,P10760,39,Male,AB+,Neurology,Fever,2025-11-12,22,5,3,No-Show,0,None,0,0,119,81,118,174,25.9,1,0,2500,0,3000,11820,17320,Paid,Online,1,0,Medium
+761,P10761,32,Female,AB+,Radiology,Kidney Infection,2025-05-15,9,2,1,Completed,0,None,0,0,119,68,93,197,26.6,5,2,2000,0,6000,3003,11003,Unpaid,Insurance,0,0,Medium
+762,P10762,77,Male,B-,Laboratory Services,Migraine,2025-10-18,12,4,1,Completed,0,None,0,1,146,78,114,192,25.9,1,2,3000,0,1800,8718,13518,Paid,Cash,0,0,High
+763,P10763,49,Male,AB-,Neurology,Migraine,2025-03-30,28,4,1,No-Show,0,None,0,0,129,67,79,201,22.1,1,2,3000,0,1200,9890,14090,Paid,Insurance,1,0,Medium
+764,P10764,69,Female,A-,Neurology,Migraine,2025-05-02,29,1,1,No-Show,0,None,0,3,159,82,142,157,22.9,0,2,4000,0,0,8586,12586,Partially Paid,Online,1,0,High
+765,P10765,52,Male,O-,Neurology,Migraine,2025-12-12,16,4,0,No-Show,0,None,0,1,119,74,127,186,18.4,2,0,2000,0,2400,7639,12039,Paid,Card,1,0,Medium
+766,P10766,13,Female,AB-,Pediatrics,Hypertension,2025-02-16,29,6,2,No-Show,0,None,0,1,117,80,131,202,28.5,2,1,2500,0,5000,4394,11894,Paid,Cash,1,0,Medium
+767,P10767,25,Female,B+,Cardiology,Pneumonia,2025-05-13,25,5,1,No-Show,0,None,0,0,125,80,106,229,21.7,1,5,4000,0,1200,2907,8107,Paid,Cash,1,0,Medium
+768,P10768,46,Male,AB-,Radiology,Chest Pain,2025-05-07,7,1,0,Completed,0,None,0,0,111,85,155,229,30.4,4,0,2500,0,10000,8362,20862,Paid,Cash,0,0,High
+769,P10769,38,Female,AB-,Neurology,Asthma,2025-10-20,43,2,1,No-Show,0,None,0,1,126,79,70,190,15.1,1,0,1500,0,1800,7833,11133,Paid,Insurance,1,0,Low
+770,P10770,49,Female,A-,Cardiology,Asthma,2025-03-14,18,6,2,No-Show,1,None,4,0,136,76,113,230,22.6,3,3,2000,0,5400,17508,24908,Unpaid,Insurance,1,1,Medium
+771,P10771,59,Female,AB-,General Medicine,Diabetes,2025-01-09,42,3,1,Completed,0,None,0,0,102,86,154,242,26.1,0,1,2000,0,0,5340,7340,Paid,Card,0,0,High
+772,P10772,40,Female,A+,Radiology,Pneumonia,2025-09-10,6,2,1,No-Show,0,None,0,2,101,80,130,156,31.9,1,3,2500,0,1800,2681,6981,Unpaid,Cash,1,0,Medium
+773,P10773,7,Male,O+,Pediatrics,Asthma,2025-02-09,27,1,0,Scheduled,1,General Ward,1,1,134,93,94,213,23.6,2,2,2500,3500,3600,19305,28905,Paid,Cash,0,1,Low
+774,P10774,61,Male,A+,General Medicine,Kidney Infection,2025-04-19,36,4,2,No-Show,0,None,0,3,147,86,157,138,26.3,1,1,3000,0,1200,7057,11257,Paid,Cash,1,0,High
+775,P10775,59,Female,A-,General Medicine,Migraine,2025-05-05,0,3,0,No-Show,1,None,1,0,136,92,142,229,20.9,6,4,2500,0,7200,7209,16909,Unpaid,Card,1,1,High
+776,P10776,35,Male,AB+,Pediatrics,Chest Pain,2025-03-24,11,2,0,Completed,0,None,0,0,131,66,156,208,27.2,1,3,1500,0,1200,6105,8805,Paid,Online,0,0,High
+777,P10777,30,Female,A-,Pediatrics,Pneumonia,2025-02-20,4,1,0,No-Show,1,General Ward,6,0,147,71,113,168,26.9,4,1,3500,21000,7200,12401,44101,Paid,Cash,1,1,Medium
+778,P10778,44,Male,A+,Radiology,Fracture,2025-04-21,15,3,1,Completed,0,None,0,0,115,88,115,232,18.2,2,0,4000,0,3600,8318,15918,Partially Paid,Cash,0,0,Medium
+779,P10779,49,Male,A-,Radiology,Kidney Infection,2025-11-19,35,5,0,No-Show,0,None,0,0,149,73,121,161,29.3,3,1,2500,0,5400,2398,10298,Paid,Card,1,0,Medium
+780,P10780,33,Female,AB-,Orthopedics,Fever,2025-11-28,34,1,0,Cancelled,0,None,0,2,107,83,103,160,22.1,3,1,2000,0,5400,1893,9293,Paid,Cash,0,0,Low
+781,P10781,30,Female,AB-,General Medicine,Pneumonia,2025-08-31,22,5,1,Completed,1,None,5,0,119,65,73,193,31.5,4,2,2500,0,10000,20277,32777,Paid,Insurance,0,1,Medium
+782,P10782,76,Male,B-,Orthopedics,Migraine,2025-04-09,17,5,0,Cancelled,1,None,2,1,124,80,156,188,28.4,4,4,4000,0,10000,6267,20267,Paid,Insurance,0,1,High
+783,P10783,24,Female,AB-,Neurology,Fever,2025-12-18,33,5,0,Cancelled,0,None,0,1,85,76,131,156,28.0,2,1,2000,0,2400,1304,5704,Unpaid,Card,0,0,Medium
+784,P10784,65,Male,A-,Laboratory Services,Kidney Infection,2025-04-08,7,3,0,Completed,1,None,4,2,133,84,115,159,24.1,6,2,3000,0,18000,5186,26186,Paid,Card,0,1,Medium
+785,P10785,40,Female,AB-,Orthopedics,Back Pain,2025-02-18,10,3,0,Scheduled,0,None,0,0,137,66,119,165,27.7,3,1,1500,0,5400,4364,11264,Paid,Card,0,0,Medium
+786,P10786,75,Female,AB+,General Medicine,Fracture,2025-03-03,27,2,0,Completed,0,None,0,1,151,85,77,246,24.1,1,1,3000,0,3000,4816,10816,Paid,Insurance,0,0,High
+787,P10787,51,Female,B+,Orthopedics,Back Pain,2025-02-22,27,5,2,No-Show,0,None,0,0,102,68,133,220,24.7,2,2,3000,0,6000,7675,16675,Paid,Insurance,1,0,Medium
+788,P10788,25,Male,B+,General Medicine,Migraine,2025-06-23,17,2,0,No-Show,0,None,0,3,120,70,69,132,26.0,1,5,3000,0,3000,6976,12976,Paid,Cash,1,0,Low
+789,P10789,58,Male,B+,Laboratory Services,Hypertension,2025-06-02,38,2,0,No-Show,0,None,0,0,145,75,99,227,25.6,1,0,1500,0,3000,2242,6742,Paid,Insurance,1,0,High
+790,P10790,57,Female,O-,Pediatrics,Migraine,2025-01-14,35,2,1,No-Show,0,None,0,2,166,72,136,229,26.5,1,0,3500,0,1200,5818,10518,Unpaid,Insurance,1,0,High
+791,P10791,42,Male,A+,Cardiology,Kidney Infection,2025-02-20,18,4,0,Cancelled,0,None,0,0,115,75,135,234,24.0,2,2,3000,0,5000,8347,16347,Paid,Cash,0,0,Medium
+792,P10792,40,Female,AB+,General Medicine,Fever,2025-02-27,5,2,0,Completed,1,None,5,2,112,75,114,169,31.1,2,5,3000,0,6000,16898,25898,Paid,Card,0,1,Medium
+793,P10793,1,Female,O-,Orthopedics,Asthma,2025-03-24,19,2,0,Completed,0,None,0,2,112,74,99,208,27.9,1,3,2500,0,3000,6007,11507,Paid,Insurance,0,0,Medium
+794,P10794,37,Female,O+,Radiology,Asthma,2025-05-04,37,4,0,No-Show,1,None,2,1,135,80,120,222,27.3,1,5,3000,0,2500,9501,15001,Paid,Online,1,1,High
+795,P10795,24,Female,AB-,Cardiology,Hypertension,2025-12-05,13,2,1,No-Show,0,None,0,3,106,74,108,198,22.6,2,1,1500,0,2400,6236,10136,Paid,Online,1,0,Medium
+796,P10796,18,Male,O+,Neurology,Chest Pain,2025-12-27,32,3,1,Scheduled,0,None,0,1,131,79,72,205,31.1,3,0,3000,0,3600,8231,14831,Paid,Online,0,0,Medium
+797,P10797,56,Male,A-,Laboratory Services,Fracture,2025-02-06,13,1,0,Scheduled,1,None,1,0,116,82,161,230,30.0,0,1,4000,0,0,17051,21051,Paid,Online,0,1,High
+798,P10798,25,Male,O+,Cardiology,Asthma,2025-02-16,28,2,0,No-Show,0,None,0,2,128,72,111,200,27.5,4,3,1500,0,10000,4987,16487,Paid,Insurance,1,0,Medium
+799,P10799,67,Female,AB-,General Medicine,Kidney Infection,2025-06-18,42,3,0,No-Show,1,None,3,1,139,69,125,193,26.7,3,2,2500,0,9000,8343,19843,Paid,Cash,1,0,High
+800,P10800,45,Female,AB-,General Medicine,Fracture,2025-12-31,41,2,0,Cancelled,0,None,0,4,132,66,130,194,19.7,1,0,2500,0,3000,7001,12501,Paid,Card,0,0,High
+801,P10801,64,Female,A-,Cardiology,Fever,2025-08-02,30,3,1,Scheduled,0,None,0,0,141,71,107,193,23.4,5,0,2000,0,15000,8512,25512,Paid,Card,0,0,Medium
+802,P10802,74,Female,A-,Cardiology,Hypertension,2025-02-28,32,2,2,No-Show,0,None,0,1,151,90,117,251,35.1,2,2,2500,0,6000,5722,14222,Unpaid,Cash,1,0,High
+803,P10803,70,Female,AB-,Cardiology,Diabetes,2025-09-15,7,3,1,No-Show,0,None,0,0,125,79,172,191,28.1,1,1,3500,0,3000,3140,9640,Paid,Cash,1,0,High
+804,P10804,31,Female,O-,Radiology,Migraine,2025-09-23,24,3,0,Completed,1,None,5,0,134,92,113,139,28.0,4,2,3500,0,10000,12727,26227,Paid,Card,0,1,Medium
+805,P10805,34,Male,O-,Laboratory Services,Pneumonia,2025-06-28,28,2,0,Scheduled,0,None,0,2,113,62,118,239,21.2,2,0,2000,0,6000,676,8676,Paid,Online,0,0,Medium
+806,P10806,28,Female,B+,Radiology,Hypertension,2025-03-28,19,1,0,Completed,0,None,0,2,107,73,124,203,17.5,1,4,3500,0,1800,5218,10518,Paid,Online,0,0,Medium
+807,P10807,34,Female,AB+,Orthopedics,Chest Pain,2025-04-25,27,3,2,No-Show,0,None,0,0,131,84,89,148,19.7,2,0,1500,0,3600,5998,11098,Unpaid,Online,1,0,Low
+808,P10808,77,Male,A+,Cardiology,Back Pain,2025-08-01,42,3,0,No-Show,1,None,3,2,126,77,73,162,31.0,3,4,2000,0,3600,3196,8796,Paid,Card,1,1,High
+809,P10809,22,Female,B-,Orthopedics,Kidney Infection,2025-08-15,29,4,0,Scheduled,0,None,0,1,119,67,130,269,18.4,1,1,3500,0,3000,9247,15747,Paid,Card,0,0,Medium
+810,P10810,28,Female,A+,Pediatrics,Hypertension,2025-09-27,21,3,0,No-Show,1,None,1,1,125,74,103,160,26.7,5,4,2500,0,9000,13873,25373,Paid,Insurance,1,1,Medium
+811,P10811,64,Male,O+,General Medicine,Diabetes,2025-05-14,41,6,2,Scheduled,0,None,0,1,146,84,177,203,26.9,1,1,2500,0,2500,3575,8575,Unpaid,Online,0,0,High
+812,P10812,32,Male,A-,Orthopedics,Asthma,2025-02-27,39,1,0,No-Show,0,None,0,0,136,68,130,196,30.7,2,1,2000,0,2400,8291,12691,Paid,Online,1,0,Medium
+813,P10813,65,Female,O+,General Medicine,Fracture,2025-06-26,25,5,1,Completed,0,None,0,0,140,76,136,270,23.8,3,0,3500,0,3600,2819,9919,Unpaid,Card,0,0,High
+814,P10814,59,Female,AB+,Pediatrics,Asthma,2025-09-15,15,3,1,No-Show,0,None,0,0,154,87,111,222,26.0,1,1,1500,0,1800,3910,7210,Paid,Insurance,1,0,High
+815,P10815,39,Female,A-,Cardiology,Back Pain,2025-11-12,8,4,1,No-Show,0,None,0,0,105,97,125,209,25.3,2,2,1500,0,6000,6603,14103,Paid,Online,1,0,Medium
+816,P10816,54,Female,AB+,Orthopedics,Fracture,2025-06-11,35,1,0,Completed,0,None,0,1,117,58,149,235,24.2,2,2,2500,0,3600,6123,12223,Paid,Cash,0,0,High
+817,P10817,56,Male,AB-,Neurology,Hypertension,2025-01-07,1,0,0,Completed,0,None,0,2,117,94,88,191,18.8,2,1,4000,0,3600,1876,9476,Paid,Cash,0,0,Medium
+818,P10818,58,Male,AB+,Neurology,Kidney Infection,2025-02-10,1,2,1,Completed,0,None,0,1,118,97,153,207,27.6,0,2,3000,0,0,11015,14015,Partially Paid,Online,0,0,High
+819,P10819,34,Male,B+,Neurology,Fracture,2025-05-17,20,5,3,No-Show,0,None,0,1,120,76,94,146,26.9,4,1,2500,0,7200,8877,18577,Unpaid,Insurance,1,0,Low
+820,P10820,36,Female,O-,Neurology,Fever,2025-01-09,39,4,0,Scheduled,1,General Ward,3,1,113,96,110,162,21.4,4,2,2500,10500,4800,5885,23685,Unpaid,Insurance,0,1,Low
+821,P10821,61,Female,A-,Laboratory Services,Fever,2025-05-01,8,3,0,No-Show,0,None,0,1,153,82,80,208,27.2,2,2,1500,0,3600,4798,9898,Paid,Online,1,0,High
+822,P10822,38,Female,A+,Radiology,Pneumonia,2025-12-27,24,1,0,Completed,0,None,0,0,112,62,119,242,38.8,2,2,4000,0,5000,8663,17663,Paid,Card,0,0,High
+823,P10823,59,Female,A-,Neurology,Asthma,2025-03-03,4,2,1,Completed,0,None,0,0,132,85,112,269,18.5,1,1,1500,0,3000,7721,12221,Paid,Cash,0,0,Medium
+824,P10824,68,Male,O+,Pediatrics,Pneumonia,2025-08-02,27,3,0,No-Show,0,None,0,1,126,81,124,209,28.6,2,1,4000,0,3600,9234,16834,Unpaid,Online,1,0,High
+825,P10825,52,Female,B-,Orthopedics,Asthma,2025-03-18,9,3,1,No-Show,1,None,2,2,103,85,113,262,26.7,4,3,4000,0,10000,17698,31698,Unpaid,Cash,1,1,High
+826,P10826,23,Female,B-,Cardiology,Asthma,2025-05-24,11,1,0,No-Show,0,None,0,1,121,79,114,178,27.3,1,2,3000,0,3000,1566,7566,Partially Paid,Cash,1,0,Medium
+827,P10827,39,Male,O-,Radiology,Back Pain,2025-04-22,35,1,0,No-Show,0,None,0,0,141,87,106,219,29.0,2,0,4000,0,3600,2944,10544,Partially Paid,Card,1,0,Medium
+828,P10828,74,Female,B+,Laboratory Services,Asthma,2025-01-30,16,2,0,Completed,0,None,0,1,143,77,108,217,29.5,1,0,1500,0,3000,9609,14109,Paid,Cash,0,0,High
+829,P10829,65,Female,O+,Pediatrics,Back Pain,2025-03-26,9,8,1,No-Show,0,None,0,1,163,85,144,259,21.9,1,3,1500,0,1200,5007,7707,Unpaid,Insurance,1,0,High
+830,P10830,76,Female,O-,General Medicine,Fracture,2025-09-12,28,3,0,No-Show,1,General Ward,3,0,149,89,164,216,23.1,0,4,2000,10500,0,17673,30173,Paid,Insurance,1,1,High
+831,P10831,51,Male,B-,Orthopedics,Fracture,2025-04-10,29,3,0,Completed,0,None,0,0,128,77,109,235,27.9,3,0,3500,0,5400,860,9760,Partially Paid,Insurance,0,0,High
+832,P10832,56,Male,B-,Orthopedics,Asthma,2025-02-01,6,4,1,No-Show,1,None,6,0,137,97,87,231,27.9,2,0,2500,0,3600,14108,20208,Paid,Online,1,0,Medium
+833,P10833,40,Female,O+,General Medicine,Hypertension,2025-12-15,4,4,2,Completed,1,None,4,1,143,70,134,174,21.3,9,5,2500,0,27000,10058,39558,Paid,Online,0,1,Medium
+834,P10834,25,Male,AB-,General Medicine,Pneumonia,2025-01-09,27,2,0,No-Show,1,None,2,1,155,84,156,191,24.8,3,4,2500,0,5400,6677,14577,Paid,Cash,1,0,High
+835,P10835,35,Male,AB-,Cardiology,Pneumonia,2025-01-14,40,3,1,Completed,0,None,0,0,93,54,135,192,26.0,1,0,3500,0,3000,11786,18286,Paid,Card,0,0,Medium
+836,P10836,51,Male,B+,Radiology,Asthma,2025-02-04,3,3,0,Scheduled,1,None,6,1,110,102,104,201,26.2,3,0,3500,0,9000,1756,14256,Partially Paid,Cash,0,1,Medium
+837,P10837,19,Female,B+,Laboratory Services,Pneumonia,2025-12-28,12,5,1,Completed,0,None,0,1,161,97,135,144,20.3,1,0,3000,0,1800,9243,14043,Paid,Insurance,0,0,Medium
+838,P10838,65,Female,AB+,Laboratory Services,Chest Pain,2025-09-30,10,6,0,Cancelled,1,Private Room,4,1,162,77,88,228,25.2,1,1,2500,36000,2500,2473,43473,Paid,Online,0,1,High
+839,P10839,19,Female,B+,Pediatrics,Chest Pain,2025-03-14,4,5,2,No-Show,0,None,0,2,106,82,127,139,27.6,1,1,4000,0,3000,7605,14605,Unpaid,Insurance,1,0,Medium
+840,P10840,61,Male,O-,Pediatrics,Asthma,2025-07-01,0,2,0,Completed,1,None,1,0,136,99,148,174,32.4,7,4,2000,0,8400,10602,21002,Paid,Insurance,0,1,High
+841,P10841,68,Male,O-,Orthopedics,Hypertension,2025-03-13,1,2,0,Completed,0,None,0,0,104,81,114,211,25.1,1,0,3000,0,2500,11149,16649,Partially Paid,Insurance,0,0,Medium
+842,P10842,26,Male,B+,Neurology,Asthma,2025-11-24,33,1,1,Scheduled,0,None,0,0,109,75,65,240,26.1,2,1,1500,0,5000,2164,8664,Paid,Card,0,0,Low
+843,P10843,20,Female,B+,Radiology,Back Pain,2025-08-28,25,3,1,No-Show,0,None,0,0,131,77,122,149,22.5,3,0,2000,0,3600,2879,8479,Paid,Insurance,1,0,Low
+844,P10844,59,Male,A-,Pediatrics,Kidney Infection,2025-08-19,23,2,1,No-Show,1,None,7,0,128,94,73,213,27.4,6,3,2500,0,7200,4970,14670,Paid,Insurance,1,1,Medium
+845,P10845,37,Female,O-,Radiology,Diabetes,2025-11-13,27,3,0,Cancelled,1,General Ward,6,0,114,82,133,199,27.2,3,1,2000,21000,3600,16687,43287,Paid,Insurance,0,1,Medium
+846,P10846,59,Female,B+,Radiology,Hypertension,2025-10-04,13,0,1,Completed,1,None,2,0,121,95,107,191,25.3,3,3,1500,0,9000,11650,22150,Paid,Card,0,1,Medium
+847,P10847,48,Male,O+,Neurology,Migraine,2025-04-20,3,1,0,Completed,0,None,0,1,128,89,127,233,28.1,1,3,2500,0,1200,11379,15079,Unpaid,Cash,0,0,High
+848,P10848,57,Female,B+,Cardiology,Asthma,2025-02-06,28,3,1,Scheduled,0,None,0,3,131,74,125,184,34.7,2,3,2000,0,6000,5632,13632,Paid,Insurance,0,0,High
+849,P10849,68,Female,O+,Cardiology,Asthma,2025-03-31,25,1,0,No-Show,0,None,0,1,114,68,105,165,28.3,2,2,1500,0,5000,3116,9616,Paid,Online,1,0,Medium
+850,P10850,9,Male,O-,Cardiology,Diabetes,2025-06-15,38,2,0,Scheduled,0,None,0,1,148,99,168,195,24.7,1,0,2500,0,1800,1672,5972,Paid,Online,0,0,Medium
+851,P10851,41,Female,A+,General Medicine,Fever,2025-06-30,19,5,1,Completed,1,General Ward,4,2,138,78,124,189,28.1,2,1,3500,14000,3600,20058,41158,Paid,Online,0,1,High
+852,P10852,37,Female,A-,Laboratory Services,Fracture,2025-11-13,5,1,1,No-Show,0,None,0,0,119,59,144,119,24.1,1,2,4000,0,1800,911,6711,Partially Paid,Online,1,0,Low
+853,P10853,49,Female,AB+,Orthopedics,Diabetes,2025-04-25,29,2,1,Completed,0,None,0,3,111,74,138,170,31.3,1,0,3000,0,2500,8692,14192,Paid,Card,0,0,High
+854,P10854,66,Female,A-,Cardiology,Back Pain,2025-05-20,42,1,0,No-Show,0,None,0,1,142,84,117,241,38.3,1,0,1500,0,1200,8388,11088,Partially Paid,Insurance,1,0,High
+855,P10855,79,Female,A+,General Medicine,Kidney Infection,2025-01-30,32,6,1,Completed,0,None,0,2,144,66,102,229,24.3,1,1,4000,0,2500,2428,8928,Paid,Cash,0,0,High
+856,P10856,68,Female,AB+,Pediatrics,Asthma,2025-11-05,40,1,0,No-Show,0,None,0,0,122,73,122,237,34.9,1,3,3000,0,1200,10542,14742,Paid,Online,1,0,High
+857,P10857,30,Female,B+,Neurology,Kidney Infection,2025-12-08,40,6,2,No-Show,0,None,0,1,146,72,130,233,23.3,4,0,3500,0,10000,1122,14622,Paid,Card,1,0,High
+858,P10858,49,Male,A+,General Medicine,Back Pain,2025-05-07,22,2,0,No-Show,0,None,0,0,127,91,86,197,21.6,2,4,2500,0,2400,8789,13689,Paid,Cash,1,0,Medium
+859,P10859,71,Female,O+,General Medicine,Hypertension,2025-06-27,41,1,1,No-Show,0,None,0,1,151,85,131,208,31.2,2,2,2000,0,6000,5868,13868,Paid,Insurance,1,0,High
+860,P10860,45,Female,B+,Radiology,Back Pain,2025-02-04,24,3,1,Completed,0,None,0,0,117,91,123,147,33.2,4,1,2500,0,12000,1145,15645,Unpaid,Cash,0,0,Medium
+861,P10861,43,Male,B+,General Medicine,Hypertension,2025-08-24,21,3,1,Completed,0,None,0,0,130,88,104,162,28.0,2,1,4000,0,3600,8652,16252,Unpaid,Card,0,0,Medium
+862,P10862,47,Female,O-,Neurology,Pneumonia,2025-06-10,19,4,0,Completed,0,None,0,0,135,95,107,206,24.1,2,0,2000,0,2400,5972,10372,Paid,Insurance,0,0,Medium
+863,P10863,46,Male,O-,General Medicine,Asthma,2025-06-01,41,4,1,No-Show,1,Private Room,4,0,142,76,105,226,28.5,5,1,4000,36000,15000,8894,63894,Partially Paid,Cash,1,1,High
+864,P10864,59,Female,A+,Radiology,Fracture,2025-04-15,4,3,1,Cancelled,0,None,0,1,134,86,113,215,25.9,1,1,2000,0,2500,10477,14977,Paid,Online,0,0,High
+865,P10865,53,Male,AB+,General Medicine,Fever,2025-01-07,5,4,1,Completed,0,None,0,0,131,74,94,225,27.5,0,2,3000,0,0,7852,10852,Unpaid,Cash,0,0,Medium
+866,P10866,54,Female,A+,Orthopedics,Kidney Infection,2025-04-27,0,4,3,Completed,0,None,0,1,130,77,113,216,28.3,5,1,3500,0,15000,4212,22712,Paid,Insurance,0,0,High
+867,P10867,40,Female,AB-,Radiology,Diabetes,2025-08-07,1,3,1,Completed,0,None,0,0,135,86,175,149,30.8,2,1,2500,0,6000,11829,20329,Unpaid,Insurance,0,0,High
+868,P10868,28,Female,B-,General Medicine,Asthma,2025-12-05,22,2,0,Completed,0,None,0,2,144,87,89,155,20.8,5,1,2500,0,9000,10207,21707,Paid,Online,0,0,Low
+869,P10869,19,Female,AB-,Pediatrics,Migraine,2025-09-29,3,4,0,Cancelled,0,None,0,0,121,87,74,221,27.0,1,2,4000,0,3000,4032,11032,Partially Paid,Insurance,0,0,Low
+870,P10870,20,Male,B+,Radiology,Fracture,2025-08-18,38,7,0,No-Show,1,None,3,0,118,73,108,199,24.5,3,4,4000,0,3600,15121,22721,Paid,Card,1,0,Low
+871,P10871,46,Male,O-,Pediatrics,Back Pain,2025-08-29,26,5,1,Scheduled,0,None,0,0,116,87,97,205,24.2,4,0,3000,0,4800,1632,9432,Unpaid,Online,0,0,Medium
+872,P10872,56,Male,B+,Pediatrics,Pneumonia,2025-03-02,14,2,0,Completed,1,None,4,0,119,87,91,203,28.4,3,1,1500,0,7500,5451,14451,Unpaid,Card,0,1,Medium
+873,P10873,53,Male,AB+,Neurology,Diabetes,2025-04-16,39,1,0,Completed,1,None,6,1,145,65,137,244,27.7,6,5,1500,0,10800,4785,17085,Paid,Online,0,1,High
+874,P10874,90,Female,A-,Neurology,Hypertension,2025-12-17,34,4,1,Scheduled,0,None,0,0,127,88,106,230,21.3,2,1,3500,0,5000,4999,13499,Unpaid,Cash,0,0,High
+875,P10875,43,Female,A-,Neurology,Kidney Infection,2025-06-02,19,2,0,Completed,1,ICU,4,2,178,68,122,252,22.5,3,7,1500,100000,3600,16952,122052,Unpaid,Cash,0,1,High
+876,P10876,75,Male,O-,Pediatrics,Diabetes,2025-04-04,3,5,0,Completed,0,None,0,3,142,73,94,153,21.4,2,0,2000,0,5000,3560,10560,Paid,Insurance,0,0,Medium
+877,P10877,51,Male,O+,Pediatrics,Chest Pain,2025-09-30,29,4,0,Completed,1,None,3,0,120,85,115,201,24.1,1,2,2000,0,1200,11019,14219,Unpaid,Cash,0,1,Medium
+878,P10878,69,Male,O+,Neurology,Kidney Infection,2025-03-27,19,5,0,Completed,1,None,2,0,138,74,110,184,26.0,4,8,3500,0,7200,19896,30596,Paid,Online,0,1,Medium
+879,P10879,31,Male,O+,Pediatrics,Pneumonia,2025-04-20,22,2,0,Completed,0,None,0,0,104,67,84,172,27.1,2,0,3000,0,3600,2174,8774,Paid,Insurance,0,0,Low
+880,P10880,25,Female,A-,General Medicine,Kidney Infection,2025-12-10,17,1,0,Completed,0,None,0,1,123,87,65,203,23.7,2,0,2000,0,2400,7465,11865,Unpaid,Cash,0,0,Low
+881,P10881,42,Female,A+,Cardiology,Fever,2025-05-25,7,2,1,No-Show,0,None,0,1,156,79,79,217,24.5,4,1,2000,0,12000,11968,25968,Paid,Card,1,0,Medium
+882,P10882,54,Male,AB+,Laboratory Services,Pneumonia,2025-06-18,14,1,0,No-Show,0,None,0,1,126,71,76,234,23.4,1,2,2500,0,3000,9175,14675,Paid,Online,1,0,Medium
+883,P10883,48,Female,B-,General Medicine,Migraine,2025-10-20,33,3,1,Completed,0,None,0,0,107,93,124,215,27.2,0,1,3500,0,0,3841,7341,Unpaid,Insurance,0,0,Medium
+884,P10884,4,Female,AB-,Neurology,Fever,2025-12-31,19,1,0,No-Show,1,General Ward,4,0,119,87,122,191,21.2,2,1,2500,14000,2400,11519,30419,Paid,Insurance,1,0,Low
+885,P10885,45,Male,AB-,Radiology,Pneumonia,2025-03-04,29,5,1,Completed,0,None,0,0,115,85,120,156,30.4,5,0,2500,0,9000,11447,22947,Paid,Card,0,0,Medium
+886,P10886,69,Male,O+,General Medicine,Pneumonia,2025-11-17,35,8,1,Cancelled,0,None,0,0,101,89,140,225,24.2,2,1,3500,0,5000,6554,15054,Paid,Cash,0,0,High
+887,P10887,29,Male,A-,Neurology,Chest Pain,2025-06-22,19,2,1,No-Show,1,None,1,2,110,67,104,182,28.7,1,3,3500,0,2500,5025,11025,Paid,Insurance,1,1,Medium
+888,P10888,70,Female,B-,Radiology,Hypertension,2025-04-17,21,5,0,Cancelled,0,None,0,4,146,73,103,219,21.4,3,3,3000,0,7500,722,11222,Partially Paid,Online,0,0,High
+889,P10889,41,Female,AB-,Cardiology,Back Pain,2025-06-01,13,3,1,Completed,1,None,5,1,137,77,130,234,20.0,3,3,4000,0,9000,3134,16134,Paid,Card,0,0,Medium
+890,P10890,26,Female,A-,Orthopedics,Diabetes,2025-06-14,13,2,0,No-Show,0,None,0,0,131,79,123,200,29.0,1,3,2000,0,3000,2086,7086,Unpaid,Cash,1,0,Medium
+891,P10891,32,Male,AB-,Orthopedics,Asthma,2025-04-09,37,1,1,No-Show,0,None,0,0,130,68,74,152,20.2,2,2,3000,0,3600,10772,17372,Paid,Insurance,1,0,Low
+892,P10892,58,Female,O-,Neurology,Migraine,2025-07-01,22,4,2,Completed,1,None,1,1,137,95,119,201,26.5,5,7,4000,0,15000,14531,33531,Partially Paid,Insurance,0,1,High
+893,P10893,46,Male,B+,Pediatrics,Pneumonia,2025-03-13,37,1,0,No-Show,0,None,0,2,136,82,134,224,26.6,3,4,2000,0,9000,8325,19325,Unpaid,Cash,1,0,High
+894,P10894,56,Male,A-,Orthopedics,Kidney Infection,2025-03-31,8,4,0,Completed,0,None,0,0,129,93,105,233,22.8,2,0,1500,0,3600,2068,7168,Partially Paid,Insurance,0,0,Medium
+895,P10895,57,Male,B+,General Medicine,Chest Pain,2025-12-13,25,4,0,No-Show,0,None,0,0,152,87,144,168,24.3,5,1,3500,0,12500,5126,21126,Paid,Cash,1,0,High
+896,P10896,52,Female,O+,Cardiology,Chest Pain,2025-12-24,15,6,2,Completed,1,None,8,0,125,89,96,279,29.1,2,7,3000,0,2400,18468,23868,Unpaid,Cash,0,1,High
+897,P10897,28,Female,AB-,Cardiology,Fracture,2025-04-01,0,5,2,No-Show,1,None,1,0,115,72,65,198,21.2,1,1,4000,0,3000,9790,16790,Paid,Cash,1,1,Low
+898,P10898,17,Male,O-,Orthopedics,Kidney Infection,2025-12-10,27,3,1,Cancelled,1,None,2,0,121,78,88,142,29.6,2,6,3500,0,6000,2828,12328,Partially Paid,Card,0,0,Low
+899,P10899,25,Male,A-,Radiology,Kidney Infection,2025-06-28,2,8,1,Completed,0,None,0,1,141,72,100,205,24.9,4,2,3000,0,12000,2486,17486,Paid,Insurance,0,0,Medium
+900,P10900,61,Female,A-,Pediatrics,Fever,2025-08-01,35,4,0,No-Show,1,None,5,1,119,93,159,184,28.2,4,2,1500,0,12000,14664,28164,Unpaid,Card,1,1,High
+901,P10901,62,Male,A-,Radiology,Migraine,2025-11-12,17,4,0,No-Show,0,None,0,0,131,95,128,267,26.0,0,2,3500,0,0,11434,14934,Paid,Card,1,0,High
+902,P10902,18,Male,B+,Radiology,Pneumonia,2025-07-10,31,1,0,Completed,0,None,0,1,102,76,76,198,22.0,3,1,2000,0,9000,10191,21191,Paid,Cash,0,0,Low
+903,P10903,50,Female,AB-,Neurology,Fracture,2025-06-09,16,3,2,Completed,0,None,0,2,154,73,141,243,17.9,3,0,2000,0,9000,6195,17195,Paid,Insurance,0,0,High
+904,P10904,46,Male,AB-,Orthopedics,Hypertension,2025-08-06,3,3,0,Completed,0,None,0,2,135,81,124,208,28.4,1,3,2500,0,3000,4815,10315,Paid,Insurance,0,0,High
+905,P10905,60,Female,A-,General Medicine,Diabetes,2025-03-17,2,6,1,Completed,0,None,0,0,126,77,153,228,25.1,1,1,1500,0,1800,3389,6689,Paid,Card,0,0,High
+906,P10906,62,Female,A+,Orthopedics,Asthma,2025-07-20,26,4,0,No-Show,0,None,0,1,154,69,120,191,22.8,5,1,1500,0,12500,3676,17676,Paid,Online,1,0,High
+907,P10907,50,Female,A-,General Medicine,Chest Pain,2025-07-12,17,1,0,No-Show,1,None,1,0,139,84,87,158,24.7,2,4,2500,0,5000,1802,9302,Paid,Cash,1,0,Medium
+908,P10908,22,Male,AB+,Pediatrics,Back Pain,2025-01-16,35,1,0,No-Show,1,None,4,0,127,98,121,238,25.8,4,3,3000,0,12000,12166,27166,Partially Paid,Cash,1,1,Medium
+909,P10909,38,Female,A+,Orthopedics,Pneumonia,2025-10-11,1,4,0,Completed,1,None,7,3,115,83,112,194,28.1,3,2,3000,0,3600,20318,26918,Paid,Online,0,1,High
+910,P10910,82,Male,A-,Pediatrics,Pneumonia,2025-01-10,44,5,2,Completed,0,None,0,0,133,65,135,165,32.1,2,1,4000,0,3600,6184,13784,Paid,Card,0,0,High
+911,P10911,30,Male,O+,Cardiology,Pneumonia,2025-07-29,24,2,0,No-Show,0,None,0,2,114,87,95,240,20.5,0,1,2000,0,0,11385,13385,Paid,Insurance,1,0,Medium
+912,P10912,65,Male,B+,General Medicine,Kidney Infection,2025-12-21,44,3,0,No-Show,1,ICU,2,0,149,77,123,179,23.0,5,3,3500,50000,12500,8051,74051,Paid,Cash,1,1,Medium
+913,P10913,40,Male,B-,Orthopedics,Migraine,2025-05-10,32,2,0,Cancelled,1,None,4,1,117,84,78,181,20.4,5,3,4000,0,15000,16399,35399,Partially Paid,Online,0,1,Low
+914,P10914,29,Male,A-,Pediatrics,Pneumonia,2025-03-06,30,4,0,No-Show,1,None,3,2,115,75,145,192,34.1,3,4,2500,0,3600,2077,8177,Paid,Card,1,1,High
+915,P10915,32,Female,O-,Orthopedics,Fracture,2025-08-08,36,6,1,No-Show,1,None,6,0,98,77,92,237,23.8,2,3,2500,0,5000,14756,22256,Paid,Online,1,1,Medium
+916,P10916,26,Male,B+,Laboratory Services,Chest Pain,2025-03-18,23,1,1,No-Show,1,None,2,2,112,76,120,182,25.3,5,1,3000,0,12500,16031,31531,Paid,Cash,1,1,Medium
+917,P10917,30,Female,O-,General Medicine,Hypertension,2025-08-08,18,1,0,Scheduled,0,None,0,3,121,90,102,211,25.6,3,2,4000,0,5400,1994,11394,Paid,Insurance,0,0,Medium
+918,P10918,1,Male,AB-,Neurology,Diabetes,2025-12-28,28,4,0,No-Show,1,None,5,0,112,87,157,191,27.0,4,5,4000,0,12000,957,16957,Paid,Insurance,1,0,Medium
+919,P10919,49,Female,AB-,Orthopedics,Asthma,2025-07-19,40,6,0,No-Show,1,General Ward,1,0,131,64,92,190,24.8,1,1,4000,3500,1200,5025,13725,Paid,Card,1,1,Medium
+920,P10920,35,Female,AB-,General Medicine,Fracture,2025-02-25,39,1,0,No-Show,0,None,0,1,149,66,105,197,21.2,1,0,4000,0,1200,9736,14936,Unpaid,Card,1,0,Medium
+921,P10921,78,Male,AB-,Neurology,Back Pain,2025-10-16,17,3,0,Completed,1,None,4,0,131,63,158,242,24.7,1,4,4000,0,1800,9905,15705,Paid,Cash,0,1,High
+922,P10922,38,Female,O-,Orthopedics,Back Pain,2025-07-22,41,3,0,Completed,1,None,4,0,135,62,125,250,25.8,5,2,2000,0,15000,5824,22824,Paid,Card,0,1,High
+923,P10923,54,Male,A-,Laboratory Services,Back Pain,2025-08-06,16,4,0,Completed,1,None,7,2,136,91,72,229,21.2,7,4,3500,0,12600,8248,24348,Paid,Card,0,1,Medium
+924,P10924,60,Female,A+,Radiology,Fracture,2025-07-06,37,2,1,No-Show,0,None,0,0,108,69,159,262,22.0,4,2,3500,0,10000,8686,22186,Paid,Online,1,0,High
+925,P10925,74,Female,O+,General Medicine,Fever,2025-07-17,37,1,0,Completed,0,None,0,2,140,76,98,135,25.3,1,3,4000,0,1200,5416,10616,Unpaid,Online,0,0,Medium
+926,P10926,17,Male,A+,Laboratory Services,Pneumonia,2025-07-18,5,0,1,No-Show,0,None,0,0,130,70,119,162,25.2,2,5,3000,0,6000,6228,15228,Paid,Card,1,0,Low
+927,P10927,33,Male,AB-,Cardiology,Fever,2025-04-14,4,3,0,No-Show,1,None,7,3,126,67,133,214,28.1,4,2,2500,0,4800,6300,13600,Paid,Cash,1,1,High
+928,P10928,48,Male,B-,Laboratory Services,Fracture,2025-01-09,9,1,0,No-Show,0,None,0,1,146,69,132,245,18.0,4,2,4000,0,12000,9110,25110,Partially Paid,Card,1,0,High
+929,P10929,29,Male,O+,Cardiology,Migraine,2025-02-28,39,3,0,No-Show,1,None,1,1,144,88,123,242,21.9,2,1,4000,0,2400,11809,18209,Paid,Cash,1,1,Medium
+930,P10930,42,Female,A+,Neurology,Migraine,2025-07-02,18,4,1,Scheduled,0,None,0,1,144,85,118,217,21.9,2,1,2000,0,2400,9024,13424,Paid,Online,0,0,Medium
+931,P10931,50,Male,A+,General Medicine,Back Pain,2025-01-05,37,4,2,Completed,1,None,7,1,118,80,127,193,23.2,5,9,1500,0,15000,7223,23723,Paid,Cash,0,1,Medium
+932,P10932,70,Female,O-,Cardiology,Diabetes,2025-11-06,21,2,2,No-Show,0,None,0,0,160,64,179,223,21.9,0,0,2000,0,0,6979,8979,Partially Paid,Cash,1,0,High
+933,P10933,18,Female,AB+,Radiology,Fever,2025-08-23,35,2,1,No-Show,1,None,4,0,133,60,125,131,21.4,6,2,4000,0,7200,13591,24791,Paid,Insurance,1,0,Low
+934,P10934,38,Female,A+,General Medicine,Back Pain,2025-06-15,19,6,1,No-Show,0,None,0,1,151,78,65,176,23.0,2,2,3000,0,3600,1112,7712,Unpaid,Insurance,1,0,Low
+935,P10935,35,Female,A+,Orthopedics,Fever,2025-04-11,22,2,1,Scheduled,0,None,0,0,152,58,65,213,27.1,2,1,3500,0,2400,725,6625,Paid,Insurance,0,0,Medium
+936,P10936,34,Female,B-,Radiology,Fracture,2025-07-22,41,0,1,No-Show,1,None,3,3,143,81,118,239,23.5,4,5,1500,0,4800,12206,18506,Paid,Card,1,1,High
+937,P10937,50,Female,B+,Cardiology,Fever,2025-02-13,43,0,1,No-Show,0,None,0,1,130,92,110,298,28.4,3,2,3000,0,9000,10823,22823,Paid,Cash,1,0,High
+938,P10938,63,Male,AB-,Pediatrics,Migraine,2025-10-27,28,5,1,No-Show,0,None,0,1,147,85,115,174,21.1,2,3,3500,0,6000,2264,11764,Paid,Online,1,0,Medium
+939,P10939,48,Male,B+,Pediatrics,Kidney Infection,2025-02-21,29,7,1,Scheduled,0,None,0,0,120,72,103,227,17.1,0,1,2500,0,0,11466,13966,Paid,Cash,0,0,Medium
+940,P10940,68,Male,B-,Radiology,Pneumonia,2025-07-15,8,2,1,Completed,1,Private Room,1,1,158,102,107,193,30.6,6,1,3000,9000,15000,14788,41788,Paid,Cash,0,1,High
+941,P10941,43,Female,AB-,Pediatrics,Kidney Infection,2025-01-26,5,3,1,No-Show,0,None,0,0,125,78,105,225,21.9,0,0,4000,0,0,5912,9912,Paid,Online,1,0,Medium
+942,P10942,59,Female,A+,Orthopedics,Chest Pain,2025-01-19,1,3,1,No-Show,0,None,0,0,115,68,109,161,26.2,2,0,2000,0,2400,11041,15441,Paid,Insurance,1,0,Medium
+943,P10943,65,Male,O-,General Medicine,Fracture,2025-09-29,13,2,0,Completed,0,None,0,0,95,72,145,261,28.3,2,0,4000,0,3600,6994,14594,Paid,Online,0,0,High
+944,P10944,54,Female,A+,Pediatrics,Fever,2025-07-24,25,6,1,Completed,0,None,0,1,135,63,132,236,27.9,2,2,2000,0,2400,6950,11350,Paid,Cash,0,0,High
+945,P10945,51,Male,B-,Cardiology,Kidney Infection,2025-06-27,31,1,1,Completed,0,None,0,1,110,75,118,169,27.5,3,2,2000,0,7500,4855,14355,Paid,Online,0,0,Medium
+946,P10946,31,Male,B-,Pediatrics,Migraine,2025-08-22,22,2,1,No-Show,0,None,0,1,94,74,108,149,21.9,2,2,4000,0,3600,11222,18822,Paid,Card,1,0,Low
+947,P10947,55,Male,B+,General Medicine,Asthma,2025-12-17,35,0,0,No-Show,0,None,0,3,125,72,126,204,24.6,0,1,2500,0,0,10492,12992,Paid,Insurance,1,0,High
+948,P10948,90,Male,B+,Cardiology,Fracture,2025-11-27,30,3,0,No-Show,1,None,1,0,127,88,114,214,33.5,3,1,2000,0,7500,2969,12469,Unpaid,Insurance,1,1,High
+949,P10949,56,Male,AB-,General Medicine,Asthma,2025-10-25,3,6,1,Completed,0,None,0,1,121,101,79,226,19.7,2,0,2000,0,3600,11727,17327,Paid,Online,0,0,Medium
+950,P10950,39,Female,AB+,Laboratory Services,Fracture,2025-02-05,23,3,1,No-Show,1,Private Room,3,2,142,74,109,252,31.8,4,1,3500,27000,7200,7418,45118,Unpaid,Card,1,1,High
+951,P10951,56,Female,O-,Pediatrics,Hypertension,2025-01-21,34,3,0,No-Show,0,None,0,1,111,79,93,238,26.5,1,1,4000,0,2500,9079,15579,Unpaid,Card,1,0,Medium
+952,P10952,13,Male,O+,Neurology,Kidney Infection,2025-05-09,39,3,2,No-Show,0,None,0,2,111,71,94,164,22.0,1,1,4000,0,1200,5657,10857,Paid,Online,1,0,Low
+953,P10953,46,Female,O-,Radiology,Kidney Infection,2025-08-15,36,1,0,No-Show,0,None,0,0,107,73,113,187,26.1,4,1,2000,0,10000,7646,19646,Unpaid,Insurance,1,0,Medium
+954,P10954,32,Female,B-,Cardiology,Back Pain,2025-12-16,39,1,0,No-Show,1,None,6,2,130,79,89,254,21.4,4,3,3500,0,4800,19368,27668,Paid,Insurance,1,1,Medium
+955,P10955,56,Male,AB-,Orthopedics,Fracture,2025-06-15,11,3,0,Completed,0,None,0,0,125,86,75,226,22.3,3,0,2500,0,9000,3384,14884,Unpaid,Online,0,0,Medium
+956,P10956,21,Male,B-,Pediatrics,Diabetes,2025-06-19,36,2,2,No-Show,0,None,0,1,113,79,117,185,28.8,0,3,2500,0,0,1150,3650,Paid,Cash,1,0,Medium
+957,P10957,62,Female,AB-,Radiology,Back Pain,2025-03-11,11,1,0,No-Show,1,None,2,1,124,80,75,187,30.5,5,1,3000,0,15000,5778,23778,Paid,Insurance,1,1,Medium
+958,P10958,84,Female,A-,Cardiology,Fever,2025-06-01,24,7,0,Completed,0,None,0,0,173,83,111,249,30.4,3,2,1500,0,5400,4057,10957,Paid,Online,0,0,High
+959,P10959,47,Male,A-,Cardiology,Pneumonia,2025-12-11,20,6,0,Scheduled,0,None,0,3,126,66,106,175,27.0,2,3,3500,0,2400,10039,15939,Unpaid,Cash,0,0,High
+960,P10960,37,Male,AB+,Cardiology,Hypertension,2025-05-06,11,4,0,Completed,0,None,0,0,108,55,88,197,19.5,3,3,3500,0,5400,8519,17419,Paid,Online,0,0,Low
+961,P10961,45,Female,AB+,Pediatrics,Back Pain,2025-02-02,43,1,0,No-Show,0,None,0,2,107,82,147,238,24.1,1,0,2000,0,2500,6648,11148,Paid,Online,1,0,High
+962,P10962,40,Female,B+,Neurology,Fever,2025-04-01,27,2,0,Completed,0,None,0,0,152,73,110,172,18.3,2,1,3000,0,2400,3512,8912,Paid,Insurance,0,0,Low
+963,P10963,82,Male,O-,Pediatrics,Fracture,2025-10-28,41,0,0,No-Show,0,None,0,3,130,88,107,183,20.3,3,4,3000,0,5400,5221,13621,Paid,Insurance,1,0,High
+964,P10964,39,Female,B-,Neurology,Diabetes,2025-08-02,3,3,1,Completed,1,None,1,3,137,87,104,246,19.1,2,6,2000,0,6000,18222,26222,Unpaid,Insurance,0,1,High
+965,P10965,37,Female,O-,Neurology,Pneumonia,2025-07-28,21,2,0,Completed,1,None,3,0,132,65,121,216,23.6,10,1,2000,0,18000,4596,24596,Paid,Online,0,1,Medium
+966,P10966,60,Female,A+,Pediatrics,Fever,2025-01-26,7,1,0,Completed,1,None,3,1,135,77,119,207,31.2,2,1,3000,0,5000,4253,12253,Paid,Card,0,1,High
+967,P10967,61,Male,B-,Cardiology,Back Pain,2025-12-27,24,3,0,No-Show,0,None,0,0,128,72,144,219,23.5,4,1,4000,0,12000,6401,22401,Partially Paid,Insurance,1,0,High
+968,P10968,58,Male,O-,Radiology,Fever,2025-01-04,44,2,0,No-Show,0,None,0,0,146,78,122,210,29.2,2,0,2000,0,6000,2245,10245,Paid,Online,1,0,High
+969,P10969,25,Male,A+,Pediatrics,Diabetes,2025-04-25,1,5,2,Completed,1,None,4,2,135,106,145,148,26.0,2,2,2000,0,2400,9013,13413,Unpaid,Card,0,1,Medium
+970,P10970,43,Male,A-,General Medicine,Fever,2025-12-06,22,8,3,No-Show,0,None,0,1,153,80,105,174,29.4,2,2,2500,0,3600,6465,12565,Paid,Insurance,1,0,Medium
+971,P10971,50,Male,O+,Cardiology,Pneumonia,2025-07-25,28,3,1,No-Show,0,None,0,1,126,83,112,219,27.3,2,2,1500,0,3600,7556,12656,Paid,Insurance,1,0,High
+972,P10972,66,Male,B-,General Medicine,Asthma,2025-03-04,36,4,2,No-Show,1,None,2,1,132,73,124,177,28.2,3,2,3000,0,3600,946,7546,Paid,Card,1,1,High
+973,P10973,66,Male,AB+,Cardiology,Fever,2025-04-05,38,0,0,No-Show,1,General Ward,2,2,140,81,158,226,32.9,2,5,4000,7000,6000,6776,23776,Paid,Card,1,1,High
+974,P10974,40,Female,O+,Cardiology,Fracture,2025-09-20,41,4,0,No-Show,0,None,0,0,100,88,111,257,24.2,5,0,1500,0,9000,1158,11658,Paid,Card,1,0,Medium
+975,P10975,47,Female,AB+,Radiology,Kidney Infection,2025-05-22,17,3,2,No-Show,1,None,2,1,120,83,90,211,22.4,3,2,3500,0,3600,13234,20334,Unpaid,Insurance,1,1,Medium
+976,P10976,34,Female,B+,Laboratory Services,Migraine,2025-08-20,13,4,1,No-Show,0,None,0,1,125,91,111,201,25.3,1,3,3000,0,1800,9037,13837,Paid,Insurance,1,0,Medium
+977,P10977,51,Female,A+,Orthopedics,Asthma,2025-10-08,30,2,0,No-Show,1,General Ward,4,2,128,86,111,213,27.4,7,1,1500,14000,21000,12761,49261,Paid,Card,1,1,High
+978,P10978,48,Male,A-,Cardiology,Pneumonia,2025-04-04,14,3,0,Completed,1,None,6,0,120,80,85,221,37.8,4,3,1500,0,7200,1128,9828,Partially Paid,Online,0,1,High
+979,P10979,78,Male,B+,Neurology,Diabetes,2025-05-01,42,3,0,No-Show,0,None,0,2,140,63,181,228,29.8,2,2,3500,0,5000,2869,11369,Paid,Online,1,0,High
+980,P10980,1,Male,O-,Radiology,Hypertension,2025-08-27,23,0,1,Completed,0,None,0,0,147,87,89,156,16.9,2,0,3000,0,2400,2120,7520,Paid,Insurance,0,0,Low
+981,P10981,8,Female,B+,Laboratory Services,Fever,2025-02-11,5,2,1,Completed,0,None,0,1,136,87,95,280,20.0,1,1,2000,0,3000,7938,12938,Paid,Online,0,0,Medium
+982,P10982,20,Female,B-,Orthopedics,Kidney Infection,2025-05-15,35,2,0,No-Show,0,None,0,2,140,66,90,128,23.0,4,2,1500,0,4800,7229,13529,Paid,Insurance,1,0,Low
+983,P10983,45,Male,B+,Orthopedics,Migraine,2025-11-21,31,2,1,No-Show,1,Private Room,4,0,129,90,100,218,26.7,1,2,2000,36000,1200,5487,44687,Paid,Online,1,0,Medium
+984,P10984,37,Male,B+,Radiology,Fever,2025-08-26,44,1,1,No-Show,1,None,1,1,94,84,162,204,23.1,2,1,4000,0,2400,11148,17548,Paid,Insurance,1,1,Medium
+985,P10985,38,Female,B-,Pediatrics,Fracture,2025-01-16,23,4,2,No-Show,0,None,0,0,153,99,126,228,26.3,2,0,4000,0,2400,5722,12122,Unpaid,Insurance,1,0,High
+986,P10986,51,Male,A+,Neurology,Pneumonia,2025-10-22,5,2,1,Completed,0,None,0,2,113,70,103,203,28.2,0,1,4000,0,0,10506,14506,Paid,Cash,0,0,High
+987,P10987,22,Male,A+,Neurology,Fever,2025-03-14,12,1,0,Completed,1,General Ward,4,3,123,72,84,109,24.2,4,5,2000,14000,10000,11026,37026,Partially Paid,Insurance,0,1,Low
+988,P10988,46,Male,B+,General Medicine,Chest Pain,2025-04-22,37,4,1,Scheduled,0,None,0,1,118,65,116,196,24.0,4,0,2000,0,4800,5330,12130,Paid,Card,0,0,Medium
+989,P10989,47,Male,B-,Orthopedics,Pneumonia,2025-07-12,9,2,0,Completed,0,None,0,1,130,69,115,208,28.9,2,1,1500,0,5000,4606,11106,Paid,Insurance,0,0,High
+990,P10990,33,Female,O+,General Medicine,Fracture,2025-07-14,11,2,0,Completed,0,None,0,0,101,65,117,261,23.2,4,0,2000,0,4800,9207,16007,Paid,Online,0,0,Medium
+991,P10991,14,Male,AB+,Orthopedics,Fracture,2025-01-30,1,4,1,No-Show,0,None,0,1,108,94,95,205,17.8,1,3,3000,0,1800,544,5344,Paid,Online,1,0,Low
+992,P10992,17,Male,O-,General Medicine,Fracture,2025-10-30,15,0,0,No-Show,0,None,0,0,127,67,92,226,25.8,1,0,3000,0,2500,10405,15905,Unpaid,Cash,1,0,Medium
+993,P10993,23,Male,O+,Cardiology,Diabetes,2025-11-16,7,4,1,No-Show,0,None,0,1,116,83,146,218,21.7,1,1,3500,0,2500,3220,9220,Partially Paid,Card,1,0,Medium
+994,P10994,41,Female,A+,Pediatrics,Chest Pain,2025-02-06,38,1,1,No-Show,1,ICU,5,0,143,80,107,225,23.1,4,3,4000,125000,12000,5769,146769,Paid,Insurance,1,1,Medium
+995,P10995,39,Female,A-,Radiology,Fracture,2025-06-14,23,4,0,No-Show,0,None,0,1,139,80,87,230,26.2,2,0,3500,0,2400,5624,11524,Paid,Online,1,0,Medium
+996,P10996,54,Male,AB+,Laboratory Services,Fever,2025-03-24,24,1,0,Completed,0,None,0,1,155,67,109,252,28.7,3,2,2000,0,3600,4967,10567,Paid,Card,0,0,High
+997,P10997,53,Male,O-,Orthopedics,Fracture,2025-05-20,35,4,0,Completed,0,None,0,0,148,82,134,236,23.7,3,1,4000,0,3600,6986,14586,Paid,Online,0,0,High
+998,P10998,26,Male,A+,Cardiology,Chest Pain,2025-02-07,9,3,0,Completed,1,None,5,0,117,82,110,267,24.5,4,5,1500,0,12000,11203,24703,Paid,Card,0,1,Medium
+999,P10999,41,Female,B-,Cardiology,Fracture,2025-07-10,27,1,1,No-Show,0,None,0,0,129,69,121,235,24.7,2,1,2000,0,2400,5466,9866,Partially Paid,Card,1,0,Medium
+1000,P11000,22,Female,A-,Radiology,Chest Pain,2025-01-08,17,3,0,No-Show,0,None,0,0,129,68,90,179,26.8,3,0,2000,0,9000,10705,21705,Paid,Insurance,1,0,Low
