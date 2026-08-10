@@ -17,7 +17,7 @@
 # XGBoost is not part of the default Colab image in all environments — install if missing
 try:
     import xgboost
-except ImportError:
+except ImportError: 
     import sys
 # [Jupyter shell]     !{sys.executable} -m pip install xgboost -q
     import xgboost
