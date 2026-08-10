@@ -40,7 +40,7 @@ from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_s
 from xgboost import XGBClassifier
 
 pd.set_option('display.max_columns', 50)
-sns.set_style('whitegrid')
+sns.set_style('whitegrid') 
 RANDOM_STATE = 42
 CLASS_NAMES = ['Low', 'Medium', 'High']  # 0=Low, 1=Medium, 2=High
 
