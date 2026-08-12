@@ -16,17 +16,11 @@ st.set_page_config(page_title="Disease Risk Classifier", page_icon="🩺", layou
 # ---------------------------------------------------------------
 @st.cache_resource
 def load_artifacts():
-    model = joblib.load("best_model_lr_optionC.pkl")
-    scaler = joblib.load("scaler_optionC.pkl")
-    feature_columns = joblib.load("feature_columns_optionC.pkl")
-    encoding_maps = joblib.load("encoding_maps_optionC.pkl")
-    return model, scaler, feature_columns, encoding_maps
+    model = joblib.load("disease_risk_model.pkl")
+    scaler = joblib.load("feature_scaler.pkl")
+    return model, scaler
 
-model, scaler, feature_columns, encoding_maps = load_artifacts()
-bmi_order = encoding_maps["bmi_order"]
-age_order = encoding_maps["age_order"]
-risk_order = encoding_maps["risk_order"]
-numeric_cols = encoding_maps["numeric_cols"]
+model, scaler = load_artifacts()
 label_names = ["Low", "Medium", "High"]
 
 st.title("🩺 SmartCare Hospital")
@@ -87,59 +81,22 @@ with st.form("patient_form"):
 # Prediction
 # ---------------------------------------------------------------
 if submitted:
-    total_bill = consultation_fee + room_charge + lab_charge + medicine_charge
-    admitted_flag = 1 if admitted == "Yes" else 0
-
-    if bmi < 18.5: bmi_cat = "Underweight"
-    elif bmi < 25: bmi_cat = "Normal"
-    elif bmi < 30: bmi_cat = "Overweight"
-    else: bmi_cat = "Obese"
-
-    if age <= 18: age_grp = "0-18"
-    elif age <= 35: age_grp = "19-35"
-    elif age <= 50: age_grp = "36-50"
-    elif age <= 65: age_grp = "51-65"
-    else: age_grp = "65+"
-
-    high_bp_flag = int(systolic_bp >= 140 or diastolic_bp >= 90)
-    high_sugar_flag = int(blood_sugar >= 126)
-    high_chol_flag = int(cholesterol >= 240)
-    risk_flag_count = high_bp_flag + high_sugar_flag + high_chol_flag
-    prior_utilization = previous_admissions + previous_appointments
-    care_intensity = lab_tests_count + treatments_count
-    missed_rate = (missed_previous_appointments / previous_appointments) if previous_appointments > 0 else 0.0
-
+    # Prepare inputs for the 5 features required by the model
     raw = {
-        "age": age, "waiting_days": waiting_days, "previous_appointments": previous_appointments,
-        "missed_previous_appointments": missed_previous_appointments, "admitted": admitted_flag,
-        "length_of_stay_days": length_of_stay_days, "previous_admissions": previous_admissions,
-        "systolic_bp": systolic_bp, "diastolic_bp": diastolic_bp,
-        "blood_sugar_mg_dl": blood_sugar, "cholesterol_mg_dl": cholesterol, "bmi": bmi,
-        "lab_tests_count": lab_tests_count, "treatments_count": treatments_count,
-        "consultation_fee_lkr": consultation_fee, "room_charge_lkr": room_charge,
-        "lab_charge_lkr": lab_charge, "medicine_charge_lkr": medicine_charge,
-        "total_bill_lkr": total_bill,
-        "bmi_category": bmi_order[bmi_cat], "age_group": age_order[age_grp],
-        "high_bp_flag": high_bp_flag, "high_sugar_flag": high_sugar_flag,
-        "high_chol_flag": high_chol_flag, "risk_flag_count": risk_flag_count,
-        "prior_utilization": prior_utilization, "care_intensity": care_intensity,
-        "missed_appointment_rate": missed_rate,
-        "gender": gender, "blood_group": blood_group, "department": department,
-        "diagnosis": diagnosis, "appointment_status": appointment_status,
-        "room_type": room_type, "payment_status": payment_status, "payment_method": payment_method,
+        "blood_sugar_mg_dl": float(blood_sugar),
+        "cholesterol_mg_dl": float(cholesterol),
+        "age": float(age),
+        "bmi": float(bmi),
+        "previous_admissions": float(previous_admissions)
     }
 
     input_df = pd.DataFrame([raw])
-    nominal_cols = ['gender','blood_group','department','diagnosis','appointment_status',
-                     'room_type','payment_status','payment_method']
-    input_encoded = pd.get_dummies(input_df, columns=nominal_cols)
-    input_final = input_encoded.reindex(columns=feature_columns, fill_value=0).astype(float)
+    
+    # Scale input features
+    input_scaled = pd.DataFrame(scaler.transform(input_df), columns=input_df.columns)
 
-    # Logistic Regression was trained on SCALED numeric features — must scale here too
-    input_final[numeric_cols] = scaler.transform(input_final[numeric_cols])
-
-    pred_idx = model.predict(input_final)[0]
-    probs = model.predict_proba(input_final)[0]
+    pred_idx = model.predict(input_scaled)[0]
+    probs = model.predict_proba(input_scaled)[0]
     pred_label = label_names[pred_idx]
 
     st.divider()
@@ -157,13 +114,13 @@ if submitted:
     st.bar_chart(prob_df)
 
     st.markdown("""
-    **Top clinical drivers of risk classification** (from Task 07 SHAP analysis):
-    blood sugar, cholesterol, age, BMI, and systolic BP tend to weigh most heavily
-    in this model.
+    **Top clinical drivers of risk classification**:
+    Blood sugar, cholesterol, age, BMI, and previous admissions are used by this model
+    to classify the patient's risk category.
     """)
 
-    with st.expander("Show raw model input vector"):
-        st.dataframe(input_final.T.rename(columns={0: "value"}))
+    with st.expander("Show scaled model input vector"):
+        st.dataframe(input_scaled.T.rename(columns={0: "value"}))
 
 st.divider()
 st.caption("Prototype for academic purposes — SmartCare Hospital AI Dataset (synthetic). "
