@@ -20,13 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent
 
 @st.cache_resource
 def load_artifacts():
-<<<<<<< HEAD
     model = joblib.load(BASE_DIR / "disease_risk_model.pkl")
     scaler = joblib.load(BASE_DIR / "feature_scaler.pkl")
-=======
-    model = joblib.load("disease_risk_model.pkl")
-    scaler = joblib.load("feature_scaler.pkl")
->>>>>>> 937e2c246a2f3b642a8054e578a868a23829fc39
     return model, scaler
 
 model, scaler = load_artifacts()
