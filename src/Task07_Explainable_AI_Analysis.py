@@ -1,13 +1,10 @@
 """
-CCS3440 - Task 07: Explainable AI Analysis (Option C - Disease Risk Classification)
-Uses SHAP (SHapley Additive exPlanations) on a trained XGBoost model to interpret
-which features drive disease risk classification, at both the global (feature
-importance per class) and individual (single-patient) level.
-
-Usage:
-    python explainability.py
+CCS3440 Artificial Intelligence Coursework | Group 02
+Option C: Disease Risk Classification - SmartCare Hospital
+Task 07 – Explainable AI Analysis (SHAP)
 """
 
+from pathlib import Path
 import joblib
 import matplotlib.pyplot as plt
 import numpy as np
@@ -15,117 +12,99 @@ import pandas as pd
 import shap
 from xgboost import XGBClassifier
 
-from feature_engineering import build_features
 from preprocessing import load_and_clean_data
+from feature_engineering import fit_feature_pipeline
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_PATH = BASE_DIR / "data" / "raw" / "smartcare_ai_dataset_1000.csv"
+REPORTS_DIR = BASE_DIR / "reports"
+MODELS_DIR = BASE_DIR / "models"
+
+REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
 LABEL_NAMES = ["Low", "Medium", "High"]
 
 
-def train_xgb_for_shap(X: pd.DataFrame, y: pd.Series, random_state: int = 42) -> XGBClassifier:
-    """
-    Train an XGBoost model for SHAP analysis.
+def run_task07():
+    print("==================================================")
+    print("  Task 07: Explainable AI Analysis (SHAP)")
+    print("==================================================")
 
-    Note: XGBoost (not Logistic Regression) is used here even though Logistic
-    Regression was selected as the prototype's model — SHAP's TreeExplainer
-    gives exact, fast per-class explanations for tree models, and tree-based
-    feature importance is generally easier to interpret clinically than
-    linear coefficients on standardised features.
-    """
-    model = XGBClassifier(n_estimators=200, max_depth=4, learning_rate=0.1,
-                           objective="multi:softprob", num_class=3,
-                           eval_metric="mlogloss", random_state=random_state)
-    model.fit(X, y)
-    return model
+    # 1. Load data and extract scaled features
+    df_clean = load_and_clean_data(DATA_PATH)
+    X_scaled, y_encoded, artifacts = fit_feature_pipeline(df_clean, k=15)
+    feature_names = artifacts["selected_features"]
 
+    # 2. Train an XGBoost model for fast TreeExplainer SHAP computation
+    print("Training XGBoost model for SHAP analysis...")
+    xgb_model = XGBClassifier(
+        n_estimators=150, max_depth=4, learning_rate=0.1,
+        objective="multi:softprob", num_class=3, eval_metric="mlogloss",
+        random_state=42
+    )
+    xgb_model.fit(X_scaled, y_encoded)
+    joblib.dump(xgb_model, MODELS_DIR / "xgb_shap_model.pkl")
 
-def compute_shap_values(model: XGBClassifier, X: pd.DataFrame) -> np.ndarray:
-    """
-    Compute SHAP values using TreeExplainer.
-    Returns an array of shape (n_samples, n_features, n_classes).
-    """
-    explainer = shap.TreeExplainer(model)
-    shap_values = explainer.shap_values(X)
-    return np.array(shap_values), explainer
+    # 3. Compute SHAP Values
+    print("Computing TreeExplainer SHAP values...")
+    explainer = shap.TreeExplainer(xgb_model)
+    shap_values = explainer.shap_values(X_scaled)
+    shap_array = np.array(shap_values)
 
+    # Overall feature importance
+    if shap_array.ndim == 3:
+        mean_abs = np.abs(shap_array).mean(axis=(0, 2))
+    else:
+        mean_abs = np.abs(shap_array).mean(axis=0)
 
-def overall_feature_importance(shap_values: np.ndarray, feature_names: list) -> pd.Series:
-    """
-    Mean absolute SHAP value per feature, averaged across all samples AND
-    all three classes — a single overall importance ranking.
-    """
-    mean_abs = np.abs(shap_values).mean(axis=(0, 2))
-    return pd.Series(mean_abs, index=feature_names).sort_values(ascending=False)
+    importance = pd.Series(mean_abs, index=feature_names).sort_values(ascending=False)
+    print("\nTop 10 Clinical Features Driving Risk Classification (SHAP):")
+    for r, (feat, val) in enumerate(importance.head(10).items(), 1):
+        print(f"  {r:2d}. {feat:25s} (Mean |SHAP|: {val:.4f})")
 
+    importance.to_csv(REPORTS_DIR / "shap_feature_importance.csv")
 
-def plot_summary(shap_values: np.ndarray, X: pd.DataFrame, out_path: str = "shap_summary_c.png"):
-    """
-    Multi-class SHAP summary plot. Requires a LIST of 2D arrays (one per
-    class), NOT the raw 3D array — passing the 3D array directly produces
-    a broken/misleading plot.
-    """
-    sv_list = [shap_values[:, :, i] for i in range(shap_values.shape[2])]
+    # 4. Multi-class summary plot
     plt.figure()
-    shap.summary_plot(sv_list, X, class_names=LABEL_NAMES, show=False)
+    if shap_array.ndim == 3:
+        sv_list = [shap_array[:, :, i] for i in range(shap_array.shape[2])]
+        shap.summary_plot(sv_list, X_scaled, class_names=LABEL_NAMES, show=False)
+    else:
+        shap.summary_plot(shap_values, X_scaled, show=False)
     plt.tight_layout()
-    plt.savefig(out_path, dpi=120, bbox_inches="tight")
+    plt.savefig(REPORTS_DIR / "shap_summary_multiclass.png", dpi=120, bbox_inches="tight")
     plt.close()
-    print(f"Saved: {out_path}")
 
-
-def plot_class_importance_bar(shap_values: np.ndarray, X: pd.DataFrame, class_idx: int,
-                               out_path: str = "shap_importance_bar_c.png"):
-    """Feature importance bar chart for a single class (e.g. High risk)."""
+    # 5. Feature Importance for High-Risk Category
+    high_idx = LABEL_NAMES.index("High")
     plt.figure()
-    shap.summary_plot(shap_values[:, :, class_idx], X, plot_type="bar", show=False)
-    plt.title(f"Feature Importance for {LABEL_NAMES[class_idx]}-Risk Classification")
+    if shap_array.ndim == 3:
+        shap.summary_plot(shap_array[:, :, high_idx], X_scaled, plot_type="bar", show=False)
+    plt.title("Key Feature Drivers for High-Risk Classification")
     plt.tight_layout()
-    plt.savefig(out_path, dpi=120, bbox_inches="tight")
+    plt.savefig(REPORTS_DIR / "shap_high_risk_importance.png", dpi=120, bbox_inches="tight")
     plt.close()
-    print(f"Saved: {out_path}")
 
+    # 6. Single Patient Waterfall Plot (High-Risk patient case)
+    high_risk_patient_idx = int(np.where(y_encoded == high_idx)[0][0])
+    base_val = explainer.expected_value[high_idx] if hasattr(explainer.expected_value, "__len__") else explainer.expected_value
+    sv_patient = shap_array[high_risk_patient_idx, :, high_idx] if shap_array.ndim == 3 else shap_values[high_risk_patient_idx]
 
-def plot_patient_waterfall(shap_values: np.ndarray, explainer, X: pd.DataFrame,
-                            patient_idx: int, class_idx: int,
-                            out_path: str = "shap_waterfall_example_c.png"):
-    """SHAP waterfall plot explaining one patient's prediction for one class."""
-    sv_patient = shap_values[patient_idx][:, class_idx]
-    base = (explainer.expected_value[class_idx]
-            if hasattr(explainer.expected_value, "__len__")
-            else explainer.expected_value)
-    exp = shap.Explanation(values=sv_patient, base_values=base,
-                            data=X.iloc[patient_idx], feature_names=X.columns.tolist())
+    exp = shap.Explanation(
+        values=sv_patient,
+        base_values=base_val,
+        data=X_scaled.iloc[high_risk_patient_idx],
+        feature_names=feature_names
+    )
     plt.figure()
     shap.plots.waterfall(exp, show=False)
     plt.tight_layout()
-    plt.savefig(out_path, dpi=120, bbox_inches="tight")
+    plt.savefig(REPORTS_DIR / "shap_waterfall_patient_example.png", dpi=120, bbox_inches="tight")
     plt.close()
-    print(f"Saved: {out_path}")
 
-
-def run_full_shap_analysis(csv_path: str = "../data/raw/smartcare_ai_dataset_1000.csv",
-                            model_out: str = "../models/best_model_xgboost_optionC.pkl"):
-    """Full Task 07 pipeline: train XGBoost, compute SHAP, save all figures."""
-    df_clean = load_and_clean_data(csv_path)
-    X, y, feature_columns, encoding_maps = build_features(df_clean)
-
-    model = train_xgb_for_shap(X, y)
-    joblib.dump(model, model_out)
-    print(f"XGBoost model saved to {model_out}")
-
-    shap_values, explainer = compute_shap_values(model, X)
-    print(f"SHAP values shape: {shap_values.shape}  (n_samples, n_features, n_classes)")
-
-    importance = overall_feature_importance(shap_values, feature_columns)
-    print("\nTop 10 features overall (mean |SHAP value| across all classes):")
-    print(importance.head(10))
-
-    plot_summary(shap_values, X)
-    high_risk_idx = LABEL_NAMES.index("High")
-    plot_class_importance_bar(shap_values, X, high_risk_idx)
-    plot_patient_waterfall(shap_values, explainer, X, patient_idx=0, class_idx=high_risk_idx)
-
-    return importance
+    print(f"\n[SUCCESS] Task 07 completed! SHAP visualizations saved to: {REPORTS_DIR}\n")
 
 
 if __name__ == "__main__":
-    run_full_shap_analysis()
+    run_task07()
