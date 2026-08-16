@@ -141,9 +141,13 @@ if submitted:
     if "ohe" in bundle:
         X_input = transform_single_patient(patient_dict, bundle)
     else:
-        fallback_features = ["blood_sugar_mg_dl", "cholesterol_mg_dl", "age", "bmi", "systolic_bp"]
         scaler = bundle.get("scaler")
-        df_selected = pd.DataFrame([{f: patient_dict[f] for f in fallback_features}])
+        fallback_features = bundle.get("prototype_5_features") or getattr(scaler, "feature_names_in_", None)
+        if fallback_features is None:
+            fallback_features = ["blood_sugar_mg_dl", "cholesterol_mg_dl", "age", "bmi", "systolic_bp"]
+        else:
+            fallback_features = list(fallback_features)
+        df_selected = pd.DataFrame([{f: float(patient_dict.get(f, 0.0)) for f in fallback_features}])
         X_input = pd.DataFrame(scaler.transform(df_selected), columns=fallback_features)
 
     # Predict
