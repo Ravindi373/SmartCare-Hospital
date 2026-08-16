@@ -1,13 +1,25 @@
 """
+CCS3440 Artificial Intelligence Coursework | Group 02
 SmartCare Hospital — Disease Risk Level Classification System (Option C)
-Streamlit Prototype Application for Clinical Decision Support
+Deployment Demonstration & Clinical Decision Support Interface
 """
 
 from pathlib import Path
+import sys
 import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
+
+# Add src to sys.path if needed for shared utilities
+SRC_DIR = Path(__file__).resolve().parent.parent / "src"
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+try:
+    from feature_engineering import transform_single_patient, classify_bp, classify_age_group, classify_bmi_category
+except ImportError:
+    pass
 
 st.set_page_config(
     page_title="SmartCare Disease Risk Classifier",
@@ -23,46 +35,12 @@ if not BUNDLE_PATH.exists():
 LABEL_NAMES = ["Low", "Medium", "High"]
 
 
-def classify_bp(s: float, d: float) -> str:
-    if s < 120 and d < 80:
-        return "Normal"
-    elif s < 130 and d < 80:
-        return "Elevated"
-    else:
-        return "Stage 1 Hypertension"
-
-
-def classify_age_group(age: float) -> str:
-    if age <= 17:
-        return "Under 18"
-    elif age <= 35:
-        return "18-35"
-    elif age <= 50:
-        return "36-50"
-    elif age <= 65:
-        return "51-65"
-    else:
-        return "65+"
-
-
-def classify_bmi_category(bmi: float) -> str:
-    if bmi < 18.5:
-        return "Underweight"
-    elif bmi < 25.0:
-        return "Normal"
-    elif bmi < 30.0:
-        return "Overweight"
-    else:
-        return "Obese"
-
-
 @st.cache_resource
 def load_artifacts():
     if BUNDLE_PATH.exists():
         bundle = joblib.load(BUNDLE_PATH)
         return bundle
     else:
-        # Fallback to direct model and scaler if bundle not yet created
         model = joblib.load(BASE_DIR / "disease_risk_model.pkl")
         scaler = joblib.load(BASE_DIR / "feature_scaler.pkl")
         return {"best_model": model, "scaler": scaler, "selected_features": getattr(scaler, "feature_names_in_", None)}
@@ -128,11 +106,7 @@ with st.form("patient_form"):
 
     submitted = st.form_submit_button("🔍 Classify Disease Risk Level", use_container_width=True)
 
-# ---------------------------------------------------------------
-# Inference Execution
-# ---------------------------------------------------------------
 if submitted:
-    # 1. Construct raw dictionary
     patient_dict = {
         "age": float(age),
         "gender": gender,
@@ -162,72 +136,43 @@ if submitted:
         "medicine_charge_lkr": float(medicine_charge),
     }
 
-    # 2. Compute engineered features
-    bp_cat = classify_bp(systolic_bp, diastolic_bp)
-    age_grp = classify_age_group(age)
-    bmi_cat = classify_bmi_category(bmi)
-    is_chronic = int(previous_admissions >= 2)
-    miss_rate = (missed_previous_appointments / previous_appointments) if previous_appointments > 0 else 0.0
-
-    patient_dict["bp_category"] = bp_cat
-    patient_dict["age_group"] = age_grp
-    patient_dict["bmi_category"] = bmi_cat
-    patient_dict["is_chronic_patient"] = is_chronic
-    patient_dict["missed_appointment_rate"] = miss_rate
-    patient_dict["care_intensity"] = lab_tests_count + treatments_count
-
-    # 3. Transform inputs
+    # Transform patient inputs using the full pipeline
     model = bundle.get("best_model", bundle.get("model"))
-    scaler = bundle.get("scaler")
-    encoders = bundle.get("encoders", {})
-    selected_features = bundle.get("selected_features", [])
-
-    if encoders and selected_features is not None and len(selected_features) > 0:
-        # Full pipeline transformation
-        df_input = pd.DataFrame([patient_dict])
-        for col, le in encoders.items():
-            if col in df_input.columns:
-                val = str(df_input[col].iloc[0])
-                if val in le.classes_:
-                    df_input[col] = le.transform([val])[0]
-                else:
-                    df_input[col] = 0
-
-        for col in selected_features:
-            if col not in df_input.columns:
-                df_input[col] = 0.0
-
-        df_selected = df_input[selected_features].astype(float)
-        scaled_input = pd.DataFrame(scaler.transform(df_selected), columns=selected_features)
+    if "ohe" in bundle:
+        X_input = transform_single_patient(patient_dict, bundle)
     else:
-        # Fallback for 5-feature scaler
-        fallback_features = ["blood_sugar_mg_dl", "cholesterol_mg_dl", "age", "bmi", "previous_admissions"]
+        fallback_features = ["blood_sugar_mg_dl", "cholesterol_mg_dl", "age", "bmi", "systolic_bp"]
+        scaler = bundle.get("scaler")
         df_selected = pd.DataFrame([{f: patient_dict[f] for f in fallback_features}])
-        scaled_input = pd.DataFrame(scaler.transform(df_selected), columns=fallback_features)
+        X_input = pd.DataFrame(scaler.transform(df_selected), columns=fallback_features)
 
-    # 4. Predict
-    pred_idx = int(model.predict(scaled_input)[0])
+    # Predict
+    pred_idx = int(model.predict(X_input)[0])
     if hasattr(model, "predict_proba"):
-        probs = model.predict_proba(scaled_input)[0]
+        probs = model.predict_proba(X_input)[0]
     else:
         probs = np.array([1.0 if i == pred_idx else 0.0 for i in range(3)])
 
     pred_label = LABEL_NAMES[pred_idx]
     confidence = probs[pred_idx]
 
-    # 5. Render Output
+    # Clinical categories for summary display
+    bp_cat = "Normal" if (systolic_bp < 120 and diastolic_bp < 80) else ("Elevated" if systolic_bp < 130 and diastolic_bp < 80 else "Hypertension")
+    is_chronic = int(previous_admissions >= 2)
+
+    # Render Output
     st.divider()
     st.markdown("### 📊 Prediction Results & Clinical Stratification")
 
     if pred_label == "Low":
         st.success(f"🟢 **Predicted Risk Level: LOW RISK** (Confidence: {confidence:.1%})")
-        st.info("💡 **Clinical Recommendation:** Routine monitoring and preventive lifestyle counseling.")
+        st.info("💡 **Clinical Recommendation:** Routine annual monitoring and lifestyle wellness counseling.")
     elif pred_label == "Medium":
         st.warning(f"🟠 **Predicted Risk Level: MEDIUM RISK** (Confidence: {confidence:.1%})")
-        st.info("⚠️ **Clinical Recommendation:** Schedule closer follow-up review and targeted diagnostic panels.")
+        st.info("⚠️ **Clinical Recommendation:** Schedule 3-month follow-up review and targeted diagnostic metabolic panels.")
     else:
         st.error(f"🔴 **Predicted Risk Level: HIGH RISK** (Confidence: {confidence:.1%})")
-        st.info("🚨 **Clinical Recommendation:** Immediate clinician evaluation, inpatient care or aggressive intervention.")
+        st.info("🚨 **Clinical Recommendation:** Immediate clinician consultation, continuous telemetry or inpatient management.")
 
     # Clinical Alert Indicators
     st.markdown("#### 🩺 Clinical Vitals Summary")
@@ -246,11 +191,11 @@ if submitted:
     prob_df = pd.DataFrame({"Risk Level": LABEL_NAMES, "Probability": probs}).set_index("Risk Level")
     st.bar_chart(prob_df)
 
-    with st.expander("🔍 View Scaled Model Feature Vector"):
-        st.dataframe(scaled_input.T.rename(columns={0: "Standardized Value"}).round(4))
+    with st.expander("🔍 View Standardized Feature Vector"):
+        st.dataframe(X_input.T.rename(columns={0: "Standardized Value"}).round(4))
 
 st.divider()
 st.caption(
-    "⚠️ **Disclaimer:** This system is an academic machine learning prototype for CCS3440 coursework. "
+    "⚠️ **Disclaimer:** This system is an academic machine learning deployment demonstration for CCS3440 coursework. "
     "It is designed for clinical decision support evaluation and should not replace qualified medical diagnosis."
 )
