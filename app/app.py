@@ -179,11 +179,40 @@ if submitted:
     # 3. Transform inputs
     model = bundle.get("best_model", bundle.get("model"))
     scaler = bundle.get("scaler")
-    encoders = bundle.get("encoders", {})
+    ohe = bundle.get("ohe")
     selected_features = bundle.get("selected_features", [])
 
-    if encoders and selected_features is not None and len(selected_features) > 0:
-        # Full pipeline transformation
+    if ohe is not None and scaler is not None and len(selected_features) > 0:
+        # OneHotEncoder Pipeline Transformation
+        cat_cols = bundle.get("cat_cols", [])
+        num_cols = bundle.get("num_cols", [])
+        ohe_feature_names = bundle.get("ohe_feature_names", [])
+
+        df_input = pd.DataFrame([patient_dict])
+        for c in num_cols:
+            if c not in df_input.columns:
+                df_input[c] = 0.0
+        for c in cat_cols:
+            if c not in df_input.columns:
+                df_input[c] = "Unknown"
+
+        df_num = df_input[num_cols].astype(float)
+        df_cat = pd.DataFrame(
+            ohe.transform(df_input[cat_cols].astype(str)),
+            columns=ohe_feature_names,
+            index=df_input.index
+        )
+        df_encoded = pd.concat([df_num, df_cat], axis=1)
+
+        for col in selected_features:
+            if col not in df_encoded.columns:
+                df_encoded[col] = 0.0
+
+        df_selected = df_encoded[selected_features].astype(float)
+        scaled_input = pd.DataFrame(scaler.transform(df_selected), columns=selected_features)
+    elif "encoders" in bundle:
+        # Legacy LabelEncoder fallback
+        encoders = bundle.get("encoders", {})
         df_input = pd.DataFrame([patient_dict])
         for col, le in encoders.items():
             if col in df_input.columns:
@@ -192,11 +221,9 @@ if submitted:
                     df_input[col] = le.transform([val])[0]
                 else:
                     df_input[col] = 0
-
         for col in selected_features:
             if col not in df_input.columns:
                 df_input[col] = 0.0
-
         df_selected = df_input[selected_features].astype(float)
         scaled_input = pd.DataFrame(scaler.transform(df_selected), columns=selected_features)
     else:

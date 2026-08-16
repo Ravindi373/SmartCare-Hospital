@@ -1,0 +1,3 @@
+Model System,Features Used,Accuracy,Precision (macro),Recall (macro),F1 (macro)
+Full 15-Feature Pipeline,15,0.99,0.9761904761904763,0.9929078014184397,0.9840700915969732
+5-Feature Prototype Model,5,0.9,0.8783314876338132,0.9080469176213857,0.8909536714414763

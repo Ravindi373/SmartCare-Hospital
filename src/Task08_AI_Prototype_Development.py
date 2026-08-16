@@ -1,20 +1,25 @@
 """
 CCS3440 Artificial Intelligence Coursework | Group 02
 Option C: Disease Risk Classification - SmartCare Hospital
-Task 08 – AI Prototype Prediction Module
+Task 08 – AI Prototype Prediction Module & 5-Feature Prototype Evaluation
 """
 
 from pathlib import Path
 import joblib
 import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
 from feature_engineering import transform_single_patient
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-BUNDLE_PATH = BASE_DIR / "models" / "pipeline_bundle.joblib"
-if not BUNDLE_PATH.exists():
-    BUNDLE_PATH = BASE_DIR / "app" / "pipeline_bundle.joblib"
+DATA_DIR = BASE_DIR / "data" / "processed"
+MODELS_DIR = BASE_DIR / "models"
+APP_DIR = BASE_DIR / "app"
+REPORTS_DIR = BASE_DIR / "reports"
 
+BUNDLE_PATH = MODELS_DIR / "pipeline_bundle.joblib"
 LABEL_NAMES = ["Low", "Medium", "High"]
 
 
@@ -26,16 +31,76 @@ def load_pipeline_bundle(bundle_path: Path = BUNDLE_PATH):
     return joblib.load(bundle_path)
 
 
+def evaluate_prototype_model(bundle):
+    """
+    Train and evaluate a simplified 5-feature prototype model on held-out test data,
+    comparing its generalization performance against the full 15-feature pipeline.
+    """
+    x_train_path = DATA_DIR / "X_train.csv"
+    x_test_path = DATA_DIR / "X_test.csv"
+    y_train_path = DATA_DIR / "y_train.csv"
+    y_test_path = DATA_DIR / "y_test.csv"
+
+    X_train = pd.read_csv(x_train_path)
+    X_test = pd.read_csv(x_test_path)
+    y_train = pd.read_csv(y_train_path).squeeze("columns")
+    y_test = pd.read_csv(y_test_path).squeeze("columns")
+
+    # Select top 5 features
+    top5_features = ["age", "blood_sugar_mg_dl", "cholesterol_mg_dl", "bmi", "previous_admissions"]
+    # Check if all top5 features exist in X_train, else pick top 5 selected features
+    actual_top5 = [f for f in top5_features if f in X_train.columns]
+    if len(actual_top5) < 5:
+        actual_top5 = X_train.columns[:5].tolist()
+
+    X_train_5 = X_train[actual_top5]
+    X_test_5 = X_test[actual_top5]
+
+    # Train prototype model (Logistic Regression / Random Forest) on 5 features
+    proto_model = LogisticRegression(class_weight="balanced", max_iter=2000, random_state=42)
+    proto_model.fit(X_train_5, y_train)
+    y_pred_5 = proto_model.predict(X_test_5)
+
+    # Full model performance on test set
+    best_full_model = bundle["best_model"]
+    y_pred_full = best_full_model.predict(X_test)
+
+    comparison_df = pd.DataFrame([
+        {
+            "Model System": "Full 15-Feature Pipeline",
+            "Features Used": 15,
+            "Accuracy": accuracy_score(y_test, y_pred_full),
+            "Precision (macro)": precision_score(y_test, y_pred_full, average="macro", zero_division=0),
+            "Recall (macro)": recall_score(y_test, y_pred_full, average="macro", zero_division=0),
+            "F1 (macro)": f1_score(y_test, y_pred_full, average="macro", zero_division=0),
+        },
+        {
+            "Model System": "5-Feature Prototype Model",
+            "Features Used": 5,
+            "Accuracy": accuracy_score(y_test, y_pred_5),
+            "Precision (macro)": precision_score(y_test, y_pred_5, average="macro", zero_division=0),
+            "Recall (macro)": recall_score(y_test, y_pred_5, average="macro", zero_division=0),
+            "F1 (macro)": f1_score(y_test, y_pred_5, average="macro", zero_division=0),
+        }
+    ])
+
+    print("\n--- Prototype vs Full Model Generalization Comparison (Held-Out Test Set) ---")
+    print(comparison_df.round(4).to_string(index=False))
+
+    comparison_df.to_csv(REPORTS_DIR / "task08_prototype_comparison.csv", index=False)
+    joblib.dump(proto_model, MODELS_DIR / "prototype_5feature_model.pkl")
+    return comparison_df
+
+
 def predict_patient_risk(raw_patient: dict, bundle=None) -> dict:
     """
-    Given a raw patient dictionary, transforms and scales all features,
+    Given a raw patient dictionary, transforms and scales all features using OneHotEncoder bundle,
     and returns predicted risk level and class probabilities.
     """
     if bundle is None:
         bundle = load_pipeline_bundle()
 
     model = bundle["best_model"]
-    # Transform raw patient attributes into the scaled 15-feature dataframe
     X_input = transform_single_patient(raw_patient, bundle)
 
     pred_idx = int(model.predict(X_input)[0])
@@ -53,15 +118,19 @@ def predict_patient_risk(raw_patient: dict, bundle=None) -> dict:
     }
 
 
-def run_sample_predictions():
+def run_task08():
     print("==================================================")
-    print("  Task 08: Prototype Prediction Verification")
+    print("  Task 08: Prototype Prediction & Evaluation")
     print("==================================================")
 
     bundle = load_pipeline_bundle()
-    print(f"Loaded Model: {bundle.get('best_model_name', 'Logistic Regression')}")
-    print(f"Features in Pipeline: {bundle.get('selected_features', [])}\n")
+    print(f"Loaded Primary Model: {bundle.get('best_model_name', 'Logistic Regression')}")
+    print(f"Features in Pipeline: {len(bundle.get('selected_features', []))} features\n")
 
+    # Evaluate 5-feature prototype on held-out test data
+    evaluate_prototype_model(bundle)
+
+    # Verification profiles
     test_profiles = [
         {
             "name": "Profile 1: Healthy Young Outpatient (Expected Low Risk)",
@@ -101,12 +170,15 @@ def run_sample_predictions():
         }
     ]
 
+    print("\n--- Single Patient Prediction Verification ---")
     for item in test_profiles:
         res = predict_patient_risk(item["data"], bundle)
         print(f"--- {item['name']} ---")
         print(f"  Predicted Risk: {res['prediction']}")
         print(f"  Probabilities:  Low: {res['probabilities']['Low']:.1%}, Medium: {res['probabilities']['Medium']:.1%}, High: {res['probabilities']['High']:.1%}\n")
 
+    print("\n[SUCCESS] Task 08 completed!\n")
+
 
 if __name__ == "__main__":
-    run_sample_predictions()
+    run_task08()

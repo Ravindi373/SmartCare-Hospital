@@ -1,7 +1,7 @@
 """
 CCS3440 Artificial Intelligence Coursework | Group 02
 Option C: Disease Risk Classification - SmartCare Hospital
-Task 06 – Multi-Class Model Evaluation & Benchmarking
+Task 06 – Multi-Class Model Evaluation & Benchmarking (Leak-Free)
 """
 
 from pathlib import Path
@@ -75,7 +75,7 @@ def run_task06():
         else:
             roc_auc_macro = np.nan
 
-        # Per-class metrics
+        # Per-class metrics (strictly mapped: 0=Low, 1=Medium, 2=High)
         prec, rec, f1, support = precision_recall_fscore_support(y_test, y_pred, labels=[0, 1, 2], zero_division=0)
         for cls_idx, cls_name in enumerate(CLASS_NAMES):
             per_class_rows.append({
@@ -84,7 +84,7 @@ def run_task06():
                 "Precision": prec[cls_idx],
                 "Recall": rec[cls_idx],
                 "F1": f1[cls_idx],
-                "Support": support[cls_idx]
+                "Support": int(support[cls_idx])
             })
 
         summary_rows.append({
@@ -102,6 +102,9 @@ def run_task06():
 
     print("\n--- Model Comparison Benchmark Table ---")
     print(summary_df.to_string(index=False))
+
+    print("\n--- Per-Class Evaluation Metrics ---")
+    print(per_class_df.to_string(index=False))
 
     summary_df.to_csv(REPORTS_DIR / "task06_model_comparison_table.csv", index=False)
     per_class_df.to_csv(REPORTS_DIR / "task06_per_class_metrics.csv", index=False)

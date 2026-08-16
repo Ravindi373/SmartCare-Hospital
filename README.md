@@ -12,9 +12,11 @@ An end-to-end Machine Learning pipeline that classifies hospital patients into *
 - [Dataset](#-dataset)
 - [Project Structure](#-project-structure)
 - [Tech Stack](#-tech-stack)
-- [Pipeline Overview](#-pipeline-overview)
+- [Pipeline Overview & Data Leakage Prevention](#-pipeline-overview--data-leakage-prevention)
 - [Models & Results](#-models--results)
-- [Prototype](#-prototype)
+- [Class-Weighting Ablation Study](#-class-weighting-ablation-study)
+- [Explainable AI (SHAP)](#-explainable-ai-shap)
+- [Prototype & Deployment](#-prototype--deployment)
 - [Getting Started](#-getting-started)
 - [Team](#-team)
 - [License](#-license)
@@ -31,7 +33,7 @@ Early identification of disease risk can improve preventive healthcare intervent
 |------|--------|
 | **Target Variable** | `disease_risk_level` |
 | **Problem Type** | Multi-Class Classification |
-| **Classes** | Low · Medium · High |
+| **Classes & Test Support** | **Low** (N=26) · **Medium** (N=94) · **High** (N=80) |
 
 ---
 
@@ -40,18 +42,9 @@ Early identification of disease risk can improve preventive healthcare intervent
 | Property | Value |
 |----------|-------|
 | **File** | `smartcare_ai_dataset_1000.csv` |
-| **Records** | 1,000 |
+| **Total Records** | 1,000 |
 | **Features** | Patient demographics, clinical vitals, hospital operations, financial data |
-
-<details>
-<summary><b>Feature Categories</b></summary>
-
-- **Patient Info** — Age, Gender, Blood Group
-- **Clinical** — Diagnosis, Blood Pressure, Blood Sugar, Cholesterol, BMI
-- **Operations** — Department, Appointment History, Admissions, Length of Stay, Room Type, Treatments, Lab Tests
-- **Financial** — Consultation, Lab, Room & Medicine Charges, Total Bill
-
-</details>
+| **Class Ratio** | Medium (46.9%) · High (40.0%) · Low (13.1%) |
 
 ---
 
@@ -60,25 +53,50 @@ Early identification of disease risk can improve preventive healthcare intervent
 ```
 SmartCare-Hospital/
 ├── README.md
+├── requirements.txt
+├── Dockerfile
 ├── data/
 │   ├── raw/
 │   │   └── smartcare_ai_dataset_1000.csv
 │   ├── processed/
-│   │   ├── cleaned_data.csv
+│   │   ├── smartcare_cleaned.csv
 │   │   ├── X_train.csv
 │   │   ├── X_test.csv
 │   │   ├── y_train.csv
 │   │   └── y_test.csv
 │   └── data_dictionary.csv
 ├── src/
-│   ├── Task 02 – Dataset Understanding.py
-│   ├── Task 03 – Data Preprocessing and Feature Engineering.py
-│   ├── Task 04 – Exploratory Data Analysis.py
+│   ├── preprocessing.py
+│   ├── feature_engineering.py
+│   ├── Task02_Dataset_Understanding.py
+│   ├── Task03_Data_Preprocessing_and_Feature_Engineering.py
+│   ├── Task04_Exploratory_Data_Analysis.py
 │   ├── Task05_Model_Development.py
-│   └── Task06_Model_Evaluation.py
+│   ├── Task06_Model_Evaluation.py
+│   ├── Task07_Explainable_AI_Analysis.py
+│   └── Task08_AI_Prototype_Development.py
 ├── app/
 │   ├── app.py
-│   └── requirements.txt
+│   ├── requirements.txt
+│   └── pipeline_bundle.joblib
+├── models/
+│   ├── best_model.pkl
+│   ├── all_tuned_models.pkl
+│   ├── pipeline_bundle.joblib
+│   └── feature_artifacts.joblib
+└── reports/
+    ├── Task_09_Final_Technical_Report.md
+    ├── task05_model_comparison_results.csv
+    ├── task06_model_comparison_table.csv
+    ├── task06_per_class_metrics.csv
+    ├── class_weighting_ablation_study.csv
+    ├── task08_prototype_comparison.csv
+    ├── shap_feature_importance.csv
+    ├── confusion_matrices_all_models.png
+    ├── eval_roc_curves_best_model.png
+    ├── shap_summary_multiclass.png
+    ├── shap_high_risk_importance.png
+    └── shap_waterfall_patient_example.png
 ```
 
 ---
@@ -87,108 +105,137 @@ SmartCare-Hospital/
 
 | Category | Technologies |
 |----------|-------------|
-| **Language** | Python 3.x |
-| **Environment** | Jupyter Notebook / Google Colab |
+| **Language** | Python 3.9+ |
+| **Environment** | Jupyter Notebook / VS Code |
 | **Data Analysis** | Pandas, NumPy |
 | **Visualization** | Matplotlib, Seaborn |
-| **Machine Learning** | Scikit-Learn, XGBoost |
-| **Explainable AI** | SHAP |
+| **Machine Learning** | Scikit-Learn, XGBoost, TensorFlow |
+| **Explainable AI** | SHAP (SHapley Additive exPlanations) |
 | **Prototype** | Streamlit |
 
 ---
 
-## 🔄 Pipeline Overview
+## 🔄 Pipeline Overview & Data Leakage Prevention
 
 ```
-Task 02          Task 03                    Task 04          Task 05            Task 06         Task 07        Task 08
-Dataset    →   Preprocessing &    →     Exploratory    →   Model        →    Model       →   Explainable  →  Prototype
-Understanding    Feature Engineering      Data Analysis     Development       Evaluation       AI (SHAP)       (Streamlit)
+Raw Data → Conditional Imputation → Duplicate Removal → [STRATIFIED TRAIN/TEST SPLIT (80/20)]
+                                                               │
+                       ┌───────────────────────────────────────┴───────────────────────────────────────┐
+                       ▼                                                                               ▼
+              Fit ONLY on Train (N=800)                                                     Transform ONLY on Test (N=200)
+    • OneHotEncoder (Nominals: gender, dept, etc.)                                  • OneHotEncoder transform
+    • SelectKBest ANOVA F-score (Top 15 Features)                                   • SelectKBest transform
+    • StandardScaler                                                                • StandardScaler transform
 ```
 
 | Task | Description | Status |
 |------|-------------|--------|
-| **Task 01** | Problem Definition & Literature Review | 📄 Report |
+| **Task 01** | Problem Definition & Literature Review | ✅ Complete |
 | **Task 02** | Dataset Understanding | ✅ Complete |
-| **Task 03** | Data Preprocessing & Feature Engineering | ✅ Complete |
-| **Task 04** | Exploratory Data Analysis | ✅ Complete |
-| **Task 05** | ML Model Development (5 models) | ✅ Complete |
-| **Task 06** | Model Evaluation | ✅ Complete |
-| **Task 07** | Explainable AI (SHAP/LIME) | 🔧 In Progress |
-| **Task 08** | AI Prototype (Streamlit) | ✅ Complete |
-| **Task 09** | Technical Report | 📄 Report |
+| **Task 03** | Data Preprocessing & Leak-Free Feature Pipeline | ✅ Complete |
+| **Task 04** | Exploratory Data Analysis (EDA) | ✅ Complete |
+| **Task 05** | ML Model Development & Ablation Study | ✅ Complete |
+| **Task 06** | Multi-Class Model Evaluation & Benchmarking | ✅ Complete |
+| **Task 07** | Explainable AI (SHAP Analysis) | ✅ Complete |
+| **Task 08** | AI Prototype & 5-Feature Generalization Benchmark | ✅ Complete |
+| **Task 09** | Technical Report Deliverable | ✅ Complete |
 
 ---
 
 ## 🤖 Models & Results
 
-Five classification models were trained with **GridSearchCV** (Stratified 5-Fold CV, macro-F1 scoring):
+Five classification models were trained using **Stratified 5-Fold Cross-Validation** (macro-F1 scoring) on the leak-free training set (`N=800`) and evaluated on the held-out test set (`N=200`).
 
-| # | Model | Highlights |
-|---|-------|-----------|
-| 1 | **Logistic Regression** | L2 regularization, balanced class weights |
-| 2 | **Decision Tree** | Pruned with max depth, class-weighted |
-| 3 | **Random Forest** | Ensemble of decision trees, feature importance |
-| 4 | **Support Vector Machine (SVM)** | RBF kernel, class-weighted |
-| 5 | **XGBoost** | Gradient boosting, sample-weighted |
+### Held-Out Test Set Benchmark (N=200)
 
-### Evaluation Metrics
+| Rank | Model | Accuracy | Precision (macro) | Recall (macro) | F1 (macro) | ROC-AUC (OvR macro) |
+|------|-------|----------|-------------------|----------------|------------|---------------------|
+| 🥇 1 | **Logistic Regression** | **0.990** | **0.9762** | **0.9929** | **0.9841** | **0.9999** |
+| 🥈 2 | **SVM (Linear Kernel)** | 0.990 | 0.9762 | 0.9929 | 0.9841 | 0.9998 |
+| 🥉 3 | **XGBoost** | 0.875 | 0.8858 | 0.8223 | 0.8467 | 0.9660 |
+| 4 | **Random Forest** | 0.820 | 0.8407 | 0.8049 | 0.8190 | 0.9500 |
+| 5 | **Decision Tree** | 0.715 | 0.7060 | 0.6995 | 0.7017 | 0.7686 |
 
-All models are evaluated using:
-- ✅ Accuracy
-- ✅ Precision (macro)
-- ✅ Recall (macro)
-- ✅ F1 Score (macro)
-- ✅ ROC-AUC (One-vs-Rest, macro)
-- ✅ Confusion Matrix
-- ✅ Per-class Classification Report
+### Per-Class Performance (Best Model — Logistic Regression)
+
+| Class Name | Target ID | Support | Precision | Recall | F1 Score |
+|------------|-----------|---------|-----------|--------|----------|
+| **Low Risk** | 0 | 26 | 0.9286 | 1.0000 | 0.9630 |
+| **Medium Risk** | 1 | 94 | 1.0000 | 0.9787 | 0.9892 |
+| **High Risk** | 2 | 80 | 1.0000 | 1.0000 | 1.0000 |
 
 ---
 
-## 🖥 Prototype
+## ⚖️ Class-Weighting Ablation Study
 
-A **Streamlit** web application that accepts patient details and predicts the disease risk level in real-time.
+To evaluate the impact of class imbalance handling (`class_weight='balanced'`), an ablation study was conducted comparing weighted models against unweighted baselines on the held-out test set:
 
-### Features
-- 🩺 Patient & clinical data input form
-- 🔍 Real-time disease risk prediction (Low / Medium / High)
-- 📊 Class probability bar chart
-- 🧠 SHAP-based feature importance insights
+| Model Family | Unweighted Acc | Unweighted Macro-F1 | Unweighted Low-F1 | Weighted Acc | Weighted Macro-F1 | Weighted Low-F1 |
+|--------------|----------------|---------------------|-------------------|--------------|-------------------|-----------------|
+| **Logistic Regression** | 0.985 | 0.9751 | 0.9412 | **0.990** | **0.9841** | **0.9630** |
+| **SVM** | 0.900 | 0.8751 | 0.7917 | **0.990** | **0.9841** | **0.9630** |
+| **Random Forest** | 0.835 | 0.8052 | 0.7143 | **0.820** | **0.8190** | **0.8163** |
+| **Decision Tree** | 0.770 | 0.7757 | 0.7925 | 0.715 | 0.7017 | 0.6538 |
+| **XGBoost** | 0.875 | 0.8546 | 0.7907 | 0.875 | 0.8467 | 0.7556 |
 
-### Run Locally
+*Key Finding: Class weighting significantly improves minority class (`Low Risk`) recall and F1-score for linear model families (LR and SVM).*
 
-```bash
-cd app
-pip install -r requirements.txt
-streamlit run app.py
-```
+---
+
+## 💡 Explainable AI (SHAP)
+
+Feature importance and patient-level explanations were computed using SHAP values on the saved best pipeline model:
+
+- **Top Clinical Feature Drivers**:
+  1. `blood_sugar_mg_dl` (Mean |SHAP| = 4.28)
+  2. `cholesterol_mg_dl` (Mean |SHAP| = 4.00)
+  3. `age` (Mean |SHAP| = 3.66)
+  4. `bmi` (Mean |SHAP| = 3.47)
+  5. `previous_admissions` (Mean |SHAP| = 2.34)
+  6. `systolic_bp` (Mean |SHAP| = 1.89)
+
+Visualizations generated:
+- `reports/shap_summary_multiclass.png`: Multi-class beeswarm/summary plot.
+- `reports/shap_high_risk_importance.png`: Feature drivers for High-Risk patients.
+- `reports/shap_waterfall_patient_example.png`: Individual patient waterfall explanation.
+
+---
+
+## 🖥 Prototype & Deployment
+
+A **Streamlit** interactive web application allows clinicians to input patient attributes and view real-time risk predictions with class probabilities and vitals alerts.
+
+### 5-Feature Prototype Generalization Evaluation
+Before deployment, a simplified 5-feature prototype model (`age`, `blood_sugar`, `cholesterol`, `bmi`, `previous_admissions`) was evaluated on held-out test data:
+
+| Model System | Features Used | Accuracy | Precision (macro) | Recall (macro) | F1 (macro) |
+|--------------|---------------|----------|-------------------|----------------|------------|
+| **Full Pipeline Model** | 15 | **0.990** | **0.9762** | **0.9929** | **0.9841** |
+| **5-Feature Prototype** | 5 | **0.900** | **0.8783** | **0.9080** | **0.8910** |
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-- Python 3.9+
-- pip
-
 ### Installation
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/sankalpams/SmartCare-Hospital.git
+git clone https://github.com/Ravindi373/SmartCare-Hospital.git
 cd SmartCare-Hospital
 
 # 2. Install dependencies
-pip install -r app/requirements.txt
+pip install -r requirements.txt
 
-# 3. Run the notebooks/scripts in order
-# Open in Jupyter or run:
+# 3. Run the leak-free ML pipeline in order
+python src/Task03_Data_Preprocessing_and_Feature_Engineering.py
 python src/Task05_Model_Development.py
 python src/Task06_Model_Evaluation.py
+python src/Task07_Explainable_AI_Analysis.py
+python src/Task08_AI_Prototype_Development.py
 
-# 4. Launch the prototype
-cd app
-streamlit run app.py
+# 4. Launch the Streamlit application
+streamlit run app/app.py
 ```
 
 ---
@@ -199,6 +246,7 @@ streamlit run app.py
 
 | Role | Name |
 |------|------|
+| **Module** | CCS3440 — Artificial Intelligence |
 | **Lecturer in Charge** | Dr. Chameera De Silva |
 | **Teaching Assistants** | Mr. Chamod Hewage · Pamod Dilshan |
 
@@ -208,4 +256,4 @@ streamlit run app.py
 
 This project is developed for academic purposes as part of the **CCS3440 — Artificial Intelligence** module at **Sri Lanka Technological Campus (SLTC)**.
 
-> ⚠️ **Disclaimer**: This is a coursework project using a synthetic dataset. It is **not** a real clinical decision-support tool and should not be used for actual medical decisions.
+> ⚠️ **Disclaimer**: This system is an academic machine learning coursework project trained on a synthetic clinical dataset. It is **not** a certified clinical decision-support tool and should not be used for actual medical diagnosis.
