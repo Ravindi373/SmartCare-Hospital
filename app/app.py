@@ -260,18 +260,33 @@ LABEL_NAMES = ["Low", "Medium", "High"]
 
 @st.cache_resource
 def load_artifacts():
+    bundle = None
     if BUNDLE_PATH.exists():
-        bundle = joblib.load(BUNDLE_PATH)
-        return bundle
-    else:
-        model = joblib.load(BASE_DIR / "disease_risk_model.pkl")
+        try:
+            bundle = joblib.load(BUNDLE_PATH)
+            return bundle
+        except Exception:
+            bundle = None
+
+    try:
+        model = joblib.load(BASE_DIR / "best_model.pkl")
+    except Exception:
+        try:
+            model = joblib.load(BASE_DIR / "disease_risk_model.pkl")
+        except Exception:
+            model = joblib.load(BASE_DIR.parent / "models" / "disease_risk_model.pkl")
+
+    try:
         scaler = joblib.load(BASE_DIR / "feature_scaler.pkl")
-        return {
-            "best_model": model,
-            "scaler": scaler,
-            "selected_features": getattr(scaler, "feature_names_in_", None),
-            "prototype_5_features": ["blood_sugar_mg_dl", "cholesterol_mg_dl", "age", "bmi", "systolic_bp"]
-        }
+    except Exception:
+        scaler = joblib.load(BASE_DIR.parent / "models" / "feature_scaler.pkl")
+
+    return {
+        "best_model": model,
+        "scaler": scaler,
+        "selected_features": getattr(scaler, "feature_names_in_", None),
+        "prototype_5_features": ["blood_sugar_mg_dl", "cholesterol_mg_dl", "age", "bmi", "systolic_bp"]
+    }
 
 
 bundle = load_artifacts()
@@ -280,9 +295,20 @@ bundle = load_artifacts()
 # Sidebar: Patient Presets & Diagnostic Configuration
 # -------------------------------------------------------------
 with st.sidebar:
-    st.image("https://img.icons8.com/fluency/96/hospital-3.png", width=64)
-    st.markdown("### ⚙️ Clinical Intelligence Panel")
-    st.caption("SmartCare Decision Support v2.4")
+    st.markdown(
+        """
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="background: linear-gradient(135deg, #0d9488 0%, #0284c7 100%); width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 4px 15px rgba(13, 148, 136, 0.45); border: 1px solid rgba(255,255,255,0.15);">
+                🏥
+            </div>
+            <div>
+                <div style="font-weight: 800; font-size: 1.15rem; color: #f8fafc; line-height: 1.2;">SmartCare AI</div>
+                <div style="font-size: 0.78rem; color: #94a3b8; font-weight: 500;">Clinical Intelligence v2.4</div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     
     st.markdown("---")
     st.markdown("#### ⚡ Quick Patient Presets")
