@@ -1,41 +1,136 @@
 """
 CCS3440 Artificial Intelligence Coursework | Group 02
 Option C: Disease Risk Classification - SmartCare Hospital
-Task 08 – AI Prototype Prediction Module
+Task 08 – AI Model Artefact & Prototype Decision Support Module
 """
 
 from pathlib import Path
 import joblib
+import numpy as np
 import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report
+from sklearn.preprocessing import StandardScaler
 
-from feature_engineering import transform_single_patient
+from feature_engineering import transform_single_patient, TARGET_MAP, TARGET_CLASSES
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-BUNDLE_PATH = BASE_DIR / "models" / "pipeline_bundle.joblib"
-if not BUNDLE_PATH.exists():
-    BUNDLE_PATH = BASE_DIR / "app" / "pipeline_bundle.joblib"
+DATA_DIR = BASE_DIR / "data"
+MODELS_DIR = BASE_DIR / "models"
+APP_DIR = BASE_DIR / "app"
+REPORTS_DIR = BASE_DIR / "reports"
 
+MODELS_DIR.mkdir(parents=True, exist_ok=True)
+APP_DIR.mkdir(parents=True, exist_ok=True)
+REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+
+PROTOTYPE_5_FEATURES = ["blood_sugar_mg_dl", "cholesterol_mg_dl", "age", "bmi", "systolic_bp"]
 LABEL_NAMES = ["Low", "Medium", "High"]
 
 
-def load_pipeline_bundle(bundle_path: Path = BUNDLE_PATH):
-    """Load the complete pipeline bundle containing model, scaler, and encoders."""
-    if not bundle_path.exists():
-        from Task05_Model_Development import run_task05
-        run_task05()
-    return joblib.load(bundle_path)
+def evaluate_and_export_prototype_model():
+    """
+    Perform held-out test evaluation on the lightweight 5-feature model
+    to benchmark generalisation performance against the full 15-feature pipeline.
+    """
+    print("==================================================")
+    print("  Task 08: Model Artefact & Prototype Evaluation")
+    print("==================================================")
+
+    # 1. Load raw split data to extract clean 5-feature inputs
+    df_raw = pd.read_csv(DATA_DIR / "raw" / "smartcare_ai_dataset_1000.csv")
+    y_raw = df_raw["disease_risk_level"].map(TARGET_MAP).astype(int)
+
+    from sklearn.model_selection import train_test_split
+    X_proto_raw = df_raw[PROTOTYPE_5_FEATURES]
+
+    X_train_p, X_test_p, y_train, y_test = train_test_split(
+        X_proto_raw, y_raw, test_size=0.2, random_state=42, stratify=y_raw
+    )
+
+    print(f"\n[1] Evaluating 5-Feature Lightweight Model on Held-Out Test Set (N=200)...")
+    print(f"Features: {PROTOTYPE_5_FEATURES}")
+
+    # Scale strictly on train
+    scaler_proto = StandardScaler()
+    X_train_p_scaled = scaler_proto.fit_transform(X_train_p)
+    X_test_p_scaled = scaler_proto.transform(X_test_p)
+
+    # Fit lightweight Logistic Regression model
+    lr_proto = LogisticRegression(C=1.0, class_weight="balanced", max_iter=2000, random_state=42)
+    lr_proto.fit(X_train_p_scaled, y_train)
+
+    y_pred_proto = lr_proto.predict(X_test_p_scaled)
+
+    acc = accuracy_score(y_test, y_pred_proto)
+    prec = precision_score(y_test, y_pred_proto, average="macro", zero_division=0)
+    rec = recall_score(y_test, y_pred_proto, average="macro", zero_division=0)
+    f1 = f1_score(y_test, y_pred_proto, average="macro", zero_division=0)
+
+    print(f"\n5-Feature Model Held-Out Test Metrics:")
+    print(f"  Accuracy:          {acc:.4f}")
+    print(f"  Precision (macro): {prec:.4f}")
+    print(f"  Recall (macro):    {rec:.4f}")
+    print(f"  Macro-F1:          {f1:.4f}")
+
+    print("\nClassification Report (5-Feature Model):")
+    print(classification_report(y_test, y_pred_proto, target_names=LABEL_NAMES, digits=4))
+
+    # Benchmark vs Full 15-Feature Pipeline
+    pipeline_bundle = joblib.load(MODELS_DIR / "pipeline_bundle.joblib")
+    best_15_model = pipeline_bundle["best_model"]
+    best_15_name = pipeline_bundle["best_model_name"]
+    X_test_15 = pd.read_csv(DATA_DIR / "processed" / "X_test.csv")
+    y_pred_15 = best_15_model.predict(X_test_15)
+
+    comparison_df = pd.DataFrame([
+        {
+            "Architecture": f"Full 15-Feature Pipeline ({best_15_name})",
+            "Features Count": 15,
+            "Accuracy": accuracy_score(y_test, y_pred_15),
+            "Precision (macro)": precision_score(y_test, y_pred_15, average="macro", zero_division=0),
+            "Recall (macro)": recall_score(y_test, y_pred_15, average="macro", zero_division=0),
+            "F1 (macro)": f1_score(y_test, y_pred_15, average="macro", zero_division=0),
+        },
+        {
+            "Architecture": "Lightweight 5-Feature Model (Logistic Regression)",
+            "Features Count": 5,
+            "Accuracy": acc,
+            "Precision (macro)": prec,
+            "Recall (macro)": rec,
+            "F1 (macro)": f1,
+        }
+    ])
+
+    print("\n--- Generalisation Trade-Off Comparison ---")
+    print(comparison_df.to_string(index=False))
+    comparison_df.to_csv(REPORTS_DIR / "task08_prototype_evaluation.csv", index=False)
+
+    # 2. Export artefacts
+    joblib.dump(lr_proto, MODELS_DIR / "disease_risk_model.pkl")
+    joblib.dump(scaler_proto, MODELS_DIR / "feature_scaler.pkl")
+    joblib.dump(lr_proto, APP_DIR / "disease_risk_model.pkl")
+    joblib.dump(scaler_proto, APP_DIR / "feature_scaler.pkl")
+
+    # Update pipeline bundle with prototype metadata
+    pipeline_bundle["prototype_5_model"] = lr_proto
+    pipeline_bundle["prototype_5_scaler"] = scaler_proto
+    pipeline_bundle["prototype_5_features"] = PROTOTYPE_5_FEATURES
+    joblib.dump(pipeline_bundle, MODELS_DIR / "pipeline_bundle.joblib")
+    joblib.dump(pipeline_bundle, APP_DIR / "pipeline_bundle.joblib")
+
+    print(f"\nSaved deployment-ready artefacts to {MODELS_DIR} and {APP_DIR}")
 
 
 def predict_patient_risk(raw_patient: dict, bundle=None) -> dict:
     """
     Given a raw patient dictionary, transforms and scales all features,
-    and returns predicted risk level and class probabilities.
+    and returns predicted risk level and class probabilities using the full pipeline.
     """
     if bundle is None:
-        bundle = load_pipeline_bundle()
+        bundle = joblib.load(MODELS_DIR / "pipeline_bundle.joblib")
 
     model = bundle["best_model"]
-    # Transform raw patient attributes into the scaled 15-feature dataframe
     X_input = transform_single_patient(raw_patient, bundle)
 
     pred_idx = int(model.predict(X_input)[0])
@@ -48,19 +143,14 @@ def predict_patient_risk(raw_patient: dict, bundle=None) -> dict:
         "prediction": LABEL_NAMES[pred_idx],
         "prediction_index": pred_idx,
         "probabilities": {label: float(p) for label, p in zip(LABEL_NAMES, probs)},
-        "model_used": bundle.get("best_model_name", "Logistic Regression"),
+        "model_used": bundle.get("best_model_name", "SVM"),
         "transformed_features": X_input.iloc[0].to_dict()
     }
 
 
-def run_sample_predictions():
-    print("==================================================")
-    print("  Task 08: Prototype Prediction Verification")
-    print("==================================================")
-
-    bundle = load_pipeline_bundle()
-    print(f"Loaded Model: {bundle.get('best_model_name', 'Logistic Regression')}")
-    print(f"Features in Pipeline: {bundle.get('selected_features', [])}\n")
+def run_sample_verification():
+    print("\n--- Running Sample Patient Profile Predictions ---")
+    bundle = joblib.load(MODELS_DIR / "pipeline_bundle.joblib")
 
     test_profiles = [
         {
@@ -88,7 +178,7 @@ def run_sample_predictions():
             }
         },
         {
-            "name": "Profile 3: Elderly Admitted Patient with Complex Comorbidities (Expected High Risk)",
+            "name": "Profile 3: Elderly Admitted Patient with High Biomarkers (Expected High Risk)",
             "data": {
                 "age": 72, "gender": "Male", "blood_group": "B+", "department": "Cardiology",
                 "diagnosis": "Diabetes", "appointment_status": "Completed", "admitted": 1, "room_type": "ICU",
@@ -103,10 +193,13 @@ def run_sample_predictions():
 
     for item in test_profiles:
         res = predict_patient_risk(item["data"], bundle)
-        print(f"--- {item['name']} ---")
+        print(f"\n{item['name']}:")
         print(f"  Predicted Risk: {res['prediction']}")
-        print(f"  Probabilities:  Low: {res['probabilities']['Low']:.1%}, Medium: {res['probabilities']['Medium']:.1%}, High: {res['probabilities']['High']:.1%}\n")
+        print(f"  Probabilities:  Low: {res['probabilities']['Low']:.1%}, Medium: {res['probabilities']['Medium']:.1%}, High: {res['probabilities']['High']:.1%}")
+
+    print("\n[SUCCESS] Task 08 prototype evaluation completed successfully!\n")
 
 
 if __name__ == "__main__":
-    run_sample_predictions()
+    evaluate_and_export_prototype_model()
+    run_sample_verification()

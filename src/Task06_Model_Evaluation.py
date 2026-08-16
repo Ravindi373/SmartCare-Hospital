@@ -1,7 +1,7 @@
 """
 CCS3440 Artificial Intelligence Coursework | Group 02
 Option C: Disease Risk Classification - SmartCare Hospital
-Task 06 – Multi-Class Model Evaluation & Benchmarking
+Task 06 – Multi-Class Model Evaluation, Benchmarking & Diagnostics
 """
 
 from pathlib import Path
@@ -37,6 +37,7 @@ CLASS_NAMES = ["Low", "Medium", "High"]
 def run_task06():
     print("==================================================")
     print("  Task 06: Model Evaluation & Benchmarking")
+    print("  (Harmonized with Task 05 Held-Out Test Split)")
     print("==================================================")
 
     # 1. Load test data
@@ -56,7 +57,10 @@ def run_task06():
         run_task05()
 
     fitted_models = joblib.load(models_path)
-    print(f"Evaluating {len(fitted_models)} fitted models on held-out test set (N={len(y_test)})...")
+    print(f"Evaluating {len(fitted_models)} tuned models on held-out test set (N={len(y_test)})...")
+    print("Ground truth test class support:")
+    for idx, name in enumerate(CLASS_NAMES):
+        print(f"  {name:6s} (Class {idx}): N = {(y_test == idx).sum()}")
 
     summary_rows = []
     per_class_rows = []
@@ -75,7 +79,7 @@ def run_task06():
         else:
             roc_auc_macro = np.nan
 
-        # Per-class metrics
+        # Per-class metrics strictly ordered 0=Low, 1=Medium, 2=High
         prec, rec, f1, support = precision_recall_fscore_support(y_test, y_pred, labels=[0, 1, 2], zero_division=0)
         for cls_idx, cls_name in enumerate(CLASS_NAMES):
             per_class_rows.append({
@@ -121,12 +125,12 @@ def run_task06():
         for i, (cls_name, color) in enumerate(zip(CLASS_NAMES, colors)):
             fpr, tpr, _ = roc_curve(y_test_bin[:, i], y_score[:, i])
             roc_auc_cls = auc(fpr, tpr)
-            plt.plot(fpr, tpr, color=color, lw=2, label=f"{cls_name} (AUC = {roc_auc_cls:.3f})")
+            plt.plot(fpr, tpr, color=color, lw=2, label=f"{cls_name} Risk (AUC = {roc_auc_cls:.3f})")
 
-        plt.plot([0, 1], [0, 1], "k--", lw=1, label="Chance (AUC = 0.5)")
-        plt.xlabel("False Positive Rate")
-        plt.ylabel("True Positive Rate")
-        plt.title(f"One-vs-Rest ROC Curves — {best_model_name}")
+        plt.plot([0, 1], [0, 1], "k--", lw=1, label="Chance (AUC = 0.500)")
+        plt.xlabel("False Positive Rate", fontsize=11)
+        plt.ylabel("True Positive Rate", fontsize=11)
+        plt.title(f"One-vs-Rest ROC Curves — {best_model_name} (Held-Out Test Set)", fontsize=12)
         plt.legend(loc="lower right")
         plt.tight_layout()
         plt.savefig(REPORTS_DIR / "eval_roc_curves_best_model.png", dpi=120)

@@ -1,7 +1,7 @@
 """
 CCS3440 Artificial Intelligence Coursework | Group 02
 Option C: Disease Risk Classification - SmartCare Hospital
-Task 07 – Explainable AI Analysis (SHAP)
+Task 07 – Explainable AI Analysis (True SHAP Implementation)
 """
 
 from pathlib import Path
@@ -10,95 +10,131 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import shap
-from xgboost import XGBClassifier
-
-from preprocessing import load_and_clean_data
-from feature_engineering import fit_feature_pipeline
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_PATH = BASE_DIR / "data" / "raw" / "smartcare_ai_dataset_1000.csv"
-REPORTS_DIR = BASE_DIR / "reports"
+DATA_DIR = BASE_DIR / "data" / "processed"
 MODELS_DIR = BASE_DIR / "models"
+REPORTS_DIR = BASE_DIR / "reports"
 
 REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-MODELS_DIR.mkdir(parents=True, exist_ok=True)
-
 LABEL_NAMES = ["Low", "Medium", "High"]
 
 
 def run_task07():
     print("==================================================")
-    print("  Task 07: Explainable AI Analysis (SHAP)")
+    print("  Task 07: Explainable AI Analysis (True SHAP)")
+    print("  (Generated Directly from Saved Pipeline & Test Set)")
     print("==================================================")
 
-    # 1. Load data and extract scaled features
-    df_clean = load_and_clean_data(DATA_PATH)
-    X_scaled, y_encoded, artifacts = fit_feature_pipeline(df_clean, k=15)
-    feature_names = artifacts["selected_features"]
+    # 1. Load pipeline bundle and held-out test data
+    bundle_path = MODELS_DIR / "pipeline_bundle.joblib"
+    if not bundle_path.exists():
+        from Task05_Model_Development import run_task05
+        run_task05()
 
-    # 2. Train an XGBoost model for fast TreeExplainer SHAP computation
-    print("Training XGBoost model for SHAP analysis...")
-    xgb_model = XGBClassifier(
-        n_estimators=150, max_depth=4, learning_rate=0.1,
-        objective="multi:softprob", num_class=3, eval_metric="mlogloss",
-        random_state=42
-    )
-    xgb_model.fit(X_scaled, y_encoded)
-    joblib.dump(xgb_model, MODELS_DIR / "xgb_shap_model.pkl")
+    pipeline_bundle = joblib.load(bundle_path)
+    X_test = pd.read_csv(DATA_DIR / "X_test.csv")
+    y_test = pd.read_csv(DATA_DIR / "y_test.csv").squeeze("columns")
 
-    # 3. Compute SHAP Values
-    print("Computing TreeExplainer SHAP values...")
-    explainer = shap.TreeExplainer(xgb_model)
-    shap_values = explainer.shap_values(X_scaled)
-    shap_array = np.array(shap_values)
+    feature_names = X_test.columns.tolist()
+    print(f"Loaded Pipeline Bundle with {len(feature_names)} features.")
+    print(f"Test Set Size for XAI Explanations: N={len(X_test)}")
 
-    # Overall feature importance
-    if shap_array.ndim == 3:
-        mean_abs = np.abs(shap_array).mean(axis=(0, 2))
+    # 2. Extract tuned Tree & Linear models from the pipeline
+    all_models = pipeline_bundle["all_models"]
+    rf_model = all_models.get("Random Forest")
+    xgb_model = all_models.get("XGBoost")
+    best_model = pipeline_bundle["best_model"]
+    best_name = pipeline_bundle["best_model_name"]
+
+    print(f"\nComputing TreeExplainer SHAP values using tuned Random Forest / XGBoost ensemble...")
+    # Use Random Forest / XGBoost TreeExplainer for exact, fast, model-agnostic tree attributions
+    explainer_model = rf_model if rf_model is not None else xgb_model
+    explainer = shap.TreeExplainer(explainer_model)
+    shap_values = explainer.shap_values(X_test)
+
+    # 3. Handle SHAP value output dimensions (list of arrays for multiclass or 3D array)
+    if isinstance(shap_values, list):
+        # List of [N_samples, N_features] for each class
+        mean_abs_per_class = [np.abs(sv).mean(axis=0) for sv in shap_values]
+        overall_mean_abs = np.mean(mean_abs_per_class, axis=0)
+        shap_array = np.stack(shap_values, axis=-1)  # (N_samples, N_features, N_classes)
+    elif isinstance(shap_values, np.ndarray) and shap_values.ndim == 3:
+        overall_mean_abs = np.abs(shap_values).mean(axis=(0, 2))
+        shap_array = shap_values
     else:
-        mean_abs = np.abs(shap_array).mean(axis=0)
+        # shap.Explanation object or 2D
+        if hasattr(shap_values, "values"):
+            raw_vals = shap_values.values
+            if raw_vals.ndim == 3:
+                overall_mean_abs = np.abs(raw_vals).mean(axis=(0, 2))
+                shap_array = raw_vals
+            else:
+                overall_mean_abs = np.abs(raw_vals).mean(axis=0)
+                shap_array = raw_vals
+        else:
+            overall_mean_abs = np.abs(shap_values).mean(axis=0)
+            shap_array = np.array(shap_values)
 
-    importance = pd.Series(mean_abs, index=feature_names).sort_values(ascending=False)
-    print("\nTop 10 Clinical Features Driving Risk Classification (SHAP):")
-    for r, (feat, val) in enumerate(importance.head(10).items(), 1):
-        print(f"  {r:2d}. {feat:25s} (Mean |SHAP|: {val:.4f})")
+    importance_df = pd.DataFrame({
+        "Feature": feature_names,
+        "Mean Absolute SHAP Value": overall_mean_abs
+    }).sort_values("Mean Absolute SHAP Value", ascending=False).reset_index(drop=True)
 
-    importance.to_csv(REPORTS_DIR / "shap_feature_importance.csv")
+    print("\n--- Global Feature Importance (Mean |SHAP| across all classes) ---")
+    for r, row in importance_df.iterrows():
+        print(f"  {r+1:2d}. {row['Feature']:32s} : {row['Mean Absolute SHAP Value']:.4f}")
 
-    # 4. Multi-class summary plot
-    plt.figure()
-    if shap_array.ndim == 3:
+    importance_df.to_csv(REPORTS_DIR / "shap_feature_importance.csv", index=False)
+
+    # 4. Multi-Class Summary Plot
+    plt.figure(figsize=(10, 6))
+    if isinstance(shap_values, list):
+        shap.summary_plot(shap_values, X_test, class_names=LABEL_NAMES, show=False)
+    elif shap_array.ndim == 3:
         sv_list = [shap_array[:, :, i] for i in range(shap_array.shape[2])]
-        shap.summary_plot(sv_list, X_scaled, class_names=LABEL_NAMES, show=False)
+        shap.summary_plot(sv_list, X_test, class_names=LABEL_NAMES, show=False)
     else:
-        shap.summary_plot(shap_values, X_scaled, show=False)
+        shap.summary_plot(shap_values, X_test, show=False)
+    plt.title("Multi-Class SHAP Summary Plot — Feature Attributions", fontsize=12)
     plt.tight_layout()
     plt.savefig(REPORTS_DIR / "shap_summary_multiclass.png", dpi=120, bbox_inches="tight")
     plt.close()
 
-    # 5. Feature Importance for High-Risk Category
-    high_idx = LABEL_NAMES.index("High")
-    plt.figure()
+    # 5. Feature Importance for High-Risk Category (Class Index 2)
+    high_idx = 2  # High Risk
+    plt.figure(figsize=(9, 5))
     if shap_array.ndim == 3:
-        shap.summary_plot(shap_array[:, :, high_idx], X_scaled, plot_type="bar", show=False)
-    plt.title("Key Feature Drivers for High-Risk Classification")
+        shap.summary_plot(shap_array[:, :, high_idx], X_test, plot_type="bar", show=False)
+    elif isinstance(shap_values, list):
+        shap.summary_plot(shap_values[high_idx], X_test, plot_type="bar", show=False)
+    plt.title("Key Feature Drivers for HIGH Disease Risk Level (SHAP)", fontsize=12)
     plt.tight_layout()
     plt.savefig(REPORTS_DIR / "shap_high_risk_importance.png", dpi=120, bbox_inches="tight")
     plt.close()
 
-    # 6. Single Patient Waterfall Plot (High-Risk patient case)
-    high_risk_patient_idx = int(np.where(y_encoded == high_idx)[0][0])
-    base_val = explainer.expected_value[high_idx] if hasattr(explainer.expected_value, "__len__") else explainer.expected_value
-    sv_patient = shap_array[high_risk_patient_idx, :, high_idx] if shap_array.ndim == 3 else shap_values[high_risk_patient_idx]
+    # 6. Local Patient-Level Waterfall Explanation
+    high_risk_indices = np.where(y_test == high_idx)[0]
+    sample_idx = int(high_risk_indices[0]) if len(high_risk_indices) > 0 else 0
 
-    exp = shap.Explanation(
-        values=sv_patient,
+    if hasattr(explainer, "expected_value"):
+        exp_val = explainer.expected_value
+        base_val = exp_val[high_idx] if hasattr(exp_val, "__len__") else exp_val
+    else:
+        base_val = 0.0
+
+    sv_sample = shap_array[sample_idx, :, high_idx] if shap_array.ndim == 3 else shap_values[high_idx][sample_idx]
+
+    explanation = shap.Explanation(
+        values=sv_sample,
         base_values=base_val,
-        data=X_scaled.iloc[high_risk_patient_idx],
+        data=X_test.iloc[sample_idx].values,
         feature_names=feature_names
     )
-    plt.figure()
-    shap.plots.waterfall(exp, show=False)
+
+    plt.figure(figsize=(9, 5))
+    shap.plots.waterfall(explanation, show=False)
+    plt.title(f"Patient #{sample_idx} (True Class: High Risk) — SHAP Local Feature Attribution", fontsize=11)
     plt.tight_layout()
     plt.savefig(REPORTS_DIR / "shap_waterfall_patient_example.png", dpi=120, bbox_inches="tight")
     plt.close()
