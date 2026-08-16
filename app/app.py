@@ -1,6 +1,5 @@
 """
-CCS3440 Artificial Intelligence Coursework | Group 02
-SmartCare Hospital — Disease Risk Level Classification System (Option C)
+SmartCare Hospital — Disease Risk Level Classification System
 Deployment Demonstration & Clinical Decision Support Interface
 """
 
@@ -50,7 +49,7 @@ bundle = load_artifacts()
 
 st.title("🩺 SmartCare Hospital")
 st.subheader("AI-Powered Patient Disease Risk Classifier")
-st.caption("CCS3440 Artificial Intelligence Coursework — Option C: Multi-Class Risk Stratification")
+st.caption("Clinical Decision Support System — Multi-Class Risk Stratification")
 st.divider()
 
 st.markdown("### 📋 Patient Intake & Clinical Form")
@@ -200,6 +199,5 @@ if submitted:
 
 st.divider()
 st.caption(
-    "⚠️ **Disclaimer:** This system is an academic machine learning deployment demonstration for CCS3440 coursework. "
-    "It is designed for clinical decision support evaluation and should not replace qualified medical diagnosis."
+    "⚠️ **Disclaimer:** This system is an AI deployment demonstration designed for clinical decision support evaluation and should not replace qualified medical diagnosis."
 )
