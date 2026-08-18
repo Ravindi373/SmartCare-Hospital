@@ -1,31 +1,16 @@
 # 🏥 SmartCare Hospital — Disease Risk Classification
 
-> **CCS3440 Artificial Intelligence Coursework | SLTC | Group 02**
-
-An end-to-end, leakage-free Machine Learning pipeline that stratifies hospital patients into **Low**, **Medium**, or **High** disease risk levels using physiological biomarkers, clinical diagnoses, operational data, and financial records from SmartCare Hospital.
-
----
-
-## 📋 Table of Contents
-
-- [Problem Statement](#-problem-statement)
-- [Dataset](#-dataset)
-- [Leakage-Free Pipeline Architecture](#-leakage-free-pipeline-architecture)
-- [Categorical Encoding & Target Mapping](#-categorical-encoding--target-mapping)
-- [Models & Benchmarking](#-models--benchmarking)
-- [Class Weighting Ablation Study](#-class-weighting-ablation-study)
-- [Explainable AI (True SHAP)](#-explainable-ai-true-shap)
-- [Deployment-Ready Model Artefact & Prototype](#-deployment-ready-model-artefact--prototype)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [References](#-references)
-- [Team](#-team)
-
----
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.4%2B-F7931E.svg?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![XGBoost](https://img.shields.io/badge/XGBoost-2.0%2B-337AB7.svg?logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io/)
+[![SHAP](https://img.shields.io/badge/SHAP-0.45%2B-8A2BE2.svg)](https://shap.readthedocs.io/)
+[![Pandas](https://img.shields.io/badge/Pandas-2.2%2B-150458.svg?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.35%2B-FF4B4B.svg?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🎯 Problem Statement
 
-**Option C — Multi-Class Disease Risk Classification**
+### **Multi-Class Disease Risk Classification**
 
 Early clinical identification of disease risk levels enables timely medical interventions, optimizing inpatient bed allocation and improving preventive outpatient care.
 
@@ -196,8 +181,11 @@ SmartCare-Hospital/
 
 ---
 
-## 👥 Team
+## 🤝 Contribution
 
-**Group 02 — SLTC | CCS3440 Artificial Intelligence**
-
-> ⚠️ **Academic Disclaimer:** This machine learning system was developed for academic evaluation as part of the CCS3440 Artificial Intelligence module. It is intended for clinical decision support evaluation and should not be used as an autonomous medical diagnostic tool.
+| Task | Name |
+|------|------|
+| Task 01–04, 09 | Ravindi Ayodya |
+| Task 05–06 | Malith Shehan |
+| Task 07 | Thimeth Chathnuka |
+| Task 08 | Sithumi Jayarathna |
