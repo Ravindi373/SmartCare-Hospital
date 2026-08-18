@@ -119,52 +119,6 @@ streamlit run app/app.py
 
 ---
 
-## 📁 Project Structure
-
-```
-SmartCare-Hospital/
-├── README.md                                                 # Project overview & documentation
-├── requirements.txt                                          # Root environment dependencies
-├── data/
-│   ├── raw/smartcare_ai_dataset_1000.csv                    # Benchmark dataset (1,000 records)
-│   ├── processed/                                            # Processed CSV splits (X_train, X_test, y_train, y_test)
-│   └── data_dictionary.csv                                   # Feature metadata dictionary
-├── src/
-│   ├── preprocessing.py                                      # Clean data loader & leakage prevention
-│   ├── feature_engineering.py                                # OHE, feature selection & pipeline transformers
-│   ├── Task02_Dataset_Understanding.py                       # Exploratory dataset diagnostics
-│   ├── Task03_Data_Preprocessing_and_Feature_Engineering.py  # Leakage-free preprocessing pipeline
-│   ├── Task04_Exploratory_Data_Analysis.py                   # Clinical statistical visualizations
-│   ├── Task05_Model_Development.py                           # 5 model tuning & ablation experiments
-│   ├── Task06_Model_Evaluation.py                            # Multi-class metrics, confusion matrices & ROC curves
-│   ├── Task07_Explainable_AI_Analysis.py                     # True SHAP XAI calculations
-│   └── Task08_AI_Prototype_Development.py                    # 5-feature prototype evaluation & serialization
-├── models/
-│   ├── pipeline_bundle.joblib                                # Unified production pipeline bundle
-│   ├── best_model.pkl                                        # Serialized top model (SVM)
-│   ├── disease_risk_model.pkl                                # Serialized lightweight prototype model
-│   └── feature_scaler.pkl                                    # Serialized standard scaler
-├── app/
-│   ├── app.py                                                # Streamlit clinical decision support interface
-│   ├── pipeline_bundle.joblib                                # App pipeline bundle
-│   └── requirements.txt                                      # App dependencies
-├── reports/
-│   ├── Task_09_Comprehensive_Technical_Report.md             # Formal coursework technical report
-│   ├── task05_class_weighting_ablation.csv                   # Empirical ablation results table
-│   ├── task06_model_comparison_table.csv                     # Synchronized benchmark table
-│   ├── task06_per_class_metrics.csv                          # Ground truth per-class metrics
-│   ├── task08_prototype_evaluation.csv                       # Prototype generalisation evaluation
-│   ├── shap_summary_multiclass.png                           # Multi-class SHAP beeswarm plot
-│   ├── shap_high_risk_importance.png                         # High-risk SHAP bar chart
-│   ├── shap_waterfall_patient_example.png                    # Patient-level SHAP waterfall explanation
-│   ├── eval_roc_curves_best_model.png                        # One-vs-Rest ROC curves
-│   └── confusion_matrices_all_models.png                     # Multi-class confusion matrices
-└── Notebook/
-    └── SmartCare_Hospital.ipynb                              # Fully executed coursework Jupyter Notebook
-```
-
----
-
 ## 📚 References (IEEE Format)
 
 [1] S. M. Lundberg and S.-I. Lee, "A unified approach to interpreting model predictions," in *Advances in Neural Information Processing Systems (NeurIPS 2017)*, vol. 30, pp. 4765–4774, Dec. 2017.
