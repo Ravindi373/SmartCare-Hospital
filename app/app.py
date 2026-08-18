@@ -903,12 +903,23 @@ now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 st.markdown(
     f"""
     <div class="liquid-hero">
-        <div class="top-meta-row">
-            <div class="liquid-badge">
-                🏥 SmartCare Metropolitan Medical Center · Triage & Diagnostics Hub
-            </div>
+        <div class="top-meta-row" style="justify-content: flex-end;">
             <div class="liquid-clock">
-                🕒 Session: {now_str}
+                🕒 <span style="font-weight: 700; color: #2dd4bf;">Live:</span>&nbsp;<span id="live-cockpit-clock">{now_str}</span>
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'/>" style="display:none;" onerror="
+                    const updateLiveClock = () => {{
+                        const el = document.getElementById('live-cockpit-clock');
+                        if (el) {{
+                            const d = new Date();
+                            const p = (n) => String(n).padStart(2, '0');
+                            el.textContent = d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+                        }}
+                    }};
+                    updateLiveClock();
+                    if (!window.liveClockTimer) {{
+                        window.liveClockTimer = setInterval(updateLiveClock, 1000);
+                    }}
+                " />
             </div>
         </div>
         <div class="hero-title-text">
