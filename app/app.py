@@ -356,17 +356,6 @@ with st.sidebar:
         p_wait, p_app, p_miss, p_los, p_prev_adm = 3, 2, 0, 0, 1
         p_sbp, p_dbp, p_bs, p_chol, p_bmi = 125, 82, 110.0, 190.0, 26.0
         p_labs, p_tx, p_cfee, p_rfee, p_lfee, p_mfee = 2, 2, 2000, 0, 3000, 4000
-
-    st.markdown("---")
-    st.markdown("#### 🔬 Model Architecture")
-    _model_obj = bundle.get("best_model", bundle.get("model"))
-    model_name = bundle.get("best_model_name", "Logistic Regression (Cost-Sensitive Balanced)") or (type(_model_obj).__name__ if _model_obj else "Logistic Regression")
-    st.markdown(f"**Primary Model:** `{model_name}`")
-    st.markdown("**Validation:** `Stratified 5-Fold CV`")
-    st.markdown("**Balancing:** `Cost-Sensitive Balanced Weights`")
-    st.markdown("**Feature Selection:** `ANOVA F-Score (K=15)`")
-
-
 # -------------------------------------------------------------
 # Top Hero Header Banner
 # -------------------------------------------------------------
@@ -378,20 +367,6 @@ st.markdown(
         </div>
         <div class="hero-subtitle">
             AI-Powered Multi-Class Disease Risk Stratification & Clinical Decision Support
-        </div>
-        <div class="status-badge-container">
-            <div class="status-pill status-pill-green">
-                <div class="pulse-dot"></div> Production Pipeline Online
-            </div>
-            <div class="status-pill">
-                🔒 Zero Data Leakage Architecture
-            </div>
-            <div class="status-pill">
-                📊 Multi-Class: Low · Medium · High
-            </div>
-            <div class="status-pill">
-                ⚡ Real-Time SHAP-Aligned Biomarkers
-            </div>
         </div>
     </div>
     """,
