@@ -1,121 +1,155 @@
 # 🏥 SmartCare Hospital — Disease Risk Classification
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.4%2B-F7931E.svg?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
-[![XGBoost](https://img.shields.io/badge/XGBoost-2.0%2B-337AB7.svg?logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io/)
-[![SHAP](https://img.shields.io/badge/SHAP-0.45%2B-8A2BE2.svg)](https://shap.readthedocs.io/)
-[![Pandas](https://img.shields.io/badge/Pandas-2.2%2B-150458.svg?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.35%2B-FF4B4B.svg?logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![scikit--learn](https://img.shields.io/badge/scikit--learn-1.4%2B-orange)
+![XGBoost](https://img.shields.io/badge/XGBoost-2.0%2B-blue)
+![SHAP](https://img.shields.io/badge/SHAP-0.45%2B-purple)
+![Pandas](https://img.shields.io/badge/Pandas-2.2%2B-darkblue)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.35%2B-red)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
+> **CCS3440 Artificial Intelligence Final Coursework | SLTC | Group 02**
+
+An end-to-end, leakage-free machine learning pipeline that stratifies SmartCare Hospital patients into **Low**, **Medium**, or **High** disease risk levels using physiological biomarkers, clinical diagnoses, hospital operations, and financial records — built with a strict train-only-fitting protocol, six benchmarked models, true SHAP explainability, and a deployment-ready lightweight prototype.
+
+---
+
+## 📋 Table of Contents
+
+- [Problem Statement](#-problem-statement)
+- [Dataset](#-dataset)
+- [Leakage-Free Pipeline](#-leakage-free-pipeline)
+- [Feature Engineering](#-feature-engineering)
+- [Models & Results](#-models--results)
+- [Explainable AI (SHAP)](#-explainable-ai-shap)
+- [Deployment Prototype](#-deployment-prototype)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Limitations](#-limitations)
+- [Team](#-team)
+
+---
 
 ## 🎯 Problem Statement
 
-### **Multi-Class Disease Risk Classification**
-
-Early clinical identification of disease risk levels enables timely medical interventions, optimizing inpatient bed allocation and improving preventive outpatient care.
+**Option C — Multi-Class Disease Risk Classification**
 
 | Item | Specification |
-|------|---------------|
+|---|---|
 | **Target Variable** | `disease_risk_level` |
-| **Problem Type** | Multi-Class Classification (3 classes) |
-| **Classes & Support** | **Low (Class 0):** 13.1% ($N=131$) · **Medium (Class 1):** 46.9% ($N=469$) · **High (Class 2):** 40.0% ($N=400$) |
-| **Held-Out Test Support** | **Low:** $N=26$ · **Medium:** $N=94$ · **High:** $N=80$ (Total $N=200$, 20% stratified test set) |
+| **Problem Type** | Multi-class classification (3 classes) |
+| **Class Distribution** | Low: 13.1% (N=131) · Medium: 46.9% (N=469) · High: 40.0% (N=400) |
+| **Test Set** | Low: N=26 · Medium: N=94 · High: N=80 (Total N=200, 20% stratified) |
+
+Early identification of disease risk supports preventive care, helps triage clinical staff and resources, and assists capacity planning — as a decision-support layer, not a replacement for clinical judgement.
 
 ---
 
 ## 📊 Dataset
 
 | Property | Value |
-|----------|-------|
+|---|---|
 | **File** | `smartcare_ai_dataset_1000.csv` |
 | **Records** | 1,000 patient admissions/visits |
-| **Features** | 32 initial raw attributes (clinical vitals, operations, billing, demographics) |
+| **Raw Features** | 33 attributes (demographics, clinical vitals, operations, billing) |
+| **Missing Data** | Only `room_type` (90.6% complete — mix of structural and genuine gaps) |
+| **Duplicates** | 0 (verified on full rows, `patient_id`, `record_id`) |
 
-### Feature Categories
-- **Demographics:** Age, Gender, Blood Group
-- **Physiological Vitals:** Systolic BP, Diastolic BP, Blood Sugar (mg/dL), Cholesterol (mg/dL), BMI
-- **Hospital Operations:** Department, Primary Diagnosis, Admission Status, Room Type, Length of Stay, Appointment History
-- **Billing & Financials:** Consultation, Room, Lab, and Medicine Charges, Total Bill (LKR), Payment Status/Method
+**Feature categories:** Demographics (age, gender, blood group) · Physiological vitals (BP, blood sugar, cholesterol, BMI) · Hospital operations (department, diagnosis, admission, length of stay) · Financials (consultation/room/lab/medicine charges, payment status)
 
 ---
 
-## 🔄 Leakage-Free Pipeline Architecture
+## 🔄 Leakage-Free Pipeline
 
-To guarantee strict adherence to machine learning standards and prevent data leakage:
-1. **Split-First Protocol:** Stratified 80/20 train/test split is performed **prior** to any data transformation.
-2. **Train-Only Fitting:** Imputation, One-Hot Encoding, ANOVA F-Score feature selection ($K=15$), and standard scaling are fitted **strictly on `X_train`** ($N=800$) and applied via `.transform()` to `X_test` ($N=200$).
-3. **Identifier & Outcome Leakage Dropping:** `record_id`, `patient_id`, `appointment_date`, `no_show`, and `readmitted_30_days` are explicitly removed.
+1. **Split-first protocol** — stratified 80/20 train/test split performed *before* any transformation.
+2. **Train-only fitting** — imputation, encoding, SelectKBest (K=15), and StandardScaler fitted strictly on `X_train` (N=800), applied via `.transform()` to `X_test` (N=200).
+3. **Leakage columns dropped** — `record_id`, `patient_id`, `appointment_date`, `no_show`, `readmitted_30_days` explicitly removed.
 
 ```
-Raw Data (N=1000) ──> Stratified 80/20 Split ──┬─> Train (N=800) ──> Fit (OHE + SelectKBest + Scaler) ──> Train Model
-                                               └─> Test  (N=200) ──> Transform with Fitted Pipeline  ──> Held-Out Eval
+Raw (N=1000) → Stratified 80/20 Split ─┬─ Train (N=800) → Fit(Impute+OHE+SelectKBest+Scale) → Train Models
+                                        └─ Test  (N=200) → Transform (fitted pipeline) → Held-out Eval
 ```
 
----
-
-## 🏷 Categorical Encoding & Target Mapping
-
-- **Nominal Categorical Encoding:** Replaced `LabelEncoder` with `OneHotEncoder(handle_unknown='ignore')` across all nominal variables (`gender`, `blood_group`, `department`, `diagnosis`, `appointment_status`, `room_type`, `payment_status`, `payment_method`) to eliminate artificial ordinal bias.
-- **Target Mapping:** Deterministically mapped as:
-  $$\text{Low} = 0 \quad (\text{Support } N=26), \quad \text{Medium} = 1 \quad (\text{Support } N=94), \quad \text{High} = 2 \quad (\text{Support } N=80)$$
+Target mapping is deterministic: **Low = 0, Medium = 1, High = 2** (avoids scikit-learn's alphabetical `LabelEncoder` mismatch).
 
 ---
 
-## 🤖 Models & Benchmarking
+## 🛠 Feature Engineering
 
-All five model families were tuned via `GridSearchCV` with **Stratified 5-Fold Cross-Validation** on training data (optimizing Macro-F1) and evaluated on the identical held-out test set ($N=200$):
+Seven engineered features raised the column count from 33 → 40:
 
-| Model Family | Accuracy | Precision (macro) | Recall (macro) | Macro-F1 | ROC-AUC (OvR macro) | Primary Clinical Selection |
-|--------------|:--------:|:-----------------:|:--------------:|:--------:|:-------------------:|:--------------------------:|
-| **Logistic Regression (Balanced)** | **0.8150** | **0.7986** | **0.7935** | **0.8050** | **0.9379** | 🥇 **Selected Primary Model** (Best Minority Recall & XAI) |
-| **SVM (Linear / RBF)** | 0.8150 | 0.7958 | 0.8150 | 0.8045 | 0.9408 | 🥈 Baseline Benchmark |
-| **Random Forest** | 0.7950 | 0.8090 | 0.7538 | 0.7753 | 0.9185 | 🥉 Tree Ensemble |
-| **XGBoost** | 0.7650 | 0.7433 | 0.7505 | 0.7467 | 0.9103 | Gradient Boosted Trees |
-| **Decision Tree** | 0.6650 | 0.6456 | 0.6022 | 0.6164 | 0.7366 | Interpretable Single Tree |
+- `age_group`, `bmi_category`, `bp_category` — clinically ordered bands (ordinal-encoded)
+- `missed_appointment_rate`, `is_chronic_patient`, `care_intensity`, `appointment_month`
 
-> **Production Model Choice:** **Logistic Regression** is selected as the primary production engine for clinical deployment due to its superior minority-class recall (76.92%), direct linear probability calibration, high prototype accuracy (85.50%), and transparent SHAP explanations.
+Nominal fields (`gender`, `blood_group`, `department`, `diagnosis`, `room_type`, `payment_status`, `payment_method`) use **One-Hot Encoding** — replacing `LabelEncoder` to remove artificial ordinal bias.
+
+**Top ANOVA F-scores (SelectKBest, K=15):** blood pressure class (154.82), age (142.25), age category (55.73), BMI (51.21), hypertension flag (19.95).
 
 ---
 
-## ⚖️ Class Weighting Ablation Study
+## 🤖 Models & Results
 
-To prove the efficacy of cost-sensitive class balancing on the minority class (`Low Risk`, $N=26$), an empirical ablation study was performed comparing `class_weight='balanced'` against unweighted baselines:
+All models tuned via `GridSearchCV` with 5-fold stratified CV, optimizing **macro-F1**.
 
-| Model | Weighting Scheme | Overall Accuracy | Macro-F1 | Low-Risk Recall (Minority) | Low-Risk F1 |
-|-------|------------------|:----------------:|:--------:|:--------------------------:|:-----------:|
-| **Logistic Regression** | Unweighted Baseline | 0.8250 | 0.7947 | 61.54% | 0.6957 |
-| **Logistic Regression** | **Balanced (Cost-Sensitive)** | **0.8150** | **0.8050** | **76.92% (+15.4%)** | **0.7692** |
-| **Decision Tree** | Unweighted Baseline | 0.6800 | 0.6429 | 42.31% | 0.5366 |
-| **Decision Tree** | **Balanced (Cost-Sensitive)** | 0.6600 | 0.6462 | 61.54% (+19.2%) | 0.5926 |
-| **Random Forest** | Unweighted Baseline | 0.7750 | 0.7347 | 46.15% | 0.6154 |
-| **Random Forest** | **Balanced (Cost-Sensitive)** | 0.7900 | 0.7564 | 53.85% (+7.7%) | 0.6512 |
-| **SVM** | Unweighted Baseline | 0.8100 | 0.7749 | 53.85% | 0.6667 |
-| **SVM** | **Balanced (Cost-Sensitive)** | 0.8050 | 0.7748 | 69.23% (+15.4%) | 0.6667 |
+### Test-Set Performance (N=200)
 
-> **Finding:** Class weighting significantly boosts minority-class recall across all classifiers (+15.4% in Logistic Regression & SVM, +19.2% in Decision Trees) without compromising macro-averaged F1. Logistic Regression achieved the highest minority recall (76.92%).
+| Rank | Model | Accuracy | Precision (macro) | Recall (macro) | F1 (macro) | ROC-AUC (OvR) |
+|---|---|---|---|---|---|---|
+| 🥇 | **Logistic Regression** | **0.985** | 0.9721 | 0.9894 | **0.9802** | **0.9998** |
+| 🥇 | **SVM (Linear)** | **0.985** | 0.9721 | 0.9894 | **0.9802** | **0.9998** |
+| 🥉 | Neural Network (bonus MLP) | 0.970 | 0.9697 | 0.9700 | 0.9698 | — |
+| 4 | XGBoost | 0.870 | 0.8979 | 0.8262 | 0.8534 | 0.9638 |
+| 5 | Random Forest | 0.840 | 0.8795 | 0.8104 | 0.8362 | 0.9503 |
+| 6 | Decision Tree | 0.700 | 0.6857 | 0.7142 | 0.6918 | 0.8357 |
+
+**Best model:** Logistic Regression (saved as `best_model.pkl`) — linear boundaries fit the near-linear clinical relationships better than ensemble methods.
+
+**Full classification report (Logistic Regression, test set):**
+
+```
+              precision   recall   f1-score   support
+Low               0.99      1.00      0.99        80
+Medium            0.93      1.00      0.96        26
+High              1.00      0.97      0.98        94
+
+accuracy                              0.98       200
+macro avg         0.97      0.99      0.98       200
+weighted avg       0.99      0.98      0.99       200
+```
+
+### Class-Weighting Ablation
+
+Cost-sensitive weighting boosted minority-class (Low) recall in several models — e.g. **+15.4%** for Logistic Regression & SVM, **+19.2%** for Decision Tree — but had negligible effect on LR/SVM's already-strong macro-F1, showing usefulness depends on the model rather than being universal.
+
+### Target-Leakage Investigation
+
+Because 98.5% accuracy is unusually high, four diagnostics were run (shallow decision tree, linear regression fit, prediction-confidence distribution, manual review of misclassifications). Findings: simple round-number thresholds separate classes well and predictions are highly confident, suggesting the dataset likely follows a rule-based generation process — a caution flagged for any real-world clinical use.
 
 ---
 
-## 🧠 Explainable AI (True SHAP)
+## 🧠 Explainable AI (SHAP)
 
-True SHAP analysis (`shap.TreeExplainer`) was executed on the ensemble pipeline test dataset:
-- **Global Feature Attributions:** Blood sugar ($0.1038$), cholesterol ($0.0887$), age ($0.0736$), BMI ($0.0575$), and systolic BP ($0.0440$) are the top 5 clinical biomarkers driving multi-class risk predictions.
-- **High-Risk Drivers:** Elevated blood sugar ($>126$ mg/dL) and systolic hypertension ($>140$ mmHg) are the strongest positive contributors pushing patients into the High-Risk category.
-- **Local Explanations:** Individual patient waterfall force plots explain specific case decisions.
+- **Logistic Regression → LinearExplainer**, **Random Forest → TreeExplainer** (cross-model validation)
+- **Top global drivers:** blood sugar, cholesterol, age, BMI, systolic BP — consistent across both explainers, with **8 of the top 10 features shared** between LR and RF
+- **High-risk drivers:** elevated blood sugar (>126 mg/dL) and systolic hypertension (>140 mmHg) push predictions toward High risk
+- Waterfall plots provide per-patient local explanations
 
 ---
 
-## 📦 Deployment-Ready Model Artefact & Prototype
+## 📦 Deployment Prototype
 
-The final deliverable consists of a **Deployment-Ready Model Artefact bundle** (`pipeline_bundle.joblib`, `disease_risk_model.pkl`, `feature_scaler.pkl`) along with an interactive Streamlit Clinical Decision Support interface (`app/app.py`).
+A lightweight **5-feature** model (`age`, `systolic_bp`, `cholesterol_mg_dl`, `blood_sugar_mg_dl`, `bmi`) — selected directly from the SHAP results as a single source of truth — trades some accuracy for simplicity:
 
-### 5-Feature Lightweight Prototype Evaluation
-Prior to deployment, the streamlined 5-feature model (Logistic Regression) was evaluated on the held-out test set ($N=200$):
-- **Features:** `blood_sugar_mg_dl`, `cholesterol_mg_dl`, `age`, `bmi`, `systolic_bp`
-- **Test Performance:** Accuracy = **85.50%**, Macro-Precision = **84.04%**, Macro-Recall = **85.39%**, Macro-F1 = **84.67%**
+| Model | Features | Accuracy | Macro-F1 |
+|---|---|---|---|
+| Full model | 15 | 98.5% | 0.980 |
+| Prototype | 5 | 90.5% | 0.90 |
+
+Deployed as an interactive **Streamlit** clinical decision-support app (`app/app.py`), live on Streamlit Community Cloud, using `disease_risk_model.pkl` + `feature_scaler.pkl`.
+
+**🌐 Deployed Prototype:** [smartcare-hospital-group2.streamlit.app](https://smartcare-hospital-group2.streamlit.app/)
 
 ```bash
-# Launch the Streamlit demonstration interface
 streamlit run app/app.py
 ```
 
@@ -125,69 +159,43 @@ streamlit run app/app.py
 
 ```
 SmartCare-Hospital/
-├── README.md                                                 # Project overview & documentation
-├── requirements.txt                                          # Root environment dependencies
-├── data/
-│   ├── raw/smartcare_ai_dataset_1000.csv                    # Benchmark dataset (1,000 records)
-│   ├── processed/                                            # Processed CSV splits (X_train, X_test, y_train, y_test)
-│   └── data_dictionary.csv                                   # Feature metadata dictionary
-├── src/
-│   ├── preprocessing.py                                      # Clean data loader & leakage prevention
-│   ├── feature_engineering.py                                # OHE, feature selection & pipeline transformers
-│   ├── Task02_Dataset_Understanding.py                       # Exploratory dataset diagnostics
-│   ├── Task03_Data_Preprocessing_and_Feature_Engineering.py  # Leakage-free preprocessing pipeline
-│   ├── Task04_Exploratory_Data_Analysis.py                   # Clinical statistical visualizations
-│   ├── Task05_Model_Development.py                           # 5 model tuning & ablation experiments
-│   ├── Task06_Model_Evaluation.py                            # Multi-class metrics, confusion matrices & ROC curves
-│   ├── Task07_Explainable_AI_Analysis.py                     # True SHAP XAI calculations
-│   └── Task08_AI_Prototype_Development.py                    # 5-feature prototype evaluation & serialization
-├── models/
-│   ├── pipeline_bundle.joblib                                # Unified production pipeline bundle
-│   ├── best_model.pkl                                        # Serialized top model (Logistic Regression)
-│   ├── disease_risk_model.pkl                                # Serialized lightweight prototype model
-│   └── feature_scaler.pkl                                    # Serialized standard scaler
-├── app/
-│   ├── app.py                                                # Streamlit clinical decision support interface
-│   ├── pipeline_bundle.joblib                                # App pipeline bundle
-│   └── requirements.txt                                      # App dependencies
-├── reports/
-│   ├── Task_09_Comprehensive_Technical_Report.md             # Formal coursework technical report
-│   ├── task05_class_weighting_ablation.csv                   # Empirical ablation results table
-│   ├── task06_model_comparison_table.csv                     # Synchronized benchmark table
-│   ├── task06_per_class_metrics.csv                          # Ground truth per-class metrics
-│   ├── task08_prototype_evaluation.csv                       # Prototype generalisation evaluation
-│   ├── shap_summary_multiclass.png                           # Multi-class SHAP beeswarm plot
-│   ├── shap_high_risk_importance.png                         # High-risk SHAP bar chart
-│   ├── shap_waterfall_patient_example.png                    # Patient-level SHAP waterfall explanation
-│   ├── eval_roc_curves_best_model.png                        # One-vs-Rest ROC curves
-│   └── confusion_matrices_all_models.png                     # Multi-class confusion matrices
-└── Notebook/
-    └── SmartCare_Hospital.ipynb                              # Fully executed coursework Jupyter Notebook
+├── data/        # Raw + processed splits, data dictionary
+├── src/         # Task02–Task08 pipeline scripts
+├── models/      # pipeline_bundle, best_model, prototype artefacts
+├── app/         # Streamlit clinical decision support app
+├── reports/     # Technical report, SHAP plots, evaluation CSVs
+└── Notebook/    # Fully executed coursework notebook
+```
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/Ravindi373/SmartCare-Hospital.git
+cd SmartCare-Hospital
+pip install -r requirements.txt
+streamlit run app/app.py
 ```
 
 ---
 
-## 📚 References (IEEE Format)
+## ⚠️ Limitations
 
-[1] S. M. Lundberg and S.-I. Lee, "A unified approach to interpreting model predictions," in *Advances in Neural Information Processing Systems (NeurIPS 2017)*, vol. 30, pp. 4765–4774, Dec. 2017.
-
-[2] T. Chen and C. Guestrin, "XGBoost: A scalable tree boosting system," in *Proc. 22nd ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining (KDD '16)*, San Francisco, CA, USA, Aug. 2016, pp. 785–794. doi: 10.1145/2939672.2939785.
-
-[3] F. Pedregosa *et al.*, "Scikit-learn: Machine learning in Python," *Journal of Machine Learning Research (JMLR)*, vol. 12, pp. 2825–2830, Nov. 2011.
-
-[4] L. Breiman, "Random forests," *Machine Learning*, vol. 45, no. 1, pp. 5–32, Oct. 2001. doi: 10.1023/A:1010933404324.
-
-[5] C. Cortes and V. Vapnik, "Support-vector networks," *Machine Learning*, vol. 20, no. 3, pp. 273–297, Sep. 1995. doi: 10.1007/BF00994018.
-
-[6] J. H. Ward, "Hierarchical grouping to optimize an objective function," *Journal of the American Statistical Association*, vol. 58, no. 301, pp. 236–244, Mar. 1963. doi: 10.1080/01621459.1963.10500845.
+- Possible deterministic/rule-based label construction in the synthetic dataset
+- Small sample size (1,000 records) — may not generalize across hospitals
+- Medium-risk class harder to separate due to overlap with Low/High
+- 5-feature prototype trades ~8 accuracy points for usability
+- Not validated for fairness across patient subgroups; intended as clinical decision *support*, not an autonomous diagnostic tool
 
 ---
 
-## 🤝 Contribution
+## 👥 Team
 
-| Task | Name |
-|------|------|
-| Task 01–04, 09 | Ravindi Ayodya |
-| Task 05–06 | Malith Shehan |
-| Task 07 | Thimeth Chathnuka |
-| Task 08 | Sithumi Jayarathna |
+**Group 02 — SLTC | CCS3440 Artificial Intelligence**
+
+Ravindi Ayodhya · Sithumi Jayarathna · Thimeth Chathnuka · Malith Shehan · Ashan Gamage
+
+> ⚠️ Developed for academic evaluation only. Not intended as an autonomous medical diagnostic tool.
+
+## License
+
+MIT
