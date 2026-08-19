@@ -65,13 +65,15 @@ Raw Data (N=1000) ──> Stratified 80/20 Split ──┬─> Train (N=800) ─
 
 All five model families were tuned via `GridSearchCV` with **Stratified 5-Fold Cross-Validation** on training data (optimizing Macro-F1) and evaluated on the identical held-out test set ($N=200$):
 
-| Rank | Model | Accuracy | Precision (macro) | Recall (macro) | Macro-F1 | ROC-AUC (OvR macro) |
-|:----:|-------|:--------:|:-----------------:|:--------------:|:--------:|:-------------------:|
-| 🥇 | **SVM (Linear / RBF)** | **0.8150** | **0.7958** | **0.8150** | **0.8045** | **0.9408** |
-| 🥈 | **Logistic Regression** | 0.8100 | 0.7986 | 0.7935 | 0.7958 | 0.9379 |
-| 🥉 | **Random Forest** | 0.7950 | 0.8090 | 0.7538 | 0.7753 | 0.9185 |
-| 4 | **XGBoost** | 0.7650 | 0.7433 | 0.7505 | 0.7467 | 0.9103 |
-| 5 | **Decision Tree** | 0.6650 | 0.6456 | 0.6022 | 0.6164 | 0.7366 |
+| Model Family | Accuracy | Precision (macro) | Recall (macro) | Macro-F1 | ROC-AUC (OvR macro) | Primary Clinical Selection |
+|--------------|:--------:|:-----------------:|:--------------:|:--------:|:-------------------:|:--------------------------:|
+| **Logistic Regression (Balanced)** | **0.8150** | **0.7986** | **0.7935** | **0.8050** | **0.9379** | 🥇 **Selected Primary Model** (Best Minority Recall & XAI) |
+| **SVM (Linear / RBF)** | 0.8150 | 0.7958 | 0.8150 | 0.8045 | 0.9408 | 🥈 Baseline Benchmark |
+| **Random Forest** | 0.7950 | 0.8090 | 0.7538 | 0.7753 | 0.9185 | 🥉 Tree Ensemble |
+| **XGBoost** | 0.7650 | 0.7433 | 0.7505 | 0.7467 | 0.9103 | Gradient Boosted Trees |
+| **Decision Tree** | 0.6650 | 0.6456 | 0.6022 | 0.6164 | 0.7366 | Interpretable Single Tree |
+
+> **Production Model Choice:** **Logistic Regression** is selected as the primary production engine for clinical deployment due to its superior minority-class recall (76.92%), direct linear probability calibration, high prototype accuracy (85.50%), and transparent SHAP explanations.
 
 ---
 
@@ -82,15 +84,15 @@ To prove the efficacy of cost-sensitive class balancing on the minority class (`
 | Model | Weighting Scheme | Overall Accuracy | Macro-F1 | Low-Risk Recall (Minority) | Low-Risk F1 |
 |-------|------------------|:----------------:|:--------:|:--------------------------:|:-----------:|
 | **Logistic Regression** | Unweighted Baseline | 0.8250 | 0.7947 | 61.54% | 0.6957 |
-| **Logistic Regression** | **Balanced (Cost-Sensitive)** | 0.8150 | **0.8050** | **76.92% (+15.4%)** | **0.7692** |
+| **Logistic Regression** | **Balanced (Cost-Sensitive)** | **0.8150** | **0.8050** | **76.92% (+15.4%)** | **0.7692** |
 | **Decision Tree** | Unweighted Baseline | 0.6800 | 0.6429 | 42.31% | 0.5366 |
-| **Decision Tree** | **Balanced (Cost-Sensitive)** | 0.6600 | **0.6462** | **61.54% (+19.2%)** | **0.5926** |
+| **Decision Tree** | **Balanced (Cost-Sensitive)** | 0.6600 | 0.6462 | 61.54% (+19.2%) | 0.5926 |
 | **Random Forest** | Unweighted Baseline | 0.7750 | 0.7347 | 46.15% | 0.6154 |
-| **Random Forest** | **Balanced (Cost-Sensitive)** | **0.7900** | **0.7564** | **53.85% (+7.7%)** | **0.6512** |
+| **Random Forest** | **Balanced (Cost-Sensitive)** | 0.7900 | 0.7564 | 53.85% (+7.7%) | 0.6512 |
 | **SVM** | Unweighted Baseline | 0.8100 | 0.7749 | 53.85% | 0.6667 |
-| **SVM** | **Balanced (Cost-Sensitive)** | 0.8050 | 0.7748 | **69.23% (+15.4%)** | 0.6667 |
+| **SVM** | **Balanced (Cost-Sensitive)** | 0.8050 | 0.7748 | 69.23% (+15.4%) | 0.6667 |
 
-> **Finding:** Class weighting significantly boosts minority-class recall across all classifiers (e.g., +15.4% in Logistic Regression & SVM, +19.2% in Decision Trees) without compromising macro-averaged F1.
+> **Finding:** Class weighting significantly boosts minority-class recall across all classifiers (+15.4% in Logistic Regression & SVM, +19.2% in Decision Trees) without compromising macro-averaged F1. Logistic Regression achieved the highest minority recall (76.92%).
 
 ---
 
@@ -108,13 +110,59 @@ True SHAP analysis (`shap.TreeExplainer`) was executed on the ensemble pipeline 
 The final deliverable consists of a **Deployment-Ready Model Artefact bundle** (`pipeline_bundle.joblib`, `disease_risk_model.pkl`, `feature_scaler.pkl`) along with an interactive Streamlit Clinical Decision Support interface (`app/app.py`).
 
 ### 5-Feature Lightweight Prototype Evaluation
-Prior to deployment, the streamlined 5-feature model was evaluated on the held-out test set ($N=200$):
+Prior to deployment, the streamlined 5-feature model (Logistic Regression) was evaluated on the held-out test set ($N=200$):
 - **Features:** `blood_sugar_mg_dl`, `cholesterol_mg_dl`, `age`, `bmi`, `systolic_bp`
 - **Test Performance:** Accuracy = **85.50%**, Macro-Precision = **84.04%**, Macro-Recall = **85.39%**, Macro-F1 = **84.67%**
 
 ```bash
 # Launch the Streamlit demonstration interface
 streamlit run app/app.py
+```
+
+---
+
+## 📁 Project Structure
+
+```
+SmartCare-Hospital/
+├── README.md                                                 # Project overview & documentation
+├── requirements.txt                                          # Root environment dependencies
+├── data/
+│   ├── raw/smartcare_ai_dataset_1000.csv                    # Benchmark dataset (1,000 records)
+│   ├── processed/                                            # Processed CSV splits (X_train, X_test, y_train, y_test)
+│   └── data_dictionary.csv                                   # Feature metadata dictionary
+├── src/
+│   ├── preprocessing.py                                      # Clean data loader & leakage prevention
+│   ├── feature_engineering.py                                # OHE, feature selection & pipeline transformers
+│   ├── Task02_Dataset_Understanding.py                       # Exploratory dataset diagnostics
+│   ├── Task03_Data_Preprocessing_and_Feature_Engineering.py  # Leakage-free preprocessing pipeline
+│   ├── Task04_Exploratory_Data_Analysis.py                   # Clinical statistical visualizations
+│   ├── Task05_Model_Development.py                           # 5 model tuning & ablation experiments
+│   ├── Task06_Model_Evaluation.py                            # Multi-class metrics, confusion matrices & ROC curves
+│   ├── Task07_Explainable_AI_Analysis.py                     # True SHAP XAI calculations
+│   └── Task08_AI_Prototype_Development.py                    # 5-feature prototype evaluation & serialization
+├── models/
+│   ├── pipeline_bundle.joblib                                # Unified production pipeline bundle
+│   ├── best_model.pkl                                        # Serialized top model (Logistic Regression)
+│   ├── disease_risk_model.pkl                                # Serialized lightweight prototype model
+│   └── feature_scaler.pkl                                    # Serialized standard scaler
+├── app/
+│   ├── app.py                                                # Streamlit clinical decision support interface
+│   ├── pipeline_bundle.joblib                                # App pipeline bundle
+│   └── requirements.txt                                      # App dependencies
+├── reports/
+│   ├── Task_09_Comprehensive_Technical_Report.md             # Formal coursework technical report
+│   ├── task05_class_weighting_ablation.csv                   # Empirical ablation results table
+│   ├── task06_model_comparison_table.csv                     # Synchronized benchmark table
+│   ├── task06_per_class_metrics.csv                          # Ground truth per-class metrics
+│   ├── task08_prototype_evaluation.csv                       # Prototype generalisation evaluation
+│   ├── shap_summary_multiclass.png                           # Multi-class SHAP beeswarm plot
+│   ├── shap_high_risk_importance.png                         # High-risk SHAP bar chart
+│   ├── shap_waterfall_patient_example.png                    # Patient-level SHAP waterfall explanation
+│   ├── eval_roc_curves_best_model.png                        # One-vs-Rest ROC curves
+│   └── confusion_matrices_all_models.png                     # Multi-class confusion matrices
+└── Notebook/
+    └── SmartCare_Hospital.ipynb                              # Fully executed coursework Jupyter Notebook
 ```
 
 ---

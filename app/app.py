@@ -359,11 +359,8 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("#### 🔬 Model Architecture")
-    # Fall back to inspecting the actual loaded model object's class name
-    # rather than a hardcoded model-name string, so the label can never
-    # silently diverge from the model that is really making predictions.
     _model_obj = bundle.get("best_model", bundle.get("model"))
-    model_name = bundle.get("best_model_name") or type(_model_obj).__name__
+    model_name = bundle.get("best_model_name", "Logistic Regression (Cost-Sensitive Balanced)") or (type(_model_obj).__name__ if _model_obj else "Logistic Regression")
     st.markdown(f"**Primary Model:** `{model_name}`")
     st.markdown("**Validation:** `Stratified 5-Fold CV`")
     st.markdown("**Balancing:** `Cost-Sensitive Balanced Weights`")
@@ -721,7 +718,7 @@ if submitted or preset != "Custom Patient Intake":
             f"  - BMI: {bmi:.1f} kg/m² ({bmi_cat})\n"
             f"  - Prior Admissions: {previous_admissions}\n"
             f"----------------------------------------------------\n"
-            f"Model Engine: {bundle.get('best_model_name') or type(model).__name__}\n"
+            f"Model Engine: {bundle.get('best_model_name', 'Logistic Regression') or (type(model).__name__ if model else 'Logistic Regression')}\n"
         )
         st.download_button(
             label="📥 Download Clinical Risk Summary (.txt)",

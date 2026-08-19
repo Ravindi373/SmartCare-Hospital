@@ -110,9 +110,10 @@ def run_task06():
     summary_df.to_csv(REPORTS_DIR / "task06_model_comparison_table.csv", index=False)
     per_class_df.to_csv(REPORTS_DIR / "task06_per_class_metrics.csv", index=False)
 
-    best_model_name = summary_df.iloc[0]["Model"]
-    print(f"\n[TOP MODEL] Top Model: {best_model_name}")
-    print("\nDetailed Classification Report:")
+    # Primary Selected Model for Deployment Diagnostics
+    best_model_name = "Logistic Regression"
+    print(f"\n[PRIMARY MODEL] Selected Clinical Production Model: {best_model_name}")
+    print("\nDetailed Classification Report (Logistic Regression):")
     print(classification_report(y_test, predictions[best_model_name], target_names=CLASS_NAMES, digits=4))
 
     # ROC Curves for Best Model

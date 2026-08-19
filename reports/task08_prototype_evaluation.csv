@@ -1,3 +1,3 @@
 Architecture,Features Count,Accuracy,Precision (macro),Recall (macro),F1 (macro)
-Full 15-Feature Pipeline (SVM),15,0.815,0.795774914740432,0.8149754500818331,0.8045454545454546
+Full 15-Feature Pipeline (Logistic Regression),15,0.81,0.7985577090972585,0.7935010911074741,0.7958075769393448
 Lightweight 5-Feature Model (Logistic Regression),5,0.855,0.8404175335575906,0.85385979268958,0.8467459151883864

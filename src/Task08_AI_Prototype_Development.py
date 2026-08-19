@@ -143,7 +143,7 @@ def predict_patient_risk(raw_patient: dict, bundle=None) -> dict:
         "prediction": LABEL_NAMES[pred_idx],
         "prediction_index": pred_idx,
         "probabilities": {label: float(p) for label, p in zip(LABEL_NAMES, probs)},
-        "model_used": bundle.get("best_model_name", "SVM"),
+        "model_used": bundle.get("best_model_name", "Logistic Regression"),
         "transformed_features": X_input.iloc[0].to_dict()
     }
 
