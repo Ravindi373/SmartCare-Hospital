@@ -283,6 +283,11 @@ def load_artifacts():
 
     return {
         "best_model": model,
+        # Derived from the actual loaded model object (e.g. "LogisticRegression"),
+        # not a hardcoded guess — this is what was silently wrong before, since
+        # the UI displayed a fixed "SVM" fallback regardless of which model
+        # was really loaded and used for prediction.
+        "best_model_name": type(model).__name__,
         "scaler": scaler,
         "selected_features": getattr(scaler, "feature_names_in_", None),
         "prototype_5_features": ["blood_sugar_mg_dl", "cholesterol_mg_dl", "age", "bmi", "systolic_bp"]
@@ -354,7 +359,11 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("#### 🔬 Model Architecture")
-    model_name = bundle.get("best_model_name", "Support Vector Machine (SVM)")
+    # Fall back to inspecting the actual loaded model object's class name
+    # rather than a hardcoded model-name string, so the label can never
+    # silently diverge from the model that is really making predictions.
+    _model_obj = bundle.get("best_model", bundle.get("model"))
+    model_name = bundle.get("best_model_name") or type(_model_obj).__name__
     st.markdown(f"**Primary Model:** `{model_name}`")
     st.markdown("**Validation:** `Stratified 5-Fold CV`")
     st.markdown("**Balancing:** `Cost-Sensitive Balanced Weights`")
@@ -712,7 +721,7 @@ if submitted or preset != "Custom Patient Intake":
             f"  - BMI: {bmi:.1f} kg/m² ({bmi_cat})\n"
             f"  - Prior Admissions: {previous_admissions}\n"
             f"----------------------------------------------------\n"
-            f"Model Engine: {bundle.get('best_model_name', 'SVM')}\n"
+            f"Model Engine: {bundle.get('best_model_name') or type(model).__name__}\n"
         )
         st.download_button(
             label="📥 Download Clinical Risk Summary (.txt)",
