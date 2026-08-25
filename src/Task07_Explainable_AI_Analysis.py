@@ -1,146 +1,168 @@
 """
-CCS3440 Artificial Intelligence Coursework | Group 02
-Option C: Disease Risk Classification - SmartCare Hospital
-Task 07 – Explainable AI Analysis (True SHAP Implementation)
+Task 07 - Explainable AI Analysis (SHAP)
+Auto-generated from Notebook/SmartCare_Hospital.ipynb (source of truth).
+Regenerate this file if the notebook changes, so src/ and the notebook stay in sync.
 """
 
-from pathlib import Path
+# # Task 07 - Explainable AI Analysis (SHAP)
+
+# We use SHAP (SHapley Additive exPlanations) on the Random Forest / XGBoost model to interpret which features drive readmission predictions, and how.
+
+# Setup: install shap if needed, then reload the exact fitted models and
+# data splits from Task 06 (self-contained restart cell, same pattern used
+# throughout this notebook)
+try:
+    import shap
+except ImportError:
+    import sys
+# [Jupyter shell]     !{sys.executable} -m pip install shap -q
+    import shap
+
 import joblib
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import shap
+import matplotlib.pyplot as plt
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / "data" / "processed"
-MODELS_DIR = BASE_DIR / "models"
-REPORTS_DIR = BASE_DIR / "reports"
+folder = '/content/drive/MyDrive/SmartCare/'
 
-REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-LABEL_NAMES = ["Low", "Medium", "High"]
+CLASS_NAMES = pd.read_csv(folder + 'target_classes.csv')['class_name'].tolist()
+print("Verified class order (index -> label):", list(enumerate(CLASS_NAMES)))
 
+X_train = pd.read_csv(folder + 'X_train.csv')
+X_test = pd.read_csv(folder + 'X_test.csv')
 
-def run_task07():
-    print("==================================================")
-    print("  Task 07: Explainable AI Analysis (True SHAP)")
-    print("  (Generated Directly from Saved Pipeline & Test Set)")
-    print("==================================================")
+best_lr = joblib.load(folder + 'best_logistic_regression.pkl')
+best_rf = joblib.load(folder + 'best_random_forest.pkl')
 
-    # 1. Load pipeline bundle and held-out test data
-    bundle_path = MODELS_DIR / "pipeline_bundle.joblib"
-    if not bundle_path.exists():
-        from Task05_Model_Development import run_task05
-        run_task05()
+print("Loaded fitted models. Feature set:", list(X_train.columns))
 
-    pipeline_bundle = joblib.load(bundle_path)
-    X_test = pd.read_csv(DATA_DIR / "X_test.csv")
-    y_test = pd.read_csv(DATA_DIR / "y_test.csv").squeeze("columns")
+# Compatibility helper — different shap versions return either a list of
+# per-class arrays or a single 3D array (n_samples, n_features, n_classes)
+def get_class_shap(sv, class_idx):
+    vals = sv.values if hasattr(sv, 'values') else sv
+    return vals[class_idx] if isinstance(vals, list) else vals[:, :, class_idx]
 
-    feature_names = X_test.columns.tolist()
-    print(f"Loaded Pipeline Bundle with {len(feature_names)} features.")
-    print(f"Test Set Size for XAI Explanations: N={len(X_test)}")
+def mean_abs_all_classes(sv):
+    vals = sv.values if hasattr(sv, 'values') else sv
+    stacked = np.stack(vals, axis=-1) if isinstance(vals, list) else vals
+    return np.abs(stacked).mean(axis=(0, 2))
 
-    # 2. Extract tuned Tree & Linear models from the pipeline
-    all_models = pipeline_bundle["all_models"]
-    rf_model = all_models.get("Random Forest")
-    xgb_model = all_models.get("XGBoost")
-    best_model = pipeline_bundle["best_model"]
-    best_name = pipeline_bundle["best_model_name"]
+# ## 7.1 SHAP on the Best Model (Logistic Regression)
 
-    print(f"\nComputing TreeExplainer SHAP values using tuned Random Forest / XGBoost ensemble...")
-    # Use Random Forest / XGBoost TreeExplainer for exact, fast, model-agnostic tree attributions
-    explainer_model = rf_model if rf_model is not None else xgb_model
-    explainer = shap.TreeExplainer(explainer_model)
-    shap_values = explainer.shap_values(X_test)
+explainer_lr = shap.LinearExplainer(best_lr, X_train)
 
-    # 3. Handle SHAP value output dimensions (list of arrays for multiclass or 3D array)
-    if isinstance(shap_values, list):
-        # List of [N_samples, N_features] for each class
-        mean_abs_per_class = [np.abs(sv).mean(axis=0) for sv in shap_values]
-        overall_mean_abs = np.mean(mean_abs_per_class, axis=0)
-        shap_array = np.stack(shap_values, axis=-1)  # (N_samples, N_features, N_classes)
-    elif isinstance(shap_values, np.ndarray) and shap_values.ndim == 3:
-        overall_mean_abs = np.abs(shap_values).mean(axis=(0, 2))
-        shap_array = shap_values
-    else:
-        # shap.Explanation object or 2D
-        if hasattr(shap_values, "values"):
-            raw_vals = shap_values.values
-            if raw_vals.ndim == 3:
-                overall_mean_abs = np.abs(raw_vals).mean(axis=(0, 2))
-                shap_array = raw_vals
-            else:
-                overall_mean_abs = np.abs(raw_vals).mean(axis=0)
-                shap_array = raw_vals
-        else:
-            overall_mean_abs = np.abs(shap_values).mean(axis=0)
-            shap_array = np.array(shap_values)
+X_test_sample = X_test.sample(n=min(200, len(X_test)), random_state=42)
+shap_values_lr = explainer_lr(X_test_sample)
 
-    importance_df = pd.DataFrame({
-        "Feature": feature_names,
-        "Mean Absolute SHAP Value": overall_mean_abs
-    }).sort_values("Mean Absolute SHAP Value", ascending=False).reset_index(drop=True)
+print("SHAP values shape:", shap_values_lr.values.shape)  # (n_samples, n_features, n_classes) or similar
 
-    print("\n--- Global Feature Importance (Mean |SHAP| across all classes) ---")
-    for r, row in importance_df.iterrows():
-        print(f"  {r+1:2d}. {row['Feature']:32s} : {row['Mean Absolute SHAP Value']:.4f}")
+# Overall importance: mean |SHAP value| across samples AND classes
+mean_abs_shap_lr = mean_abs_all_classes(shap_values_lr)
+shap_importance_lr = pd.DataFrame({
+    'Feature': X_test_sample.columns,
+    'Mean_|SHAP|': mean_abs_shap_lr
+}).sort_values('Mean_|SHAP|', ascending=False)
 
-    importance_df.to_csv(REPORTS_DIR / "shap_feature_importance.csv", index=False)
+plt.figure(figsize=(10, 6))
+top10_lr = shap_importance_lr.head(10)
+plt.barh(top10_lr['Feature'][::-1], top10_lr['Mean_|SHAP|'][::-1], color='#4C72B0')
+plt.xlabel('Mean |SHAP value| (across all classes)')
+plt.title('SHAP Feature Importance — Logistic Regression (Best Model)')
+plt.tight_layout()
+plt.savefig('shap_lr_overall_importance.png', dpi=110)
+plt.show()
 
-    # 4. Multi-Class Summary Plot
-    plt.figure(figsize=(10, 6))
-    if isinstance(shap_values, list):
-        shap.summary_plot(shap_values, X_test, class_names=LABEL_NAMES, show=False)
-    elif shap_array.ndim == 3:
-        sv_list = [shap_array[:, :, i] for i in range(shap_array.shape[2])]
-        shap.summary_plot(sv_list, X_test, class_names=LABEL_NAMES, show=False)
-    else:
-        shap.summary_plot(shap_values, X_test, show=False)
-    plt.title("Multi-Class SHAP Summary Plot — Feature Attributions", fontsize=12)
-    plt.tight_layout()
-    plt.savefig(REPORTS_DIR / "shap_summary_multiclass.png", dpi=120, bbox_inches="tight")
-    plt.close()
+shap_importance_lr.head(10)
 
-    # 5. Feature Importance for High-Risk Category (Class Index 2)
-    high_idx = 2  # High Risk
-    plt.figure(figsize=(9, 5))
-    if shap_array.ndim == 3:
-        shap.summary_plot(shap_array[:, :, high_idx], X_test, plot_type="bar", show=False)
-    elif isinstance(shap_values, list):
-        shap.summary_plot(shap_values[high_idx], X_test, plot_type="bar", show=False)
-    plt.title("Key Feature Drivers for HIGH Disease Risk Level (SHAP)", fontsize=12)
-    plt.tight_layout()
-    plt.savefig(REPORTS_DIR / "shap_high_risk_importance.png", dpi=120, bbox_inches="tight")
-    plt.close()
+# SHAP for the 'High' risk class specifically — index resolved from the
+# VERIFIED class mapping, not hardcoded (this is exactly the kind of
+# hardcoding that caused the Section 8.2 label-swap bug earlier)
+high_idx = CLASS_NAMES.index('High')
+shap_high_lr = get_class_shap(shap_values_lr, high_idx)
 
-    # 6. Local Patient-Level Waterfall Explanation
-    high_risk_indices = np.where(y_test == high_idx)[0]
-    sample_idx = int(high_risk_indices[0]) if len(high_risk_indices) > 0 else 0
+# Beeswarm summary plot for the High-risk class
+shap.summary_plot(shap_high_lr, X_test_sample, show=False)
+plt.title('SHAP Summary — Drivers of "High" Risk (Logistic Regression)')
+plt.tight_layout()
+plt.savefig('shap_lr_high_risk_beeswarm.png', dpi=110)
+plt.show()
 
-    if hasattr(explainer, "expected_value"):
-        exp_val = explainer.expected_value
-        base_val = exp_val[high_idx] if hasattr(exp_val, "__len__") else exp_val
-    else:
-        base_val = 0.0
+# Signed mean SHAP value (not absolute) — positive = pushes toward High risk
+mean_shap_high_lr = shap_high_lr.mean(axis=0)
+high_drivers_lr = pd.DataFrame({
+    'Feature': X_test_sample.columns,
+    'Mean_SHAP_High': mean_shap_high_lr
+}).sort_values('Mean_SHAP_High', ascending=False)
 
-    sv_sample = shap_array[sample_idx, :, high_idx] if shap_array.ndim == 3 else shap_values[high_idx][sample_idx]
+print("Top 5 SHAP drivers of 'High' risk (Logistic Regression):")
+print(high_drivers_lr.head(5))
 
-    explanation = shap.Explanation(
-        values=sv_sample,
-        base_values=base_val,
-        data=X_test.iloc[sample_idx].values,
-        feature_names=feature_names
-    )
+# Persist this list as the single source of truth for "top 5 features" —
+# Task 08's prototype reads it back instead of hardcoding a separate list
+# that could silently drift from what SHAP actually found.
+high_drivers_lr.head(5)[['Feature']].to_csv(folder + 'shap_top5_high_risk_drivers.csv', index=False)
+print("Saved top-5 driver list to:", folder + 'shap_top5_high_risk_drivers.csv')
 
-    plt.figure(figsize=(9, 5))
-    shap.plots.waterfall(explanation, show=False)
-    plt.title(f"Patient #{sample_idx} (True Class: High Risk) — SHAP Local Feature Attribution", fontsize=11)
-    plt.tight_layout()
-    plt.savefig(REPORTS_DIR / "shap_waterfall_patient_example.png", dpi=120, bbox_inches="tight")
-    plt.close()
+# ## 7.2 Supplementary SHAP on a Tree-Based Model (Random Forest)
 
-    print(f"\n[SUCCESS] Task 07 completed! SHAP visualizations saved to: {REPORTS_DIR}\n")
+explainer_rf = shap.TreeExplainer(best_rf)
+shap_values_rf = explainer_rf(X_test_sample)
 
+mean_abs_shap_rf = mean_abs_all_classes(shap_values_rf)
+shap_importance_rf = pd.DataFrame({
+    'Feature': X_test_sample.columns,
+    'Mean_|SHAP|': mean_abs_shap_rf
+}).sort_values('Mean_|SHAP|', ascending=False)
 
-if __name__ == "__main__":
-    run_task07()
+plt.figure(figsize=(10, 6))
+top10_rf = shap_importance_rf.head(10)
+plt.barh(top10_rf['Feature'][::-1], top10_rf['Mean_|SHAP|'][::-1], color='#DD8452')
+plt.xlabel('Mean |SHAP value| (across all classes)')
+plt.title('SHAP Feature Importance — Random Forest (Supplementary)')
+plt.tight_layout()
+plt.savefig('shap_rf_overall_importance.png', dpi=110)
+plt.show()
+
+shap_importance_rf.head(10)
+
+# ## 7.3 Cross-Method Comparison & Interpretation
+
+top10_lr_features = set(shap_importance_lr.head(10)['Feature'])
+top10_rf_features = set(shap_importance_rf.head(10)['Feature'])
+overlap = top10_lr_features & top10_rf_features
+
+print(f"Top-10 feature overlap between SHAP-LR and SHAP-RF: {len(overlap)}/10")
+print("Shared features:", sorted(overlap))
+print("\nSHAP-LR only:", sorted(top10_lr_features - top10_rf_features))
+print("SHAP-RF only:", sorted(top10_rf_features - top10_lr_features))
+
+comparison_df = pd.DataFrame({
+    'SHAP-LR rank': shap_importance_lr.reset_index(drop=True)['Feature'],
+    'SHAP-RF rank': shap_importance_rf.reset_index(drop=True)['Feature'],
+}).head(10)
+comparison_df.index = comparison_df.index + 1
+comparison_df
+
+# **Interpretation and limitations:**
+#
+# - Strong agreement between SHAP-LR and SHAP-RF top features (and with the
+#   Section 5.4 ANOVA ranking) is genuine convergent evidence that
+#   `age`, `blood_sugar_mg_dl`, `cholesterol_mg_dl`, `bmi`, and `systolic_bp`
+#   drive the model's predictions — three independent methods agreeing is
+#   meaningfully stronger than any one of them alone.
+# - That said, convergence across methods only tells us these features drive
+#   *this model's predictions*. It does not by itself confirm the underlying
+#   clinical relationship is real rather than an artefact of how
+#   `disease_risk_level` was constructed — see Section 6.4's investigation
+#   into possible deterministic label construction. If the target turns out
+#   to be a formula on these same features, SHAP will (correctly) identify
+#   that formula's inputs as "important," which would be recovering the
+#   generating rule rather than confirming a clinical mechanism.
+# - Both explainers here explain a 200-row sample of the test set for
+#   plotting speed, which is standard SHAP practice and does not change the
+#   ranking, only the smoothness of the beeswarm plots.
+# - SHAP values are computed on the model's actual training feature space
+#   (the 15 selected, scaled, encoded features from Section 3), so they are
+#   directly comparable to what the deployed model sees — unlike the earlier
+#   coefficient-based analysis, which retrained a separate model on a
+#   different (wider, differently-encoded) feature set entirely.
