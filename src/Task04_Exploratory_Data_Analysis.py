@@ -1,94 +1,113 @@
 """
-CCS3440 Artificial Intelligence Coursework | Group 02
-Option C: Disease Risk Classification - SmartCare Hospital
 Task 04 – Exploratory Data Analysis (EDA)
+Auto-generated from Notebook/SmartCare_Hospital.ipynb (source of truth).
+Regenerate this file if the notebook changes, so src/ and the notebook stay in sync.
 """
 
-from pathlib import Path
-import matplotlib.pyplot as plt
-import numpy as np
+# # Task 04 – Exploratory Data Analysis (EDA)
+
+# ## 4.1 Load Cleaned Dataset
+
+from google.colab import drive
+drive.mount('/content/drive')
+
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 import seaborn as sns
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / "data"
-REPORTS_DIR = BASE_DIR / "reports"
-REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+folder = '/content/drive/MyDrive/SmartCare/'
+df_feat = pd.read_csv(folder + 'smartcare_cleaned.csv')
+df_feat['appointment_date'] = pd.to_datetime(df_feat['appointment_date'])
 
-csv_path = DATA_DIR / "processed" / "smartcare_cleaned.csv"
-if not csv_path.exists():
-    from preprocessing import load_and_clean_data
-    from feature_engineering import engineer_features
-    raw_path = DATA_DIR / "raw" / "smartcare_ai_dataset_1000.csv"
-    df_clean = load_and_clean_data(raw_path)
-    df_feat = engineer_features(df_clean)
-else:
-    df_feat = pd.read_csv(csv_path)
+print(df_feat.shape)
+df_feat.head()
 
-if "appointment_date" in df_feat.columns:
-    df_feat["appointment_date"] = pd.to_datetime(df_feat["appointment_date"])
+# ## 4.2 Descriptive Statistics
 
-print("==================================================")
-print("  Task 04: Exploratory Data Analysis (EDA)")
-print("==================================================")
-print("Dataset Shape:", df_feat.shape)
+df_feat[['age','bmi','systolic_bp','diastolic_bp','blood_sugar_mg_dl','cholesterol_mg_dl']].describe().round(1)
 
-# 1. Descriptive Statistics of Clinical Features
-clinical_cols = ["age", "bmi", "systolic_bp", "diastolic_bp", "blood_sugar_mg_dl", "cholesterol_mg_dl"]
-print("\n--- Descriptive Statistics for Clinical Vitals ---")
-print(df_feat[clinical_cols].describe().round(1))
+# Mean of clinical values grouped by risk level
+df_feat.groupby('disease_risk_level')[['age','bmi','systolic_bp','diastolic_bp','blood_sugar_mg_dl','cholesterol_mg_dl']].mean().round(1)
 
-# 2. Mean of Clinical Values Grouped by Risk Level
-print("\n--- Mean Clinical Values by Disease Risk Level ---")
-print(df_feat.groupby("disease_risk_level")[clinical_cols].mean().round(1))
+# Risk level distribution across the engineered age_group feature
+df_feat.groupby('age_group', observed=True)['disease_risk_level'].value_counts().unstack()
 
-# 3. Class Distribution Chart
-plt.figure(figsize=(6, 4))
-sns.countplot(x="disease_risk_level", data=df_feat, order=["Low", "Medium", "High"], palette="viridis")
-plt.title("Disease Risk Level Distribution")
-plt.ylabel("Number of Patients")
+# ## 4.3 Correlation Analysis
+
+# Correlation Analysis
+risk_map = {'Low': 0, 'Medium': 1, 'High': 2}
+df['risk_num'] = df['disease_risk_level'].map(risk_map)
+
+corr_target = df[numeric_cols + ['risk_num']].corr()['risk_num'].drop('risk_num').sort_values(key=abs, ascending=False)
+print("Correlation of numeric features with disease_risk_level (ordinal-encoded):")
+print(corr_target.round(3))
+
+# ## 4.4 Class Distribution Charts
+
+# Class Distribution Chart
+plt.figure(figsize=(6,4))
+sns.countplot(x='disease_risk_level', data=df_feat, order=['Low','Medium','High'], palette='viridis')
+plt.title('Disease Risk Level Distribution')
+plt.ylabel('Number of Patients')
+plt.show()
+
+# ## 4.5 Histograms
+
+# Histograms — Distribution Analysis
+df_feat[['age','bmi','systolic_bp','blood_sugar_mg_dl','cholesterol_mg_dl']].hist(figsize=(14,8), bins=25)
 plt.tight_layout()
-plt.savefig(REPORTS_DIR / "eda_class_distribution.png", dpi=120)
-plt.close()
+plt.show()
 
-# 4. Histograms
-df_feat[clinical_cols].hist(figsize=(12, 7), bins=25, color="teal")
-plt.suptitle("Clinical Vital Distributions", y=1.02)
+# ## 4.6 Boxplots
+
+# Boxplots
+fig, axes = plt.subplots(2, 3, figsize=(16,9))
+cols = ['age','bmi','systolic_bp','diastolic_bp','blood_sugar_mg_dl','cholesterol_mg_dl']
+for ax, col in zip(axes.flatten(), cols):
+    sns.boxplot(x='disease_risk_level', y=col, data=df_feat, order=['Low','Medium','High'], ax=ax, palette='Set2')
+    ax.set_title(f'{col} by Risk Level')
 plt.tight_layout()
-plt.savefig(REPORTS_DIR / "eda_clinical_histograms.png", dpi=120)
-plt.close()
+plt.show()
 
-# 5. Boxplots Across Risk Levels
-fig, axes = plt.subplots(2, 3, figsize=(15, 8))
-for ax, col in zip(axes.flatten(), clinical_cols):
-    sns.boxplot(x="disease_risk_level", y=col, data=df_feat, order=["Low", "Medium", "High"], ax=ax, palette="Set2")
-    ax.set_title(f"{col} by Risk Level")
+# Bonus: BMI by age_group and risk level (uses engineered feature)
+plt.figure(figsize=(9,5))
+sns.boxplot(x='age_group', y='bmi', hue='disease_risk_level',
+            order=['Under 18','18-35','36-50','51-65','65+'],
+            hue_order=['Low','Medium','High'], data=df_feat)
+plt.title('BMI by Age Group and Risk Level')
+plt.show()
+
+# ## 4.7 Scatterplots — Pattern Discovery
+
+# Scatterplots — Pattern Discovery
+fig, axes = plt.subplots(1, 2, figsize=(14,5))
+sns.scatterplot(x='bmi', y='blood_sugar_mg_dl', hue='disease_risk_level',
+                 hue_order=['Low','Medium','High'], data=df_feat, ax=axes[0])
+axes[0].set_title('BMI vs Blood Sugar by Risk Level')
+
+sns.scatterplot(x='age', y='cholesterol_mg_dl', hue='disease_risk_level',
+                 hue_order=['Low','Medium','High'], data=df_feat, ax=axes[1])
+axes[1].set_title('Age vs Cholesterol by Risk Level')
 plt.tight_layout()
-plt.savefig(REPORTS_DIR / "eda_boxplots_by_risk.png", dpi=120)
-plt.close()
+plt.show()
 
-# 6. Correlation Heatmap
-plt.figure(figsize=(12, 9))
+# ## 4.8 Correlation Heatmap
+
+# Correlation Heatmap
+plt.figure(figsize=(14,11))
 corr = df_feat.select_dtypes(include=np.number).corr()
-sns.heatmap(corr, annot=False, cmap="coolwarm", center=0)
-plt.title("Correlation Heatmap — All Numeric Features")
+sns.heatmap(corr, annot=False, cmap='coolwarm', center=0)
+plt.title('Correlation Heatmap — All Numeric Features')
+plt.show()
+
+# Bonus — Risk Level Proportion by Age Group (stacked bar)
+plt.figure(figsize=(8,5))
+age_risk = df_feat.groupby('age_group', observed=True)['disease_risk_level'].value_counts(normalize=True).unstack()
+age_risk = age_risk.reindex(['Under 18','18-35','36-50','51-65','65+'])
+age_risk[['Low','Medium','High']].plot(kind='bar', stacked=True, colormap='RdYlGn_r', figsize=(8,5))
+plt.title('Risk Level Proportion by Age Group')
+plt.ylabel('Proportion')
+plt.legend(title='Risk Level')
 plt.tight_layout()
-plt.savefig(REPORTS_DIR / "eda_correlation_heatmap.png", dpi=120)
-plt.close()
-
-# 7. Stacked Bar: Risk Level Proportion by Age Group
-if "age_group" in df_feat.columns:
-    plt.figure(figsize=(8, 5))
-    age_risk = df_feat.groupby("age_group", observed=True)["disease_risk_level"].value_counts(normalize=True).unstack()
-    valid_groups = [g for g in ["Under 18", "18-35", "36-50", "51-65", "65+"] if g in age_risk.index]
-    age_risk = age_risk.reindex(valid_groups)
-    cols_order = [c for c in ["Low", "Medium", "High"] if c in age_risk.columns]
-    age_risk[cols_order].plot(kind="bar", stacked=True, colormap="RdYlGn_r", figsize=(8, 5))
-    plt.title("Risk Level Proportion by Age Group")
-    plt.ylabel("Proportion")
-    plt.legend(title="Risk Level")
-    plt.tight_layout()
-    plt.savefig(REPORTS_DIR / "eda_risk_by_age_group.png", dpi=120)
-    plt.close()
-
-print(f"\n[SUCCESS] Task 04 completed! EDA plots saved to: {REPORTS_DIR}\n")
+plt.show()
