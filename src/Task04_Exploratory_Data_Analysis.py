@@ -36,6 +36,7 @@ df_feat.groupby('age_group', observed=True)['disease_risk_level'].value_counts()
 # ## 4.3 Correlation Analysis
 
 # Correlation Analysis
+# Checked which clinical variables move together
 risk_map = {'Low': 0, 'Medium': 1, 'High': 2}
 df['risk_num'] = df['disease_risk_level'].map(risk_map)
 
