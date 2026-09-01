@@ -2,6 +2,8 @@
 SmartCare Hospital — Disease Risk Level Classification System
 Deployment Demonstration & Clinical Decision Support Interface
 """
+# including new application link - [ https://ai-assignment-02-f8hmwte7pakbgszwgs6w44.streamlit.app/ ] 
+# including new git Repo that coudn't merged as a branch due to times up [ https://github.com/sithumitt/AI-Assignment-02.git ]
 
 from pathlib import Path
 import sys
