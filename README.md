@@ -193,12 +193,12 @@ streamlit run app/app.py
 **Group 02 — SLTC | CCS3440 Artificial Intelligence**
 
 | Team member | Contribution |
-|---|---|
-| 23UG1-0136 | Task 01 – Problem Definition and Literature Review · Task 02 – Setup Environment and Dataset Understanding · Task 03 – Data Preprocessing and Feature Engineering · Task 04 – Exploratory Data Analysis · Task 09 – Technical Report |
-| CIT-23-02-0067 | Task 05 – Machine Learning Model Development · Task 06 – Model Evaluation |
-| 23UG1-0005 | Task 07 – Explainable AI Analysis |
-| 23UG1-0066 | Task 08 – AI Prototype Development |
-| 22UG1-0243 | Bonus – Deep Learning Models |
+|------|---|
+| 23UG1-0136    | Task 01 – Problem Definition and Literature Review · Task 02 – Setup Environment and Dataset Understanding · Task 03 – Data Preprocessing and Feature Engineering · Task 04 – Exploratory Data Analysis · Task 09 – Technical Report |
+| CIT-23-02-0067   | Task 05 – Machine Learning Model Development · Task 06 – Model Evaluation |
+| 23UG1-0005    | Task 07 – Explainable AI Analysis |
+| 23UG1-0066    | Task 08 – AI Prototype Development |
+| 22UG1-0243    | Bonus – Deep Learning Models |
 
 > ⚠️ Developed for academic evaluation only. Not intended as an autonomous medical diagnostic tool.
 
