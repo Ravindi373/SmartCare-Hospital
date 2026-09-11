@@ -26,7 +26,7 @@ An end-to-end, leakage-free machine learning pipeline that stratifies SmartCare 
 - [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
 - [Limitations](#-limitations)
-- [Team](#-team)
+- [Team & Contribution](#-Team-&-Contribution)
 
 ---
 
@@ -188,7 +188,7 @@ streamlit run app/app.py
 
 ---
 
-## 👥 Team
+## 👥 Team & Contribution
 
 **Group 02 — SLTC | CCS3440 Artificial Intelligence**
 
