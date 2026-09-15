@@ -10,7 +10,7 @@
 
 > **CCS3440 Artificial Intelligence Final Coursework | SLTC | Group 02**
 
-An end-to-end, leakage-free machine learning pipeline that stratifies SmartCare Hospital patients into **Low**, **Medium**, or **High** disease risk levels using physiological biomarkers, clinical diagnoses, hospital operations, and financial records — built with a strict train-only-fitting protocol, six benchmarked models, true SHAP explainability, and a deployment-ready lightweight prototype.
+An end-to-end, leakage-free machine learning pipeline that stratifies SmartCare Hospital patients into **Low**, **Medium**, or **High** disease risk levels using physiological biomarkers, clinical diagnoses, hospital operations, and financial records built with a strict train-only-fitting protocol, six benchmarked models, true SHAP explainability, and a deployment-ready lightweight prototype.
 
 ---
 
