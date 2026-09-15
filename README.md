@@ -67,7 +67,7 @@ Early identification of disease risk supports preventive care, helps triage clin
 
 ```
 Raw (N=1000) → Stratified 80/20 Split ─┬─ Train (N=800) → Fit(Impute+OHE+SelectKBest+Scale) → Train Models
-                                        └─ Test  (N=200) → Transform (fitted pipeline) → Held-out Eval
+                                       └─ Test  (N=200) → Transform (fitted pipeline) → Held-out Eval
 ```
 
 Target mapping is deterministic: **Low = 0, Medium = 1, High = 2** (avoids scikit-learn's alphabetical `LabelEncoder` mismatch).
